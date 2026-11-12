@@ -1,0 +1,3159 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;600;700&display=swap');
+/* ========================================
+   1. COLORS AND SHARED SETTINGS
+======================================== */
+:root {
+    --cream: #F9F6F0;
+    --text-color: #2B2F2A;
+    --section-space: 64px;
+    --section-space-mobile: 40px;
+}
+
+/* ========================================
+   2. PAGE BASICS
+======================================== */
+html {
+    background-image: url('img/BG-trees-count.png');
+    background-repeat: repeat;
+    background-size: 250px 250px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.main-content {
+    display: flow-root;
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    margin: 30px auto 0;
+    background-color: var(--cream);
+    border-radius: 18px 18px 0 0;
+    border: 1.5px solid #2B2F2A;
+    border-bottom: none;
+}
+
+.gen-info {
+    background-color: #F3E7A3;
+    border-block: #2B2F2A solid 1.5px;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+/* ========================================
+   3. TYPOGRAPHY AND LINKS
+======================================== */
+h1,
+h2,
+h3,
+h4 {
+    margin-top: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 42px;
+    font-weight: 700;
+}
+
+h2 {
+    margin-bottom: 24px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 21px;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+p,
+ul,
+ol {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+summary {
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+a:link, a:visited {
+    color: green;
+}
+
+a:hover {
+    color: #D4A017;
+}
+
+a:active {
+    color: #d74488;
+}
+
+.link-description {
+    margin-bottom: 0;
+    color: #454840;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.contact-name {
+    color: #2e7d32;
+    font-size: large;
+    font-weight: 700;
+}
+
+/* Align inline SVG illustrations with text */
+p svg,
+li svg,
+h3 svg,
+button svg {
+    vertical-align: -0.15em;
+}
+
+/* ========================================
+   4. HERO
+======================================== */
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 30px;
+}
+
+.hero-content {
+    padding: 20px;
+    text-align: center;
+    scroll-margin-top: 100px;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: 42px;
+    font-weight: 700;
+}
+
+/* Keep the hero leaf and title together */
+.hero-title {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Keep the title on one line */
+.hero-title h1 {
+    white-space: nowrap;
+}
+
+/* Keep the leaf beside the title at a balanced desktop size */
+#icon-img {
+    display: block;
+    flex: 0 0 48px;
+    width: 56px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.hero h3 {
+    margin: 20px 0 30px;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+/* ========================================
+   5. ABOUT + VIDEO
+======================================== */
+
+.about-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 2rem;
+
+    width: 100%;
+    max-width: 1100px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 3rem 2rem 1.5rem;
+}
+
+.about-content {
+    text-align: left;
+    min-width: 0;
+}
+
+.about-video {
+    min-width: 0;
+}
+
+.about-video iframe {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+}
+
+
+/* ========================================
+   6. INFORMATION CARDS
+======================================== */
+
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+
+    width: 100%;
+    max-width: 1100px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 1rem 2rem 3rem;
+    align-items: stretch;
+
+    
+}
+
+/* Shared card appearance */
+
+.how-section,
+.counting-section {
+    min-width: 0;
+    padding: 1.25rem;
+   
+    background-color: #F9F6F0;
+    /*border: 1.5px solid #2B2F2A;
+    border-radius: 8px;*/
+
+    border: 1px solid #D8D0BD;
+    border-radius: 6px;
+    box-shadow: none;
+}
+
+.how-section > h3,
+.counting-section > h3 {
+    text-align: center;
+}
+
+
+
+/* Colored accents for the main headings */
+
+.counting-section > h3,
+.how-section > h3 {
+    text-align: center;
+    padding-bottom: 0.6rem;
+    border-bottom: 3px solid;
+}
+
+.counting-section > h3 {
+    border-bottom-color: #D74488;
+}
+
+.how-section > h3 {
+    border-bottom-color: green;
+}
+
+
+/* ========================================
+   7. PARK + STREET TREE CONTENT
+======================================== */
+
+.tree-types {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+.tree-type h3 {
+    margin-bottom: 0.5rem;
+}
+
+
+.tree-type p {
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+
+.tree-type img {
+    display: block;
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+}
+
+/* Adjust the crop for each tree image */
+.tree-type:first-child img {
+    object-position: center 35%;
+}
+
+.tree-type:last-child img {
+    object-position: center 70%; 
+}
+
+
+/* ========================================
+   8. TREE SURVEY INFORMATION
+======================================== */
+
+.counting-section p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.counting-section ul {
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0;
+    list-style: none;
+}
+
+.counting-section li {
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    list-style: none;
+}
+
+.tree-measurement-img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: center 35%;
+    border-radius: 12px;
+    margin: 1rem 0;
+}
+
+
+
+/* ========================================
+   9. MOBILE LAYOUT
+======================================== */
+
+@media (max-width: 700px) {
+
+    .about-section {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.25rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .info-cards {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.5rem;
+        padding: 1rem 1.25rem 2rem;
+    }
+
+    .how-section,
+    .counting-section {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1rem;
+    }
+
+    .counting-section p,
+    .counting-section li,
+    .tree-type p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .counting-section ul {
+        padding-left: 0;
+        list-style: none;
+    }
+    .counting-section li {
+        margin-bottom: 0.6rem;
+    }
+
+    .tree-type img {
+        height: 140px;
+    }
+}
+
+/* Tablet layout */
+@media (min-width: 701px) and (max-width: 1000px) {
+
+    .info-cards {
+        gap: 1.25rem;
+        padding: 1rem 1.25rem 3rem;
+    }
+
+    /* Match body text across both cards */
+    .counting-section p,
+    .counting-section li,
+    .tree-type p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .counting-section ul {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .counting-section li {
+        margin-bottom: 0.6rem;
+    }
+}
+
+/* ========================================
+   7. WHY
+======================================== */
+
+.why-section {
+    /* Keep your existing background, display, alignment, etc. */
+
+    background-color: #F3A3D7;
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: var(--section-space) 2.5rem;
+    border-bottom: 1.5px solid #2B2F2A;
+    box-sizing: border-box;
+}
+
+.why-images {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 1rem;
+}
+
+.why-images img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.why-images img:first-child {
+    height: 400px;
+}
+
+.why-content {
+    text-align: left;
+}
+
+
+/* Why Count Trees - Flip Cards */
+
+.why-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin-top: 2rem;
+}
+
+
+.why-card {
+    background-color: transparent;
+    height: 280px;
+    perspective: 1000px;
+    position: relative;
+    cursor: pointer;
+}
+
+
+.why-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+}
+
+
+/* Front and back of each card */
+.why-card-front,
+.why-card-back {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border: 1.5px solid #2B2F2A;
+    border-radius: 12px;
+    text-align: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+}
+
+/* Card front */
+.why-card-front {
+    background-color: #F9F6F0;
+    color: #2B2F2A;
+}
+
+/* Card back */
+.why-card-back {
+    background-color: #F9F6F0;
+    color: #2B2F2A;
+    transform: rotateY(180deg);
+    position: absolute;
+    isolation: isolate;
+}
+
+/* hover color border layer */
+.why-card-back::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 10px solid transparent;
+    border-radius: 10px;
+    box-sizing: border-box;
+    pointer-events: none;
+    z-index: 1;
+    transition: border-color 0.25s ease;
+}
+
+
+
+/* Card headings */
+.why-card-front h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.why-card-front p {
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+/* Leaf icon above each card heading */
+.why-card-front-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+/* Leaf image on the front of each card */
+.why-leaf-image {
+    width: 60px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
+}
+
+
+.why-leaf-image {
+    width: 60px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
+    transform: translateX(-4px);
+}
+
+/* Icons on the back of the cards */
+.why-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+    
+    margin-bottom: 0.4rem;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+}
+
+.why-card-icon svg {
+    width: 48px;
+    height: 48px;
+    stroke-width: 1.8;
+    flex-shrink: 0;
+}
+
+
+
+/* Individual spacing for each card's icon pair */
+
+/* Card 1: Monitor Tree Health */
+.why-card-icon-health svg + svg {
+    margin-left: -10px;
+}
+
+/* Card 2: Cooler, Greener Neighborhoods */
+.why-card-icon-green svg + svg {
+    margin-left: -2px;
+}
+
+/* Card 3: Safer Public Spaces */
+.why-card-icon-safety svg + svg {
+    margin-left: -18px;
+}
+
+
+.why-card-back h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 0 0.45rem;
+}
+
+.why-card-back p {
+    font-size: 0.9rem;
+    line-height: 1.45;
+    margin: 0;
+}
+
+/* Keep a card flipped after a tap or keyboard activation */
+.why-card.is-flipped .why-card-inner {
+    transform: rotateY(180deg);
+}
+
+
+/* Smooth color transitions on both card faces */
+.why-card-front,
+.why-card-back {
+    transition: background-color 0.25s ease;
+}
+
+
+@media (hover: hover) {
+    .why-card:hover .why-card-front {
+    background-color:#A9DEDE;
+    }
+
+    .why-card:hover .why-card-back::before {
+        border-color: #A9DEDE;
+    }
+}
+
+/* Folded corner */
+.why-card-corner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 0 5px 3px 0;
+    box-sizing: border-box;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.why-card-corner svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+
+}
+
+.why-card-corner span {
+    position: relative;
+    z-index: 1;
+    color: #2B2F2A;
+    font-size: 1.35rem;
+    line-height: 1;
+    transform: rotate(-15deg);
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (min-width: 601px) and (max-width: 1000px) {
+
+    .why-section {
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        gap: 1.5rem;
+        padding: 3rem 1.5rem;
+    }
+
+    .why-images {
+        gap: 0.75rem;
+    }
+
+    .why-images img {
+        height: 240px;
+    }
+
+    .why-images img:first-child {
+        height: 320px;
+    }
+
+    .why-cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.5rem;
+    }
+
+    .why-card {
+        height: 280px;
+    }
+
+    .why-card-front,
+    .why-card-back {
+        padding: 0.6rem;
+    }
+
+    .why-card-back p {
+        font-size: 0.9rem;
+        line-height: 1.45;
+    }
+
+    .why-leaf-image {
+        width: 50px;
+        height: 40px;
+    }
+
+    .why-card-front-icon {
+        margin-bottom: 0.75rem;
+    }
+
+
+    .why-card-front h3 {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .why-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2.5rem 1rem;
+    }
+
+    .why-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .why-card {
+        height: 260px;
+    }
+
+
+    .why-leaf-image {
+        width: 50px;
+        height: 40px;
+    }
+
+    .why-card-front-icon {
+        margin-bottom: 0.85rem;
+    }
+
+
+    .why-card-front h3 {
+        font-size: 1.05rem;
+        line-height: 1.3;
+    }
+}
+
+
+/* ========================================
+   8. HISTORY
+======================================== */
+.history-section {
+    /* Adds breathing room around the whole history section */
+    padding-top: var(--section-space);
+    padding-bottom: var(--section-space);
+    background-color: #D7F3A3;
+    border-bottom: 1.5px solid #2B2F2A;
+}
+
+.history-intro-text {
+    max-width: 800px;
+    margin: 0 auto 24px;
+    padding: 10px;
+}
+
+.street-icon {
+    color:#333333;
+}
+
+.highlight {
+    background-color: #F3E7A3;
+    color: #333333;
+    padding: 0 4px;
+    border-radius: 3px;
+}
+
+.history-card summary {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+}
+
+.history-card summary::-webkit-details-marker {
+    display: none;
+}
+
+.history-card summary img {
+    width: 160px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.history-card-text {
+    position: relative;
+    padding-left: 28px;
+}
+
+
+.history-card-text::before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 2px;
+
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 10px solid #000;
+
+    transition: transform 0.2s ease;
+}
+
+.history-card[open] .history-card-text::before {
+    transform: rotate(90deg);
+}
+
+.history-card h4 {
+    margin-top: 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.history-year {
+    padding: 6px 10px;
+    color: #29382D;
+    background-color: #DDE5D9;
+    border-radius: 6px;
+}
+
+.history-card p {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+
+/*.history-card-more {
+    margin-top: 20px;
+    padding: 15px 0 0 14px;
+    border-top: 1.5px solid #D8D0BD;
+    border-left: 3px solid #39728C;
+}*/
+
+.history-card-more {
+    margin-top: 20px;
+    padding: 15px;
+    border-top: 1.5px solid #2B2F2A;
+    /*border-left: 3px solid #39728C;*/
+    
+    background-color: #F9F6F0;
+}
+
+.history-card-more p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.65;
+    margin: 0;
+}
+
+
+.history-card-more p.history-detail-label {
+    margin: 0 0 8px;
+    color: #39728C;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+
+/* Year heading */
+.history-card h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #315B3B;
+    transition: color 0.2s ease;
+}
+
+/* Pink only while the card is expanded */
+.history-card[open] h3 {
+    color: #D74488;
+}
+
+.history-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 30px;
+    /* Timeline positioning */
+    position: relative;
+}
+
+/* Vertical line behind the image column */
+.history-cards::before {
+    content: "";
+    position: absolute;
+    /* Extend the line beyond the first and last cards */
+    top: -20px;
+    bottom: -10px;
+    left: 130px;
+    width: 6px;
+    background-color: #29382D;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.history-card {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    background-color: #F9F6F0;
+    border: 1.5px solid #2B2F2A;
+    border-radius: 8px;
+    transition: 0.2s ease;
+}
+
+.history-card:hover {
+    background-color:#A9DEDE;
+}
+
+
+/* ========================================
+   9. IMPACT AND GALLERY
+======================================== */
+.impact-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 50px;
+    margin: 0;
+    scroll-margin-top: 120px;
+    border-bottom: 1.5px solid #2B2F2A;
+}
+
+.impact-content,
+.impact-gallery {
+    min-width: 0;
+}
+
+.impact-content {
+    max-width: 1100px;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.community-stats {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.ready-to-join {
+    margin-top: 40px;
+}
+
+.ready-to-join h4 {
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.impact-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+.impact-gallery img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* ========================================
+   10. LEARN MORE LINKS
+======================================== */
+/* LINKS SECTION — full-width background */
+.links-section {
+    width: 100%;
+    box-sizing: border-box;
+    padding: var(--section-space) 30px;
+    background-color: #ACDBF4;
+}
+
+/* CONTENT — centered with space on the sides */
+.links-content {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* GRID OF LINKS */
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.link-block {
+    min-width: 0;
+    padding: 20px;
+    background-color: #F9F6F0;
+    border: 1.5px solid #2B2F2A;
+    border-radius: 12px;
+    /* Smooth hover animation */
+    box-sizing: border-box;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.link-block:hover {
+    background-color: #ABD789;
+    border-color: #2B2F2A;
+    box-shadow: 0 4px 10px rgba(43, 47, 42, 0.12);
+    transform: translateY(-3px);
+}
+
+.link-block h4 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+/* Only the heading gets underlined */
+.link-block:hover h4 {
+    text-decoration: underline;
+}
+
+.link-block a {
+    color: #315B3B;
+    text-decoration: none;
+}
+
+.link-block a:hover {
+    text-decoration: none;
+}
+
+.link-block a:focus-visible {
+    outline: 2px solid #315B3B;
+    outline-offset: 3px;
+}
+
+/* ========================================
+   11. BUTTONS
+======================================== */
+/* Shared button styles */
+button {
+    padding: 12px 20px;
+    border: 2px solid #2B2F2A;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #26352C;
+    background-color: #EABB43;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+    margin: 4px 6px 4px 0;
+}
+
+/* REGISTER BUTTONS: pink */
+.hero-content button:first-of-type,
+.ready-to-join button:first-of-type {
+    color: #FFFFFF;
+    background-color: #D94388;
+}
+
+/* REGISTER HOVER: deeper pink */
+.hero-content button:first-of-type:hover,
+.ready-to-join button:first-of-type:hover {
+    background-color: #E85A9B;
+}
+
+/* EVENTS HOVER: soft yellow */
+.hero-content button:last-of-type:hover,
+.ready-to-join button:last-of-type:hover {
+    color: #26352C;
+    background-color: #EFCA6C;
+}
+
+/* SHARED HOVER MOVEMENT */
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(38, 53, 44, 0.18);
+}
+
+/* KEYBOARD ACCESSIBILITY */
+button:focus-visible {
+    outline: 3px solid #6B91C2;
+    outline-offset: 4px;
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+    button {
+        transition: none;
+    }
+    button:hover {
+        transform: none;
+    }
+
+}
+
+/* ========================================
+   12. HEADER AND NAVIGATION
+======================================== */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin: 0;
+    padding: 20px 0 0;
+    background-color: #ffc221;
+    border-top: 1.5px solid #2B2F2A;
+    border-bottom: 1.5px solid #2B2F2A;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.header-icon {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    object-fit: contain;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background-color: #59645D;
+    border-top: 1px solid #2B2F2A ;
+    border-bottom: 2px solid #2B2F2A;
+}
+
+.navbar ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    margin: 0;
+    padding: 15px 20px;
+    list-style: none;
+}
+
+.navbar a {
+    display: inline-block;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 5px 0;
+    transition: color 0.2s ease;
+}
+
+/* image appears when hovering over navigation links */
+.navbar a::before {
+    content: "";
+    display: inline-block;
+    width: 35px;
+    height: 30px;
+    margin-right: 6px;
+    background-image: url("./img/icons/tape.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.navbar a:hover {
+    color: #ABD789;
+}
+
+.navbar a:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ========================================
+   13. FOOTER
+======================================== */
+footer {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1.2fr 1fr;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    margin-top: 0;
+    padding: 35px 40px;
+    color: #26352C;
+    background-color: #DDE1DD;
+    border-top: 1.5px solid #2B2F2A;
+    border-bottom: 1.5px solid #2B2F2A;
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.footer-icon {
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+.footer-text {
+    min-width: 0;
+}
+
+footer h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+footer p {
+    margin: 4px 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+footer a {
+    color: #315B3B;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+footer a:hover {
+    color: #1F4229;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo img {
+    display: block;
+    width: 100%;
+    max-width: 170px;
+    height: auto;
+}
+
+/* Align the tree and leaf icons with their headings */
+.footer-brand,
+.footer-thanks {
+    align-items: center;
+}
+
+.footer-brand h3,
+.footer-thanks h3 {
+    margin: 0;
+    line-height: 1.3;
+}
+
+.footer-brand .footer-icon,
+.footer-thanks .footer-icon {
+    transform: translateY(-4px);
+}
+
+/* ========================================
+   14. RESPONSIVE LAYOUTS
+======================================== */
+/* Tablet and smaller screens */
+@media (max-width: 950px) {
+    footer {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px;
+        padding: 30px;
+    }
+
+}
+
+/* Mobile and narrow tablet */
+@media (max-width: 768px) {
+    .about-section,
+    .why-section {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+        padding: 40px 20px;
+    }
+    .about-content,
+    .why-content {
+        text-align: center;
+    }
+    .why-content ul {
+        text-align: left;
+    }
+    .how-section {
+        padding: 40px 20px;
+    }
+    .tree-types {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 3rem;
+    }
+    .tree-type img {
+        height: auto;
+    }
+    .history-section {
+        padding-top: var(--section-space-mobile);
+        padding-bottom: var(--section-space-mobile);
+    }
+    .history-intro-text {
+        margin-bottom: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    .history-cards {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    .impact-section {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+    .impact-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .links-section {
+        padding: 40px 20px;
+    }
+    .links-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+}
+
+/* Small phones */
+@media (max-width: 600px) {
+    .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 40px 20px;
+    }
+    .hero-content {
+        padding: 10px;
+        text-align: center;
+    }
+    .hero-title {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        width: auto;
+    }
+    #icon-img {
+        flex: 0 0 40px;
+        width: 40px;
+        height: 40px;
+    }
+    .hero h1 {
+        margin: 0;
+        font-size: 36px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+    .hero h3 {
+        font-size: 24px;
+        font-weight: 600;
+    }
+    header {
+        gap: 10px;
+        padding-top: 16px;
+    }
+    .logo {
+        padding: 0 16px;
+    }
+    .header-icon {
+        max-width: 260px;
+    }
+    .navbar ul {
+        gap: 12px 22px;
+        padding: 12px 16px;
+    }
+    .navbar a {
+        font-size: 15px;
+    }
+    footer {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+        padding: 30px 22px;
+    }
+    .footer-item {
+        justify-content: flex-start;
+    }
+    .footer-logo {
+        justify-content: flex-start;
+        padding-left: 49px;
+    }
+
+}
+
+/* =========================================================
+   TREES COUNT! MODALS
+   Registration Modal + Upcoming Events Modal
+
+   Color palette:
+   Sage green: #DCE8D9
+   Cream:      #F9F6F0
+   Dark text:  #2B2F2A
+   Muted green:#59645D
+   Beige:      #D8D0BD
+   Pink:       #D94388
+   Blue:       #4386A8
+========================================================= */
+
+
+/* =========================================================
+   1. SHARED MODAL STYLES
+========================================================= */
+
+/* Keep closed dialogs out of the normal page layout */
+dialog:not([open]) {
+    display: none;
+}
+
+/* Layout when a dialog is opened */
+dialog[open] {
+    display: flex;
+}
+
+
+.registration-modal,
+.events-modal {
+    box-sizing: border-box;
+    width: min(1200px, calc(100% - 2rem));
+    margin: auto;
+
+    color: #2B2F2A;
+    background-color: #DCE8D9;
+
+    border: 1px solid #D8D0BD;
+    border-radius: 18px;
+
+    overflow-y: auto;
+}
+
+.registration-modal::backdrop,
+.events-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+
+/* Shared modal headings */
+
+.modal-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal-header h2 {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* Shared close button appearance */
+
+.modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    padding: 0;
+
+    color: #FFFFFF;
+    background-color: #D94388;
+
+    border: 1px solid #2B2F2A;
+    border-radius: 8px;
+
+    font-size: 23px;
+    font-weight: bold;
+    line-height: 1;
+
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.modal-close:hover {
+    color: #FFFFFF;
+    background-color: #E85A9B;
+}
+
+/* Prevent modal buttons from using the site's levitation effect */
+
+.registration-modal button:hover,
+.events-modal button:hover {
+    transform: none;
+    box-shadow: inherit;
+}
+
+.registration-modal .modal-close,
+.registration-modal .modal-close:hover,
+.registration-modal .modal-close:focus,
+.events-modal .modal-close,
+.events-modal .modal-close:hover,
+.events-modal .modal-close:focus {
+    transform: none !important;
+    translate: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   2. REGISTRATION MODAL - OUTER FRAME
+========================================================= */
+
+.registration-modal {
+    display: flex;
+    flex-direction: column;
+
+    height: min(760px, calc(100dvh - 2rem));
+    max-height: calc(100dvh - 2rem);
+
+    padding: 5rem 1.5rem;
+
+    overflow-y: auto;
+}
+
+/* Wrapper around the close button and cream content */
+
+.registration-frame {
+    position: relative;
+
+    display: flex;
+    flex: 1 0 auto;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 1050px;
+    margin-inline: auto;
+}
+
+/* Pink close button in the green area */
+
+.registration-modal > .registration-frame .modal-close {
+    position: absolute;
+    top: -3.5rem;
+    right: 0;
+    z-index: 5;
+}
+
+/* Cream registration panel */
+
+.registration-content {
+    box-sizing: border-box;
+
+    flex: 1 0 auto;
+    width: 100%;
+    min-width: 0;
+
+    padding: 1.5rem 2rem;
+
+    background-color: #F9F6F0;
+    border-radius: 12px;
+}
+
+/* Registration heading */
+
+.registration-modal .modal-header {
+    padding-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.registration-modal .modal-header h2 {
+    text-align: center;
+}
+
+/* Introductory text */
+
+.modal-intro {
+    margin: 0.5rem 0 1.5rem;
+
+    color: #59645D;
+    text-align: center;
+}
+
+
+/* =========================================================
+   3. REGISTRATION MODAL - EVENT SELECTION
+========================================================= */
+
+.event-selection {
+    display: grid;
+    gap: 0.6rem;
+
+    margin-bottom: 0.5rem;
+}
+
+.event-selection label,
+.form-field label {
+    font-weight: 700;
+}
+
+/* Event dropdown and form inputs */
+
+.event-selection select,
+.form-field input,
+.form-field select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.85rem 1rem;
+
+    color: #2B2F2A;
+    background-color: #FFFFFF;
+
+    border: 1px solid #D8D0BD;
+    border-radius: 8px;
+
+    font: inherit;
+}
+
+/* Browse Upcoming Events link */
+
+.event-browse {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.events-browse-btn {
+    padding: 0;
+
+    color: #4386A8;
+    background: none;
+    border: none;
+
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.events-browse-btn:hover {
+    color: #D74488;
+}
+
+
+/* =========================================================
+   4. REGISTRATION MODAL - REGISTRATION TYPE OPTIONS
+========================================================= */
+
+.registration-types,
+.registration-fields {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.registration-types legend,
+.registration-fields legend {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.registration-types > p,
+.form-note {
+    margin: 0.4rem 0 1rem;
+    color: #59645D;
+}
+
+/* Three registration option cards */
+
+.registration-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+/* Individual option card */
+
+.registration-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+
+    padding: 1.2rem;
+
+    background-color: #FFFFFF;
+    border: 1px solid #D8D0BD;
+    border-radius: 10px;
+
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.registration-option:hover {
+    background-color: #F3F0E8;
+    border-color: #59645D;
+}
+
+.registration-option:has(input:checked) {
+    background-color: #EDF1E9;
+    border-color: #59645D;
+}
+
+.registration-option input {
+    margin-top: 0.3rem;
+    accent-color: #59645D;
+}
+
+/* Text inside registration cards */
+
+.option-content strong,
+.option-content small {
+    display: block;
+}
+
+.option-content small {
+    margin-top: 0.3rem;
+    color: #59645D;
+    line-height: 1.4;
+}
+
+.volunteer-count {
+    margin-top: 5px;
+    color: #59645D;
+    font-weight: 600;
+}
+
+/* Registration card images */
+
+.option-image {
+    display: block;
+    width: 100%;
+    height: 120px;
+    margin-top: 14px;
+
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+/* =========================================================
+   5. REGISTRATION MODAL - INFORMATION FORMS
+========================================================= */
+
+.registration-fields {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+
+    border-top: 1px solid #D8D0BD;
+}
+
+/* Keep hidden forms out of the layout */
+
+.registration-fields[hidden] {
+    display: none;
+}
+
+/* Two-column form layout */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+
+    margin-top: 1rem;
+}
+
+.form-field {
+    display: grid;
+    gap: 0.5rem;
+}
+
+/* Back button */
+
+.registration-back {
+    display: block;
+    margin-top: 1.5rem;
+    margin-right: auto;
+    padding: 0;
+
+    color: #4386A8;
+    background: none;
+    border: none;
+
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.registration-back:hover {
+    color: #D74488;
+}
+
+
+/* =========================================================
+   6. UPCOMING EVENTS MODAL - OUTER PANEL
+========================================================= */
+
+.events-modal {
+    max-height: 90vh;
+    padding: 1.5rem;
+
+    overflow-y: auto;
+}
+
+/* Cream events content */
+
+.events-content {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1.5rem 2rem;
+
+    background-color: #F9F6F0;
+    border-radius: 12px;
+}
+
+/* Events heading and close button */
+
+.events-modal .modal-header {
+    margin-bottom: 1.5rem;
+    padding-top: 0.5rem;
+}
+
+.events-modal .modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Introduction */
+
+.events-intro {
+    max-width: 1000px;
+    margin: 1.5rem auto 2.5rem;
+
+    line-height: 1.7;
+}
+
+.events-intro h3 {
+    margin-bottom: 1rem;
+
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.events-intro p {
+    margin-bottom: 1rem;
+}
+
+
+/* =========================================================
+   7. UPCOMING EVENTS MODAL - BOROUGH SECTION
+========================================================= */
+
+.borough-section {
+    padding-top: 2rem;
+    border-top: 1px solid #D8D0BD;
+}
+
+.borough-section > h3 {
+    margin-bottom: 1.5rem;
+
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* Borough tabs */
+
+.borough-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+
+    margin-bottom: 2rem;
+}
+
+.borough-tab {
+    padding: 0.7rem 1.2rem;
+
+    color: #59645D;
+    background-color: #FFFFFF;
+
+    border: 1px solid #D8D0BD;
+    border-radius: 8px;
+
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.borough-tab:hover {
+    background-color: #F3F0E8;
+    border-color: #59645D;
+}
+
+.borough-tab.active {
+    color: #2B2F2A;
+    background-color: #EDF1E9;
+    border-color: #59645D;
+}
+
+
+/* Borough illustration placeholder */
+
+.borough-illustration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 220px;
+    margin-bottom: 2rem;
+
+    background-color: #F3F0E8;
+    border: 1px solid #D8D0BD;
+    border-radius: 12px;
+}
+
+.borough-placeholder {
+    color: #59645D;
+    text-align: center;
+}
+
+.borough-placeholder span {
+    display: block;
+    font-size: 3rem;
+}
+
+.borough-placeholder p {
+    margin: 0.5rem 0 0;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.borough-placeholder small {
+    color: #777D75;
+}
+
+
+/* Event listings */
+
+.event-listings {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.events-placeholder {
+    grid-column: 1 / -1;
+
+    padding: 2rem 1rem;
+
+    color: #59645D;
+    text-align: center;
+}
+
+
+/* =========================================================
+   8. RESPONSIVE MODAL STYLES
+========================================================= */
+
+@media (max-width: 700px) {
+
+    /* Registration modal */
+
+    .registration-modal {
+        width: calc(100% - 1rem);
+        height: calc(100dvh - 1rem);
+        max-height: calc(100dvh - 1rem);
+
+        padding: 1.5rem;
+    }
+
+    .registration-modal .registration-options {
+        grid-template-columns: 1fr;
+    }
+
+    .registration-modal .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .registration-modal .modal-header h2 {
+        padding: 0 1.8rem;
+        font-size: 1.2rem;
+    }
+
+    .registration-modal > .registration-frame .modal-close {
+        top: -1rem;
+        right: 0;
+    }
+
+    .registration-content {
+        padding: 1.5rem;
+    }
+
+
+    /* Events modal */
+
+    .events-modal {
+        width: calc(100% - 1rem);
+        max-height: 90vh;
+        padding: 1.5rem;
+    }
+
+    .events-content {
+        padding: 1.5rem;
+    }
+
+    .events-intro {
+        margin-top: 1rem;
+    }
+
+    .borough-tabs {
+        gap: 0.5rem;
+    }
+
+    .borough-tab {
+        padding: 0.6rem 0.85rem;
+        font-size: 0.9rem;
+    }
+
+    .borough-illustration {
+        min-height: 170px;
+    }
+
+    .event-listings {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* =========================================================
+   9. REGISTRATION FORM - UPDATED DESIGN
+   Personal Information, Volunteer Information,
+   Additional Information & Agreements
+========================================================= */
+
+
+/* -----------------------------------------
+   FORM SECTIONS
+----------------------------------------- */
+
+.registration-fields .form-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #D8D0BD;
+}
+
+.registration-fields .form-section:first-of-type {
+    margin-top: 1rem;
+    padding-top: 0;
+    border-top: none;
+}
+
+.registration-fields .form-section h3 {
+    margin: 0 0 0.4rem;
+
+    color: #59645D;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.registration-fields .form-section > p {
+    margin: 0 0 1.2rem;
+    color: #777D75;
+    line-height: 1.5;
+}
+
+
+/* -----------------------------------------
+   FORM GRID & FIELD SPACING
+----------------------------------------- */
+
+.registration-fields .form-grid {
+    gap: 1.2rem 1.5rem;
+    margin-top: 1rem;
+}
+
+.registration-fields .form-field {
+    min-width: 0;
+    gap: 0.5rem;
+}
+
+.registration-fields .form-field > label {
+    color: #2B2F2A;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+
+/* -----------------------------------------
+   TEXT INPUTS & DROPDOWNS
+----------------------------------------- */
+
+.registration-fields .form-field input:not([type="radio"]):not([type="checkbox"]),
+.registration-fields .form-field select {
+    min-height: 46px;
+    padding: 0.75rem 0.9rem;
+
+    background-color: #FFFFFF;
+    border: 1px solid #D8D0BD;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.registration-fields .form-field input:focus,
+.registration-fields .form-field select:focus {
+    outline: none;
+    border-color: #4386A8;
+    box-shadow: 0 0 0 3px rgba(67, 134, 168, 0.15);
+}
+
+.registration-fields .form-field input::placeholder {
+    color: #999D96;
+}
+
+
+/* -----------------------------------------
+   RADIO BUTTON OPTIONS
+----------------------------------------- */
+
+.registration-fields .radio-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.registration-fields .radio-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+
+    padding: 0.8rem 0.9rem;
+
+    color: #2B2F2A;
+    background-color: #FFFFFF;
+
+    border: 1px solid #D8D0BD;
+    border-radius: 8px;
+
+    font-size: 0.93rem;
+    font-weight: 400;
+    line-height: 1.5;
+
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.registration-fields .radio-option:hover {
+    background-color: #F3F0E8;
+    border-color: #59645D;
+}
+
+.registration-fields .radio-option:has(input:checked) {
+    background-color: #EDF1E9;
+    border-color: #59645D;
+}
+
+.registration-fields .radio-option input[type="radio"] {
+    flex: 0 0 auto;
+    width: 17px;
+    height: 17px;
+    margin: 0.15rem 0 0;
+
+    accent-color: #59645D;
+}
+
+
+/* -----------------------------------------
+   CONDITIONAL SUMMER ATTENDANCE QUESTION
+----------------------------------------- */
+
+.registration-fields .conditional-question {
+    min-width: 0;
+    margin: 1rem 0;
+    padding: 1rem;
+
+    border: 1px solid #D8D0BD;
+    border-radius: 10px;
+    background-color: #F3F0E8;
+}
+
+.registration-fields .conditional-question legend {
+    padding: 0 0.3rem;
+
+    color: #59645D;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.registration-fields .conditional-question[hidden] {
+    display: none;
+}
+
+
+/* -----------------------------------------
+   AGREEMENTS & ACKNOWLEDGMENTS
+----------------------------------------- */
+
+.registration-fields .agreement-section {
+    margin-top: 2.2rem;
+}
+
+.registration-fields .agreement-item {
+    margin-top: 1rem;
+    padding: 1.2rem;
+
+    background-color: #FFFFFF;
+    border: 1px solid #D8D0BD;
+    border-radius: 10px;
+}
+
+.registration-fields .agreement-item h4 {
+    margin: 0;
+
+    color: #59645D;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.registration-fields .agreement-item p {
+    margin: 0.5rem 0;
+    color: #59645D;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.registration-fields .agreement-item a {
+    display: inline-block;
+    margin: 0.3rem 0 0.8rem;
+
+    color: #4386A8;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.registration-fields .agreement-item a:hover {
+    color: #D94388;
+}
+
+
+/* Agreement checkboxes */
+
+.registration-fields .agreement-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+
+    margin-top: 0.7rem;
+    padding: 0.8rem;
+
+    color: #2B2F2A;
+    background-color: #F9F6F0;
+
+    border-radius: 8px;
+
+    font-size: 0.92rem;
+    font-weight: 400;
+    line-height: 1.6;
+
+    cursor: pointer;
+}
+
+.registration-fields .agreement-checkbox input[type="checkbox"] {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    margin: 0.2rem 0 0;
+
+    accent-color: #59645D;
+    cursor: pointer;
+}
+
+
+/* Optional photo release notice */
+
+.registration-fields .privacy-notice {
+    padding: 0.75rem 0.9rem;
+
+    color: #59645D;
+    background-color: #EDF1E9;
+
+    border-left: 3px solid #59645D;
+    border-radius: 4px;
+
+    font-size: 0.88rem;
+}
+
+
+/* Required fields note */
+
+.registration-fields .required-note {
+    margin-top: 1.2rem;
+    color: #777D75;
+    font-size: 0.85rem;
+}
+
+
+/* -----------------------------------------
+   SUBMIT BUTTON
+----------------------------------------- */
+
+.registration-fields .form-submit {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 1.8rem;
+    padding-top: 1.3rem;
+
+    border-top: 1px solid #D8D0BD;
+}
+
+.registration-fields .register-submit-btn {
+    padding: 0.85rem 1.8rem;
+
+    color: #FFFFFF;
+    background-color: #4386A8;
+
+    border: 1px solid #2B2F2A;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.registration-fields .register-submit-btn:hover {
+    color: #FFFFFF;
+    background-color: #D94388;
+}
+
+
+/* -----------------------------------------
+   KEYBOARD ACCESSIBILITY
+----------------------------------------- */
+
+.registration-fields input:focus-visible,
+.registration-fields select:focus-visible,
+.registration-fields button:focus-visible,
+.registration-fields a:focus-visible {
+    outline: 3px solid rgba(67, 134, 168, 0.45);
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   10. RESPONSIVE REGISTRATION FORM
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .registration-fields .form-section {
+        margin-top: 1.5rem;
+        padding-top: 1.2rem;
+    }
+
+    .registration-fields .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .registration-fields .form-section h3 {
+        font-size: 1.05rem;
+    }
+
+    .registration-fields .agreement-item {
+        padding: 1rem;
+    }
+
+    .registration-fields .form-submit {
+        justify-content: stretch;
+    }
+
+    .registration-fields .register-submit-btn {
+        width: 100%;
+    }
+
+}
+
+
+/* Give the volunteer section more breathing room */
+.registration-fields #individual-fields {
+    margin-bottom: 0;
+}
+
+#individual-fields .form-section:nth-of-type(2) {
+    margin-bottom: 1rem;
+}
+
+#individual-fields .form-section:nth-of-type(3) {
+    margin-top: 1rem;
+}
+
+/* Make agreements more compact */
+.registration-fields .agreement-item {
+    margin-top: 0.7rem;
+    padding: 0.9rem 1rem;
+}
+
+.registration-fields .agreement-item p {
+    margin: 0.35rem 0;
+}
+
+.registration-fields .agreement-checkbox {
+    margin-top: 0.5rem;
+    padding: 0.55rem 0.7rem;
+}
+
+
+/* =========================================================
+   11. SMALL GROUP FORM
+========================================================= */
+
+/* Volunteer information cards */
+
+.volunteer-card {
+    margin-top: 1rem;
+    padding: 1.2rem;
+
+    background-color: #FFFFFF;
+    border: 1px solid #D8D0BD;
+    border-radius: 10px;
+}
+
+.volunteer-card h4 {
+    margin: 0 0 1rem;
+
+    color: #59645D;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+.volunteer-card h4 span {
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+/* Primary contact name fields */
+
+.volunteer-card input[readonly] {
+    background-color: #F3F0E8;
+    color: #59645D;
+    cursor: default;
+}
+
+/* Volunteer card heading */
+
+.volunteer-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.volunteer-card-heading h4 {
+    margin-bottom: 0;
+}
+
+/* Remove volunteer button */
+
+.remove-volunteer-btn {
+    padding: 0.4rem 0.7rem;
+
+    color: #D94388;
+    background-color: transparent;
+    border: 1px solid #D94388;
+    border-radius: 6px;
+
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.remove-volunteer-btn:hover {
+    color: #FFFFFF;
+    background-color: #D94388;
+}
+
+/* Add volunteer button */
+
+.add-volunteer-wrapper {
+    margin-top: 1rem;
+}
+
+.add-volunteer-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    padding: 0.7rem 1rem;
+
+    color: #4386A8;
+    background-color: #FFFFFF;
+
+    border: 1px solid #4386A8;
+    border-radius: 8px;
+
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.add-volunteer-btn span {
+    font-size: 1.2rem;
+}
+
+.add-volunteer-btn:hover {
+    color: #FFFFFF;
+    background-color: #4386A8;
+}
+
+
+/* =========================================================
+   12. LARGE ORGANIZATION / CORPORATE FORM
+========================================================= */
+
+/* Organization requirement notice */
+
+.group-requirement-note {
+    margin: 0.5rem 0 1.2rem;
+    padding: 1rem;
+
+    color: #59645D;
+    background-color: #EDF1E9;
+
+    border-left: 3px solid #59645D;
+    border-radius: 5px;
+
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+/* Preferred date section */
+
+.preferred-dates {
+    margin-bottom: 1.5rem;
+}
+
+/* Additional details textarea */
+
+.registration-fields .form-field textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 130px;
+    padding: 0.85rem 1rem;
+
+    color: #2B2F2A;
+    background-color: #FFFFFF;
+
+    border: 1px solid #D8D0BD;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    resize: vertical;
+}
+
+.registration-fields .form-field textarea:focus {
+    outline: none;
+    border-color: #4386A8;
+    box-shadow: 0 0 0 3px rgba(67, 134, 168, 0.15);
+}
+
+.registration-fields .form-field textarea::placeholder {
+    color: #999D96;
+}
+
+
+/* =========================================================
+   13. GROUP FORMS - MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .volunteer-card {
+        padding: 1rem;
+    }
+
+    .volunteer-card-heading {
+        align-items: flex-start;
+    }
+
+    .add-volunteer-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+}
+
+
+/* ========================================
+   14. FORM QUESTION SPACING
+======================================== */
+
+/* Give each question its own breathing room */
+.registration-fields .form-field {
+    margin-bottom: 1.5rem;
+}
+
+/* Separate question labels from their answer choices */
+.registration-fields .form-field > label {
+    display: block;
+    margin-bottom: 0.7rem;
+}
+
+/* Space out radio answer choices */
+.registration-fields .radio-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 0.5rem;
+}
+
+/* Add separation between radio question groups */
+.registration-fields .form-field:has(.radio-options) {
+    margin-bottom: 1.8rem;
+}
+
+/* More vertical room between large-group scheduling fields */
+#large-group-fields .form-grid {
+    row-gap: 2rem;
+}
+
+/* Space out standalone fields in the large-group form */
+#large-group-fields > .form-section .form-field + .form-field {
+    margin-top: 1.5rem;
+}
+
+/* Give preferred date/time/location questions more room */
+#large-group-fields .preferred-dates {
+    margin-bottom: 1.8rem;
+}
+
+#large-group-fields .form-field textarea {
+    margin-top: 0.5rem;
+}
+
+/* Minor agreement question spacing */
+#small-group-fields .minor-participant-question {
+    margin-top: 1.8rem;
+    margin-bottom: 1.8rem;
+}
+
+/* GENERAL AVAILABILITY */
+
+.availability-section {
+    border: 1px solid #D8D0BD;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #F9F6F0;
+    min-width: 0;
+}
+
+.availability-section legend {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2B2F2A;
+    padding: 0 8px;
+}
+
+.availability-description {
+    color: #59645D;
+    font-size: 0.9rem;
+    margin: 0 0 18px;
+}
+
+/* GRID LAYOUT */
+
+.availability-grid {
+    display: grid;
+    grid-template-columns: minmax(110px, 1.3fr) repeat(3, minmax(55px, 1fr));
+    align-items: center;
+    text-align: center;
+    gap: 0;
+}
+
+/* COLUMN HEADINGS */
+
+.availability-heading {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #59645D;
+    padding: 10px 4px;
+}
+
+/* WEEKDAY / WEEKEND LABELS */
+
+.availability-day {
+    font-weight: 600;
+    color: #2B2F2A;
+    text-align: left;
+    padding: 16px 8px;
+    border-top: 1px solid #D8D0BD;
+}
+
+/* CHECKBOX CELLS */
+
+.availability-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 8px;
+    border-top: 1px solid #D8D0BD;
+    cursor: pointer;
+    min-height: 54px;
+}
+
+/* HIDE DEFAULT CHECKBOX */
+
+.availability-option input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+/* CUSTOM CHECKBOX */
+
+.availability-check {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #59645D;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* CHECKED STATE */
+
+.availability-option input:checked + .availability-check {
+    background-color: #59645D;
+    border-color: #59645D;
+}
+
+.availability-option input:checked + .availability-check::after {
+    content: "✓";
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* HOVER */
+
+.availability-option:hover .availability-check {
+    border-color: #D94388;
+}
+
+/* KEYBOARD ACCESSIBILITY */
+
+.availability-option input:focus-visible + .availability-check {
+    outline: 3px solid #4386A8;
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+
+    .availability-section {
+        padding: 14px 10px;
+    }
+
+    .availability-grid {
+        grid-template-columns: minmax(95px, 1.2fr) repeat(3, minmax(48px, 1fr));
+    }
+
+    .availability-heading {
+        font-size: 0.75rem;
+        padding: 8px 2px;
+    }
+
+    .availability-day {
+        font-size: 0.85rem;
+        padding: 14px 5px;
+    }
+
+    .availability-option {
+        padding: 14px 4px;
+    }
+
+    .availability-check {
+        width: 21px;
+        height: 21px;
+    }
+}
+
+/* TOP BACK BUTTON */
+
+.registration-back {
+    display: inline-block;
+
+    background: none;
+    border: none;
+
+    color: #4386A8;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+
+    padding: 8px 0;
+    cursor: pointer;
+
+    transition: color 0.2s ease;
+}
+
+.registration-back:hover {
+    color: #D94388;
+}
+
+.registration-back:focus-visible {
+    outline: 2px solid #4386A8;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* BACK BUTTON DESCRIPTION */
+
+.back-description {
+    color: #59645D;
+    font-size: 0.85rem;
+
+    margin: 0 0 1.5rem;
+}
+
+/* BOTTOM FORM ACTIONS */
+
+.registration-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+
+    border-top: 1px solid #D8D0BD;
+}
+
+/* BOTTOM BACK BUTTON */
+
+.registration-form-actions .registration-back {
+    margin: 0;
+}
+
+/* SUBMIT BUTTON */
+
+.registration-submit {
+    background-color: #4386A8;
+    color: #FFFFFF;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 12px 22px;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+}
+
+.registration-submit:hover {
+    background-color: #D94388;
+}
+
+@media (max-width: 480px) {
+
+    .registration-form-actions {
+        gap: 10px;
+    }
+
+    .registration-submit {
+        padding: 11px 15px;
+        font-size: 0.85rem;
+    }
+
+}
+
+/* Validation feedback */
+.registration-modal .is-invalid {
+    border: 2px solid #D94388 !important;
+    background-color: #FFF0F5;
+}
+
+.registration-modal .is-invalid:focus {
+    outline: 2px solid rgba(217, 67, 136, 0.2);
+}
+
+.registration-modal .validation-message {
+    display: block;
+    margin-top: 5px;
+    color: #C12D70;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.registration-modal .is-valid {
+    border: 2px solid #6B9871;
+}
+
+/* Highlight an entire unanswered question */
+.registration-modal .validation-group.is-invalid {
+    border: 2px solid #D94388;
+    background-color: #FFF0F5;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+/* Highlight required agreement areas without an error message */
+.registration-modal .agreement-item.is-invalid {
+    border: 2px solid #D94388;
+    background-color: #FFF0F5;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+/* Keep the highlight from looking too crowded */
+.registration-modal .validation-group,
+.registration-modal .agreement-item {
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.registration-back {
+    padding: 12px 12px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 10px;
+    min-height: 48px;
+}
+
+
+
+/* ========================================
+   EVENT TAGS
+======================================== */
+
+.event-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.event-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.4;
+    border: 1px solid transparent;
+}
+
+/* Special Guest */
+.event-tag-guest {
+    background-color: #F3EBD5;
+    color: #78602D;
+    border-color: #C9AD6D;
+}
+
+/* Special Event  */
+.event-tag-event {
+    background-color: #DCECF5;
+    color: #356B88;
+    border-color: #4386A8;
+}
+
+
+/* ========================================
+   EVENT ROW LAYOUT
+======================================== */
+
+.event-listings {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.event-row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+/* Two event cards side by side */
+.event-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* Expanded details underneath the entire row */
+.event-row > .event-details {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Mobile: one event card per row */
+@media (max-width: 650px) {
+
+    .event-cards {
+        grid-template-columns: 1fr;
+    }
+
+}
