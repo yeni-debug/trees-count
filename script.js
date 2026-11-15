@@ -107,6 +107,7 @@ function openVolunteerModal(panelName = 'register') {
 registerBtns.forEach((button) => {
 
     button.addEventListener('click', () => {
+        resetRegistrationFlow();
         openVolunteerModal('register');
     });
 
@@ -704,220 +705,632 @@ volunteerModal.addEventListener('change', (event) => {
 // TREES COUNT! EVENT DATA
 // ========================================
 
+
 const events = [
 
-    // ====================================
-    // SPECIAL EVENTS
-    // ====================================
+    // ========================================
+    // SPRING — COMPLETED EVENTS
+    // ========================================
 
     {
-        id: "highbridge",
+        id: "queens-farm",
+        name: "Trees Count! at Queens Farm",
+        park: "Queens Farm Park",
+        borough: "queens",
+        boroughName: "Queens",
+        season: "spring",
+
+        date: "2026-04-18",
+        startTime: "10:00 AM",
+        endTime: "1:00 PM",
+
+        address: "",
+        meetingPoint: "",
+
+        description:
+            "Join us for a spring volunteer day at Queens Farm! Help document neighborhood trees and learn how urban forests support local communities.",
+
+        registration: {
+            opens: null,
+            closes: null,
+            status: "closed"
+        },
+
+        image: "./img/modal/events/parks/queens-farm-park.jpg",
+        status: "completed",
+        featured: false,
+
+        tags: [
+            { label: "Volunteer Event", type: "volunteer" }
+        ]
+    },
+
+    {
+        id: "inwood-hill",
+        name: "Trees Count! at Inwood Hill Park",
+        park: "Inwood Hill Park",
+        borough: "manhattan",
+        boroughName: "Manhattan",
+        season: "spring",
+
+        date: "2026-05-02",
+        startTime: "10:00 AM",
+        endTime: "1:00 PM",
+
+        address: "",
+        meetingPoint: "",
+
+        description:
+            "Explore one of Manhattan's natural landscapes while helping us collect valuable information about NYC's trees.",
+
+        registration: {
+            opens: null,
+            closes: null,
+            status: "closed"
+        },
+
+        image: "./img/modal/events/parks/inwood-hill-park.jpg",
+        status: "completed",
+        featured: false,
+
+        tags: [
+            { label: "Volunteer Event", type: "volunteer" }
+        ]
+    },
+
+    {
+        id: "clove-lakes",
+        name: "Trees Count! at Clove Lakes Park",
+        park: "Clove Lakes Park",
+        borough: "staten-island",
+        boroughName: "Staten Island",
+        season: "spring",
+
+        date: "2026-05-16",
+        startTime: "10:00 AM",
+        endTime: "1:00 PM",
+
+        address: "",
+        meetingPoint: "",
+
+        description:
+            "Spend the day outdoors helping document Staten Island's urban forest and support healthier neighborhood green spaces.",
+
+        registration: {
+            opens: null,
+            closes: null,
+            status: "closed"
+        },
+
+        image: "./img/modal/events/parks/clove-lakes-park.jpg",
+        status: "completed",
+        featured: false,
+
+        tags: [
+            { label: "Volunteer Event", type: "volunteer" }
+        ]
+    },
+
+
+    // ========================================
+    // SUMMER — CURRENT EVENTS
+    // ========================================
+
+    {
+        id: "urban-park-rangers",
         name: "Trees Count! with Urban Park Rangers",
         park: "Highbridge Park",
         borough: "manhattan",
+        boroughName: "Manhattan",
+        season: "summer",
 
-        date: "TBD",
-        startTime: "",
-        endTime: "",
+        date: "2026-08-08",
+        startTime: "10:00 AM",
+        endTime: "12:00 PM",
+
         address: "",
         meetingPoint: "",
 
         description:
-            "Meet NYC Parks Rangers and learn about the city's wildlife and natural spaces.",
+            "Discover the natural world with NYC Urban Park Rangers! Join us for an outdoor exploration of trees, wildlife, and the important role urban forests play in our city.",
 
-        image: "",
+        registration: {
+            opens: null,
+            closes: null,
+            status: "open"
+        },
 
-        status: "coming-soon",
+        image: "./img/modal/events/parks/highbridge-park.jpg",
+        status: "open",
+        featured: true,
 
         tags: [
-            { label: "Special Guest", type: "guest" },
+            { label: "Special Event", type: "event" },
+            { label: "Family Friendly", type: "family" }
         ]
     },
 
     {
-        id: "fungal-edition",
-        name: "Trees Count! - Fungal Edition with NYC Mushroom Network",
-        park: "Carl Schurz Park",
-        borough: "manhattan",
+        id: "fountain-of-youth",
+        name: "Trees Count! at Fountain of Youth Playground",
+        park: "Fountain of Youth Playground",
+        borough: "bronx",
+        boroughName: "the Bronx",
+        season: "summer",
 
-        date: "TBD",
-        startTime: "",
-        endTime: "",
+        date: "2026-08-12",
+        startTime: "10:00 AM",
+        endTime: "1:00 PM",
+
         address: "",
         meetingPoint: "",
 
         description:
-            "Discover the fascinating world of fungi with local mushroom enthusiasts.",
+            "Help us learn more about the trees growing around our neighborhood playgrounds. Every tree counted contributes to a greener, healthier city.",
 
-        image: "",
+        registration: {
+            opens: null,
+            closes: null,
+            status: "open"
+        },
 
-        status: "coming-soon",
+        image: "./img/modal/events/parks/fountain-of-youth-playground.jpg",
+        status: "open",
+        featured: false,
 
         tags: [
-            { label: "Special Event", type: "event" },
-            { label: "Special Guest", type: "guest" }
+            { label: "Volunteer Event", type: "volunteer" },
+            { label: "Family Friendly", type: "family" }
         ]
     },
+
+    {
+        id: "snug-harbor",
+        name: "Trees Count! at Snug Harbor",
+        park: "Snug Harbor Park",
+        borough: "staten-island",
+        boroughName: "Staten Island",
+        season: "summer",
+
+        date: "2026-08-15",
+        startTime: "10:00 AM",
+        endTime: "1:00 PM",
+
+        address: "",
+        meetingPoint: "",
+
+        description:
+            "Explore the beautiful grounds of Snug Harbor while helping document the trees that make our public spaces special.",
+
+        registration: {
+            opens: null,
+            closes: null,
+            status: "open"
+        },
+
+        image: "./img/modal/events/parks/snug-harbor-park.jpg",
+        status: "open",
+        featured: false,
+
+        tags: [
+            { label: "Volunteer Event", type: "volunteer" }
+        ]
+    },
+
+    {
+        id: "gilbert-ramirez",
+        name: "Trees Count! at Gilbert Ramirez Park",
+        park: "Gilbert Ramirez Park",
+        borough: "brooklyn",
+        boroughName: "Brooklyn",
+        season: "summer",
+
+        date: "2026-08-19",
+        startTime: "10:00 AM",
+        endTime: "1:00 PM",
+
+        address: "",
+        meetingPoint: "",
+
+        description:
+            "Come out and help us document the trees in your neighborhood. Learn about the benefits of urban greenery while making a difference in your community.",
+
+        registration: {
+            opens: null,
+            closes: null,
+            status: "open"
+        },
+
+        image: "./img/modal/events/parks/gilbert-ramirez-park.jpg",
+        status: "open",
+        featured: false,
+
+        tags: [
+            { label: "Volunteer Event", type: "volunteer" }
+        ]
+    },
+
+    {
+        id: "st-marys",
+        name: "Trees Count! at St. Mary's Park",
+        park: "St. Mary's Park",
+        borough: "bronx",
+        boroughName: "the Bronx",
+        season: "summer",
+
+        date: "2026-08-22",
+        startTime: "10:00 AM",
+        endTime: "1:00 PM",
+
+        address: "",
+        meetingPoint: "",
+
+        description:
+            "Join fellow volunteers at St. Mary's Park to help us understand and care for the trees that make our neighborhoods greener.",
+
+        registration: {
+            opens: null,
+            closes: null,
+            status: "open"
+        },
+
+        image: "./img/modal/events/parks/st-marys-park.jpg",
+        status: "open",
+        featured: false,
+
+        tags: [
+            { label: "Volunteer Event", type: "volunteer" }
+        ]
+    },
+
+
+    // ========================================
+    // FALL — UPCOMING EVENTS
+    // ========================================
 
     {
         id: "climate-week",
         name: "Trees Count! - Climate Week",
         park: "Prospect Park",
         borough: "brooklyn",
+        boroughName: "Brooklyn",
+        season: "fall",
 
-        date: "TBD",
-        startTime: "",
-        endTime: "",
+        date: "2026-09-24",
+        startTime: "10:00 AM",
+        endTime: "1:00 PM",
+
         address: "",
         meetingPoint: "",
 
         description:
-            "Celebrate Climate Week and discover how trees help create a healthier city.",
+            "Celebrate Climate Week and discover how trees help create a healthier, more climate-resilient city.",
 
-        image: "",
+        registration: {
+            opens: null,
+            closes: null,
+            status: "opening-soon"
+        },
 
+        image: "./img/modal/events/parks/prospect-park.jpg",
         status: "coming-soon",
+        featured: true,
 
         tags: [
-            { label: "Special Event", type: "event" }
+            { label: "Special Event", type: "event" },
+            { label: "Climate Week", type: "climate" }
         ]
     },
 
     {
-        id: "city-of-forest",
+        id: "city-forest-day",
         name: "Trees Count! - City of Forest Day",
         park: "Crotona Park",
         borough: "bronx",
+        boroughName: "the Bronx",
+        season: "fall",
 
-        date: "TBD",
-        startTime: "",
-        endTime: "",
+        date: "2026-10-03",
+        startTime: "10:00 AM",
+        endTime: "2:00 PM",
+
         address: "",
         meetingPoint: "",
 
         description:
-            "Celebrate NYC's urban forest through tree activities and community stewardship.",
+            "Celebrate NYC's urban forest! Join your community for a day dedicated to trees, environmental stewardship, and greener neighborhoods.",
 
-        image: "",
+        registration: {
+            opens: null,
+            closes: null,
+            status: "opening-soon"
+        },
 
+        image: "./img/modal/events/parks/crotona-park.jpg",
         status: "coming-soon",
+        featured: true,
 
         tags: [
-            { label: "Special Event", type: "event" }
+            { label: "Special Event", type: "event" },
+            { label: "Citywide Celebration", type: "community" }
         ]
     },
 
     {
-        id: "pineapple-ride",
-        name: "Trees Count! with Pineapple Ride",
-        park: "Milestone Park",
-        borough: "brooklyn",
+        id: "fungal-edition",
+        name: "Trees Count! - Fungal Edition",
+        park: "Carl Schurz Park",
+        borough: "manhattan",
+        boroughName: "Manhattan",
+        season: "fall",
 
-        date: "TBD",
-        startTime: "",
-        endTime: "",
+        date: "2026-10-17",
+        startTime: "10:00 AM",
+        endTime: "1:00 PM",
+
         address: "",
         meetingPoint: "",
 
         description:
-            "Join a relaxed community bike ride and explore NYC's parks and neighborhoods.",
+            "Take a closer look at the fascinating world beneath our feet! Discover the connections between fungi, soil, and the health of our urban forests.",
 
-        image: "",
+        registration: {
+            opens: null,
+            closes: null,
+            status: "opening-soon"
+        },
 
+        image: "./img/modal/events/parks/carl-schurz-park.jpg",
         status: "coming-soon",
+        featured: true,
 
         tags: [
-            { label: "Special Guest", type: "guest" }
+            { label: "Special Event", type: "event" },
+            { label: "Nature & Ecology", type: "nature" }
         ]
     },
 
-
-    // ====================================
-    // REGULAR TREE CENSUS EVENTS
-    // ====================================
-
-    {
-        id: "st-marys",
-        park: "St. Mary's Park",
-        borough: "bronx"
-    },
-    {
-        id: "gilbert-ramirez",
-        park: "Gilbert Ramirez Park",
-        borough: "brooklyn"
-    },
-    {
-        id: "snug-harbor",
-        park: "Snug Harbor",
-        borough: "staten-island"
-    },
     {
         id: "playground-one-forty",
+        name: "Trees Count! at Playground One Forty",
         park: "Playground One Forty",
-        borough: "queens"
-    },
-    {
-        id: "thomas-jefferson",
-        park: "Thomas Jefferson Park",
-        borough: "manhattan"
-    },
-    {
-        id: "inwood-hill",
-        park: "Inwood Hill Park",
-        borough: "manhattan"
-    },
-    {
-        id: "clove-lakes",
-        park: "Clove Lakes Park",
-        borough: "staten-island"
-    },
-    {
-        id: "fountain-of-youth",
-        park: "Fountain of Youth Playground",
-        borough: "bronx"
-    },
-    {
-        id: "forest",
-        park: "Forest Park",
-        borough: "queens"
-    },
-    {
-        id: "queens-farm",
-        park: "Queens Farm Park",
-        borough: "queens"
+        borough: "queens",
+        boroughName: "Queens",
+        season: "fall",
+
+        date: "2026-10-10",
+        startTime: "10:00 AM",
+        endTime: "1:00 PM",
+
+        address: "",
+        meetingPoint: "",
+
+        description:
+            "Help us document the trees around your community and discover how neighborhood green spaces contribute to a healthier city.",
+
+        registration: {
+            opens: null,
+            closes: null,
+            status: "opening-soon"
+        },
+
+        image: "./img/modal/events/parks/playground-one-forty.jpg",
+        status: "coming-soon",
+        featured: false,
+
+        tags: [
+            { label: "Volunteer Event", type: "volunteer" }
+        ]
     },
     {
         id: "alley-pond",
+        name: "Trees Count! at Alley Pond Park",
         park: "Alley Pond Park",
-        borough: "queens"
+        borough: "queens",
+        boroughName: "Queens",
+        season: "fall",
+
+        date: "2026-10-10",
+        startTime: "10:00 AM",
+        endTime: "1:00 PM",
+
+        address: "",
+        meetingPoint: "",
+
+        description:
+            "Help us document the trees around your community and discover how neighborhood green spaces contribute to a healthier city.",
+
+        registration: {
+            opens: null,
+            closes: null,
+            status: "opening-soon"
+        },
+
+        image: "./img/modal/events/parks/alley-pond-park.jpg",
+        status: "coming-soon",
+        featured: false,
+
+        tags: [
+            { label: "Volunteer Event", type: "volunteer" }
+        ]
     },
 
+    {
+        id: "thomas-jefferson",
+        name: "Trees Count! at Thomas Jefferson Park",
+        park: "Thomas Jefferson Park",
+        borough: "manhattan",
+        boroughName: "Manhattan",
+        season: "fall",
+
+        date: "2026-10-24",
+        startTime: "10:00 AM",
+        endTime: "1:00 PM",
+
+        address: "",
+        meetingPoint: "",
+
+        description:
+            "Help us count and document the trees at Thomas Jefferson Park. Your participation helps build a better understanding of Manhattan's urban forest.",
+
+        registration: {
+            opens: null,
+            closes: null,
+            status: "opening-soon"
+        },
+
+        image: "./img/modal/events/parks/thomas-jefferson-park.jpg",
+        status: "coming-soon",
+        featured: false,
+
+        tags: [
+            { label: "Volunteer Event", type: "volunteer" }
+        ]
+    }
 
 
-].map(event => ({
+].map(event => {
 
-    // Give regular events their default information
-    name: event.name || "Community Tree Census",
+    // Identify special events using their tags
+    const isSpecialEvent = event.tags?.some(
+        tag => tag.type === "event"
+    );
 
-    date: event.date || "TBD",
-    startTime: event.startTime || "",
-    endTime: event.endTime || "",
+    return {
 
-    address: event.address || "",
-    meetingPoint: event.meetingPoint || "",
+        ...event,
 
-    description: event.description ||
-        "Join your community in counting and documenting NYC's trees.",
+        // Generate names for regular events
+        name: isSpecialEvent
+            ? event.name
+            : `Trees Count! at ${event.park}`,
 
-    image: event.image || "",
+        // Generate descriptions for regular events
+        description: isSpecialEvent
+            ? event.description
+            : `Help us count and document trees at ${event.park}. Your participation helps build a better understanding of ${event.boroughName}'s urban forest.`,
 
-    status: event.status || "coming-soon",
+        // Default values
+        date: event.date || "TBD",
+        startTime: event.startTime || "",
+        endTime: event.endTime || "",
 
-    tags: event.tags || [],
+        address: event.address || "",
+        meetingPoint: event.meetingPoint || "",
 
-    ...event
+        image: event.image || "",
 
-}));
+        status: event.status || "coming-soon",
+
+        tags: event.tags || []
+
+    };
+
+});
+
+
+
+// ========================================
+// POPULATE REGISTRATION EVENT DROPDOWNS
+// ========================================
+
+// Get both event dropdowns
+const eventSelects = [
+    document.getElementById("individual-event-select"),
+    document.getElementById("small-group-event-select")
+].filter(Boolean);
+
+
+// Only include events accepting registrations
+const availableEvents = events.filter(event =>
+    event.status !== "completed" &&
+    event.registration?.status === "open"
+);
+
+
+// Format event dates for the dropdown
+function formatEventDate(dateString) {
+
+    if (!dateString || dateString === "TBD") {
+        return "Date to be announced";
+    }
+
+    const date = new Date(`${dateString}T12:00:00`);
+
+    return new Intl.DateTimeFormat("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+    }).format(date);
+}
+
+
+// Populate both dropdowns
+function populateEventSelects(selectedEventId = "") {
+
+    eventSelects.forEach(select => {
+
+        // Clear existing options
+        select.replaceChildren();
+
+        // Add placeholder
+        const placeholder = new Option(
+            "Select an upcoming event",
+            ""
+        );
+
+        placeholder.disabled = true;
+        select.add(placeholder);
+
+        // Add available events
+        availableEvents.forEach(event => {
+
+            const option = new Option(
+                `${event.name} — ${formatEventDate(event.date)}`,
+                event.id
+            );
+
+            select.add(option);
+
+        });
+
+        // Preselect an event if one was provided
+        select.value = availableEvents.some(
+            event => event.id === selectedEventId
+        ) ? selectedEventId : "";
+
+    });
+
+}
+
+
+
+// ========================================
+// RESET REGISTRATION FLOW
+// ========================================
+
+function resetRegistrationFlow(selectedEventId = "") {
+
+    // Return to registration type selection
+    registrationSelection.hidden = false;
+    registrationFormScreen.hidden = true;
+
+    // Clear the selected registration type
+    registrationTypes.forEach(radio => {
+        radio.checked = false;
+    });
+
+    // Hide and disable all registration forms
+    Object.values(registrationForms).forEach(form => {
+        form.hidden = true;
+        form.disabled = true;
+    });
+
+    // Populate dropdowns and optionally preselect an event
+    populateEventSelects(selectedEventId);
+
+}
+
 
 
 // ========================================
@@ -961,6 +1374,7 @@ boroughTabs.forEach(tab => {
 
 
 
+
 // ========================================
 // DISPLAY EVENT CARDS
 // ========================================
@@ -969,7 +1383,10 @@ const eventListings = document.querySelector("#event-listings");
 const eventTemplate = document.querySelector("#event-card-template");
 
 
-// Get park name and borough
+// ========================================
+// GET PARK LOCATION
+// ========================================
+
 function getParkLocation(event) {
 
     const boroughName = event.borough
@@ -985,7 +1402,264 @@ function getParkLocation(event) {
 }
 
 
-// Fill the shared details panel with the selected event
+// ========================================
+// CREATE ONE EVENT CARD
+// ========================================
+
+function createEventCard(event, detailsPanelId) {
+
+    // Clone the HTML template
+    const clone = eventTemplate.content.cloneNode(true);
+
+    const card = clone.querySelector(".event-card");
+
+    // ------------------------------------
+    // EVENT IMAGE
+    // ------------------------------------
+
+    const imageContainer =
+        card.querySelector(".event-card-image");
+
+    const image =
+        card.querySelector(".event-card-image img");
+
+    if (event.image) {
+
+        image.src = event.image;
+        image.alt = `View of ${event.park}`;
+
+    } else {
+
+        imageContainer.hidden = true;
+
+    }
+
+
+    // ------------------------------------
+    // EVENT NAME
+    // ------------------------------------
+
+    card.querySelector(".event-name").textContent =
+        event.name;
+
+
+    // ------------------------------------
+    // REGISTRATION STATUS
+    // ------------------------------------
+
+    const status = card.querySelector(".event-status");
+
+    const registrationStatus =
+        event.registration?.status || "closed";
+
+    if (event.status === "completed") {
+
+        status.textContent = "Event Completed";
+
+    } else if (registrationStatus === "open") {
+
+        status.textContent = "Registration Open";
+
+    } else if (registrationStatus === "opening-soon") {
+
+        status.textContent = "Registration Opening Soon";
+
+    } else {
+
+        status.textContent = "Registration Closed";
+
+    }
+
+    // Keep the existing event-status CSS class
+    status.classList.add(`status-${event.status}`);
+
+
+    // ------------------------------------
+    // EVENT TAGS
+    // ------------------------------------
+
+    const tagsContainer =
+        card.querySelector(".event-tags");
+
+    if (tagsContainer) {
+
+        event.tags?.forEach(tag => {
+
+            const tagElement = document.createElement("span");
+
+            tagElement.classList.add(
+                "event-tag",
+                `event-tag-${tag.type}`
+            );
+
+            tagElement.textContent = tag.label;
+
+            tagsContainer.appendChild(tagElement);
+
+        });
+
+    }
+
+
+    // ------------------------------------
+    // EVENT DATE
+    // ------------------------------------
+
+    card.querySelector(".event-date").textContent =
+        event.date === "TBD"
+            ? "📅 Date to be announced"
+            : `📅 ${event.date}`;
+
+
+    // ------------------------------------
+    // EVENT LOCATION
+    // ------------------------------------
+
+    card.querySelector(".event-location").textContent =
+        `📍 ${getParkLocation(event)}`;
+
+
+    // ------------------------------------
+    // SHORT DESCRIPTION
+    // ------------------------------------
+
+    const description =
+        card.querySelector(".event-description");
+
+    if (event.description) {
+
+        description.textContent = event.description;
+        description.hidden = false;
+
+    } else {
+
+        description.hidden = true;
+
+    }
+
+
+    // ------------------------------------
+    // EXTRACT SHARED DETAILS PANEL
+    // ------------------------------------
+
+    const details =
+        card.querySelector(".event-details");
+
+    if (details) {
+
+        details.id = detailsPanelId;
+        details.hidden = true;
+
+        // Remove it from the individual card.
+        // displayEvents() will place it under the row.
+        details.remove();
+
+    }
+
+
+// ========================================
+// MORE INFO BUTTON
+// ========================================
+
+const moreInfoButton =
+    card.querySelector(".event-more-info");
+
+if (moreInfoButton) {
+
+    if (event.status === "completed") {
+
+        // Remove More Info for completed events
+        moreInfoButton.remove();
+
+    } else {
+
+        moreInfoButton.dataset.eventId = event.id;
+
+        moreInfoButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        moreInfoButton.setAttribute(
+            "aria-controls",
+            detailsPanelId
+        );
+
+        moreInfoButton.textContent = "More Info ↓";
+
+    }
+}
+
+
+// ========================================
+// REGISTRATION BUTTON / STATUS LABEL
+// ========================================
+
+const registerButton =
+    card.querySelector(".event-register");
+
+if (registerButton) {
+
+    // COMPLETED EVENT
+    if (event.status === "completed") {
+
+        const label = document.createElement("span");
+
+        label.classList.add("event-status-label");
+        label.textContent = "Event Completed";
+
+        registerButton.replaceWith(label);
+
+    }
+
+    // REGISTRATION OPEN
+    else if (registrationStatus === "open") {
+
+        registerButton.dataset.eventId = event.id;
+        registerButton.disabled = false;
+        registerButton.textContent = "Register";
+
+    }
+
+    // REGISTRATION OPENING SOON
+    else if (registrationStatus === "opening-soon") {
+
+        const label = document.createElement("span");
+
+        label.classList.add("event-status-label");
+        label.textContent = "Opening Soon";
+
+        registerButton.replaceWith(label);
+
+    }
+
+    // REGISTRATION CLOSED
+    else {
+
+        const label = document.createElement("span");
+
+        label.classList.add("event-status-label");
+        label.textContent = "Registration Closed";
+
+        registerButton.replaceWith(label);
+
+    }
+}
+
+
+    // Return the card and its details panel
+    return {
+        card: clone,
+        details: details
+    };
+
+}
+
+
+// ========================================
+// UPDATE SHARED EVENT DETAILS
+// ========================================
+
 function updateEventDetails(details, event) {
 
     const parkLocation = getParkLocation(event);
@@ -1000,227 +1674,204 @@ function updateEventDetails(details, event) {
     details.querySelector(".event-detail-location").textContent =
         `📍 ${parkLocation}`;
 
-    const address = details.querySelector(".event-detail-address");
+
+    const address =
+        details.querySelector(".event-detail-address");
+
     address.textContent = event.address
         ? `Address: ${event.address}`
         : "";
+
     address.hidden = !event.address;
 
-    const meeting = details.querySelector(".event-detail-meeting");
+
+    const meeting =
+        details.querySelector(".event-detail-meeting");
+
     meeting.textContent = event.meetingPoint
         ? `Meeting Point: ${event.meetingPoint}`
         : "";
+
     meeting.hidden = !event.meetingPoint;
 
-    const day = details.querySelector(".event-detail-day");
+
+    const day =
+        details.querySelector(".event-detail-day");
+
     day.textContent = event.day
         ? `Day: ${event.day}`
         : "";
+
     day.hidden = !event.day;
 
-    const time = details.querySelector(".event-detail-time");
+
+    const time =
+        details.querySelector(".event-detail-time");
 
     time.textContent = event.startTime
         ? `Time: ${event.startTime}${event.endTime ? ` – ${event.endTime}` : ""}`
         : "Time to be announced";
+
 }
 
 
+// ========================================
+// DISPLAY EVENT LISTINGS
+// ========================================
+
 function displayEvents(eventArray) {
 
-    // Remove previously generated rows and placeholder
-    eventListings.querySelectorAll(".event-row, .events-placeholder")
+    // Sort events: upcoming first, completed last
+eventArray = [...eventArray].sort((a, b) => {
+
+    if (a.status === "completed" && b.status !== "completed") {
+        return 1;
+    }
+
+    if (a.status !== "completed" && b.status === "completed") {
+        return -1;
+    }
+
+    return 0;
+});
+
+    // Remove previously generated rows and placeholders
+    eventListings
+        .querySelectorAll(".event-row, .events-placeholder")
         .forEach(element => element.remove());
 
 
-    // Check if there are events to display
+    // ------------------------------------
+    // EMPTY RESULTS
+    // ------------------------------------
+
     if (eventArray.length === 0) {
 
         const message = document.createElement("p");
 
         message.classList.add("events-placeholder");
-        message.textContent = "No events found in this borough.";
+
+        message.textContent =
+            "No events found in this borough.";
 
         eventListings.appendChild(message);
 
         return;
+
     }
 
 
-    // Create rows containing two event cards each
+    // ------------------------------------
+    // CREATE ROWS OF TWO EVENT CARDS
+    // ------------------------------------
+
     for (let i = 0; i < eventArray.length; i += 2) {
 
         const row = document.createElement("div");
         row.classList.add("event-row");
 
-        // Container for the two cards
+
+        // Container for event cards
         const cardsContainer = document.createElement("div");
         cardsContainer.classList.add("event-cards");
 
         row.appendChild(cardsContainer);
 
+
         // Get the next two events
         const rowEvents = eventArray.slice(i, i + 2);
 
-        // One shared details panel for this row
+
+        // Shared details panel for this row
         let rowDetails = null;
 
-        const detailsPanelId = `event-details-row-${i / 2}`;
+        const detailsPanelId =
+            `event-details-row-${i / 2}`;
 
 
+        // Create each event card
         rowEvents.forEach(event => {
 
-            // Clone HTML template
-            const clone = eventTemplate.content.cloneNode(true);
+            const result =
+                createEventCard(event, detailsPanelId);
 
-            const card = clone.querySelector(".event-card");
-
-
-            // Event image
-            const imageContainer = card.querySelector(".event-card-image");
-            const image = card.querySelector(".event-card-image img");
-
-            if (event.image) {
-
-                image.src = event.image;
-                image.alt = `View of ${event.park}`;
-
-            } else {
-
-                imageContainer.hidden = true;
-
+            // Keep the first available details panel
+            if (!rowDetails && result.details) {
+                rowDetails = result.details;
             }
 
-
-            // Event name
-            card.querySelector(".event-name").textContent = event.name;
-
-
-            // Event status
-            const status = card.querySelector(".event-status");
-
-            status.textContent =
-                event.status === "open"
-                    ? "Registration Open"
-                    : "Coming Soon";
-
-            status.classList.add(`status-${event.status}`);
-
-
-            // Event tags
-            const tagsContainer = card.querySelector(".event-tags");
-
-            if (tagsContainer) {
-
-                event.tags?.forEach(tag => {
-
-                    const tagElement = document.createElement("span");
-
-                    tagElement.classList.add(
-                        "event-tag",
-                        `event-tag-${tag.type}`
-                    );
-
-                    tagElement.textContent = tag.label;
-
-                    tagsContainer.appendChild(tagElement);
-
-                });
-
-            }
-
-
-            // Event date
-            card.querySelector(".event-date").textContent =
-                event.date === "TBD"
-                    ? "📅 Date to be announced"
-                    : `📅 ${event.date}`;
-
-
-            // Event location
-            card.querySelector(".event-location").textContent =
-                `📍 ${getParkLocation(event)}`;
-
-
-            // Short description
-            const description = card.querySelector(".event-description");
-
-            if (event.description) {
-
-                description.textContent = event.description;
-                description.hidden = false;
-
-            }
-
-
-            // Extract the details panel from the first card
-            const details = card.querySelector(".event-details");
-
-            if (details) {
-
-                if (!rowDetails) {
-
-                    rowDetails = details;
-
-                    rowDetails.id = detailsPanelId;
-                    rowDetails.hidden = true;
-
-                }
-
-                // Remove details from the individual card
-                details.remove();
-
-            }
-
-
-            // More Info button
-            const moreInfoButton = card.querySelector(".event-more-info");
-
-            if (moreInfoButton) {
-
-                moreInfoButton.dataset.eventId = event.id;
-
-                moreInfoButton.setAttribute("aria-expanded", "false");
-
-                moreInfoButton.setAttribute(
-                    "aria-controls",
-                    detailsPanelId
-                );
-
-                moreInfoButton.textContent = "More Info ↓";
-
-            }
-
-
-            // Register button
-            const registerButton = card.querySelector(".event-register");
-
-            registerButton.dataset.eventId = event.id;
-            registerButton.disabled = event.status !== "open";
-
-
-            // Add card to the row
-            cardsContainer.appendChild(clone);
+            // Add the card to the row
+            cardsContainer.appendChild(result.card);
 
         });
 
 
-        // Add the shared details panel underneath both cards
+        // Add the shared details panel underneath the cards
         if (rowDetails) {
             row.appendChild(rowDetails);
         }
 
 
-        // Add completed row to event listings
+        // Add the completed row to the page
         eventListings.appendChild(row);
 
     }
 
 }
-// Display events initially
-displayEvents(events);
 
 
+// ========================================
+// INITIAL EVENT DISPLAY
+// ========================================
+
+// Show upcoming events first and completed events last
+const sortedEvents = [...events].sort((a, b) => {
+
+    if (a.status === "completed" && b.status !== "completed") {
+        return 1;
+    }
+
+    if (a.status !== "completed" && b.status === "completed") {
+        return -1;
+    }
+
+    return 0;
+});
+
+displayEvents(sortedEvents);
+
+
+
+// ========================================
+// EVENT CARD REGISTRATION BUTTONS
+// ========================================
+
+eventListings.addEventListener("click", (e) => {
+
+    const button = e.target.closest(".event-register");
+
+    if (!button) return;
+
+    // Find the selected event
+    const selectedEvent = events.find(
+        event => event.id === button.dataset.eventId
+    );
+
+    if (!selectedEvent) return;
+
+    // Only allow events with open registration
+    if (!availableEvents.some(
+        event => event.id === selectedEvent.id
+    )) {
+        return;
+    }
+
+    // Open registration with this event preselected
+    resetRegistrationFlow(selectedEvent.id);
+
+    openVolunteerModal("register");
+
+});
 
 
 // ========================================
