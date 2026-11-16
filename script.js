@@ -740,9 +740,7 @@ const events = [
         status: "completed",
         featured: false,
 
-        tags: [
-            { label: "Volunteer Event", type: "volunteer" }
-        ]
+        tags: []
     },
 
     {
@@ -773,9 +771,7 @@ const events = [
         status: "completed",
         featured: false,
 
-        tags: [
-            { label: "Volunteer Event", type: "volunteer" }
-        ]
+        tags: []
     },
 
     {
@@ -806,9 +802,7 @@ const events = [
         status: "completed",
         featured: false,
 
-        tags: [
-            { label: "Volunteer Event", type: "volunteer" }
-        ]
+        tags: []
     },
 
 
@@ -828,8 +822,8 @@ const events = [
         startTime: "10:00 AM",
         endTime: "12:00 PM",
 
-        address: "",
-        meetingPoint: "",
+        address: "Manhattan Side (Washington Heights): W 172nd Street & Amsterdam Avenue, New York, NY. / Bronx Side (Highbridge): West 170th Street & University Avenue, Bronx, NY.",
+        meetingPoint: "Park entrance on the east side of Amsterdam Avenue at W 172nd Street, just outside the stone Highbridge water tower.",
 
         description:
             "Discover the natural world with NYC Urban Park Rangers! Join us for an outdoor exploration of trees, wildlife, and the important role urban forests play in our city.",
@@ -845,8 +839,7 @@ const events = [
         featured: true,
 
         tags: [
-            { label: "Special Event", type: "event" },
-            { label: "Family Friendly", type: "family" }
+            { label: "Special Guest", type: "guest" },
         ]
     },
 
@@ -862,8 +855,8 @@ const events = [
         startTime: "10:00 AM",
         endTime: "1:00 PM",
 
-        address: "",
-        meetingPoint: "",
+        address: "Union Avenue, East 150th Street, Tinton Avenue, and East 152nd Street, Longwood/Mott Haven, Bronx, NY.",
+        meetingPoint: "Union Avenue entrance (main side), between East 150th Street and East 152nd Street.",
 
         description:
             "Help us learn more about the trees growing around our neighborhood playgrounds. Every tree counted contributes to a greener, healthier city.",
@@ -878,10 +871,7 @@ const events = [
         status: "open",
         featured: false,
 
-        tags: [
-            { label: "Volunteer Event", type: "volunteer" },
-            { label: "Family Friendly", type: "family" }
-        ]
+        tags: []
     },
 
     {
@@ -896,8 +886,8 @@ const events = [
         startTime: "10:00 AM",
         endTime: "1:00 PM",
 
-        address: "",
-        meetingPoint: "",
+        address: "1000 Richmond Terrace, Staten Island, NY.",
+        meetingPoint: "North Gate at Richmond Terrace.",
 
         description:
             "Explore the beautiful grounds of Snug Harbor while helping document the trees that make our public spaces special.",
@@ -912,9 +902,7 @@ const events = [
         status: "open",
         featured: false,
 
-        tags: [
-            { label: "Volunteer Event", type: "volunteer" }
-        ]
+        tags: []
     },
 
     {
@@ -929,8 +917,8 @@ const events = [
         startTime: "10:00 AM",
         endTime: "1:00 PM",
 
-        address: "",
-        meetingPoint: "",
+        address: "McKibbin Street between White Street and Bogart Street, Brooklyn, NY.",
+        meetingPoint: "Playground entrance.",
 
         description:
             "Come out and help us document the trees in your neighborhood. Learn about the benefits of urban greenery while making a difference in your community.",
@@ -945,9 +933,7 @@ const events = [
         status: "open",
         featured: false,
 
-        tags: [
-            { label: "Volunteer Event", type: "volunteer" }
-        ]
+        tags: []
     },
 
     {
@@ -962,8 +948,8 @@ const events = [
         startTime: "10:00 AM",
         endTime: "1:00 PM",
 
-        address: "",
-        meetingPoint: "",
+        address: "St. Mary's Street between St. Ann's Avenue and Jackson Avenue, Bronx, NY.",
+        meetingPoint: "East 149th Street entrance (North Side).",
 
         description:
             "Join fellow volunteers at St. Mary's Park to help us understand and care for the trees that make our neighborhoods greener.",
@@ -978,9 +964,7 @@ const events = [
         status: "open",
         featured: false,
 
-        tags: [
-            { label: "Volunteer Event", type: "volunteer" }
-        ]
+        tags: []
     },
 
 
@@ -1018,7 +1002,6 @@ const events = [
 
         tags: [
             { label: "Special Event", type: "event" },
-            { label: "Climate Week", type: "climate" }
         ]
     },
 
@@ -1052,13 +1035,12 @@ const events = [
 
         tags: [
             { label: "Special Event", type: "event" },
-            { label: "Citywide Celebration", type: "community" }
         ]
     },
 
     {
         id: "fungal-edition",
-        name: "Trees Count! - Fungal Edition",
+        name: "Trees Count! - Fungal Edition with NYC Mushroom Network",
         park: "Carl Schurz Park",
         borough: "manhattan",
         boroughName: "Manhattan",
@@ -1086,7 +1068,7 @@ const events = [
 
         tags: [
             { label: "Special Event", type: "event" },
-            { label: "Nature & Ecology", type: "nature" }
+            { label: "Special Guest", type: "guest" },
         ]
     },
 
@@ -1098,7 +1080,7 @@ const events = [
         boroughName: "Queens",
         season: "fall",
 
-        date: "2026-10-10",
+        date: "2026-10-14",
         startTime: "10:00 AM",
         endTime: "1:00 PM",
 
@@ -1118,9 +1100,7 @@ const events = [
         status: "coming-soon",
         featured: false,
 
-        tags: [
-            { label: "Volunteer Event", type: "volunteer" }
-        ]
+       tags: []
     },
     {
         id: "alley-pond",
@@ -1150,9 +1130,7 @@ const events = [
         status: "coming-soon",
         featured: false,
 
-        tags: [
-            { label: "Volunteer Event", type: "volunteer" }
-        ]
+        tags: []
     },
 
     {
@@ -1183,18 +1161,14 @@ const events = [
         status: "coming-soon",
         featured: false,
 
-        tags: [
-            { label: "Volunteer Event", type: "volunteer" }
-        ]
+        tags: []
     }
 
 
 ].map(event => {
 
     // Identify special events using their tags
-    const isSpecialEvent = event.tags?.some(
-        tag => tag.type === "event"
-    );
+    const isSpecialEvent = event.featured === true;
 
     return {
 
@@ -1248,8 +1222,11 @@ const availableEvents = events.filter(event =>
 );
 
 
-// Format event dates for the dropdown
-function formatEventDate(dateString) {
+// ========================================
+// FORMAT EVENT DATES
+// ========================================
+
+function formatEventDate(dateString, longFormat = false) {
 
     if (!dateString || dateString === "TBD") {
         return "Date to be announced";
@@ -1258,12 +1235,18 @@ function formatEventDate(dateString) {
     const date = new Date(`${dateString}T12:00:00`);
 
     return new Intl.DateTimeFormat("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric"
-    }).format(date);
-}
 
+        month: longFormat ? "long" : "short",
+        day: "numeric",
+        year: "numeric",
+
+        ...(longFormat && {
+            weekday: "long"
+        })
+
+    }).format(date);
+
+}
 
 // Populate both dropdowns
 function populateEventSelects(selectedEventId = "") {
@@ -1412,6 +1395,14 @@ function createEventCard(event, detailsPanelId) {
     const clone = eventTemplate.content.cloneNode(true);
 
     const card = clone.querySelector(".event-card");
+    
+    if (event.status === "coming-soon") {
+    card.classList.add("coming-soon-event");
+}
+
+    if (event.status === "completed") {
+    card.classList.add("completed-event");
+}
 
     // ------------------------------------
     // EVENT IMAGE
@@ -1441,37 +1432,6 @@ function createEventCard(event, detailsPanelId) {
 
     card.querySelector(".event-name").textContent =
         event.name;
-
-
-    // ------------------------------------
-    // REGISTRATION STATUS
-    // ------------------------------------
-
-    const status = card.querySelector(".event-status");
-
-    const registrationStatus =
-        event.registration?.status || "closed";
-
-    if (event.status === "completed") {
-
-        status.textContent = "Event Completed";
-
-    } else if (registrationStatus === "open") {
-
-        status.textContent = "Registration Open";
-
-    } else if (registrationStatus === "opening-soon") {
-
-        status.textContent = "Registration Opening Soon";
-
-    } else {
-
-        status.textContent = "Registration Closed";
-
-    }
-
-    // Keep the existing event-status CSS class
-    status.classList.add(`status-${event.status}`);
 
 
     // ------------------------------------
@@ -1506,9 +1466,7 @@ function createEventCard(event, detailsPanelId) {
     // ------------------------------------
 
     card.querySelector(".event-date").textContent =
-        event.date === "TBD"
-            ? "📅 Date to be announced"
-            : `📅 ${event.date}`;
+        `📅 ${formatEventDate(event.date)}`;
 
 
     // ------------------------------------
@@ -1517,25 +1475,6 @@ function createEventCard(event, detailsPanelId) {
 
     card.querySelector(".event-location").textContent =
         `📍 ${getParkLocation(event)}`;
-
-
-    // ------------------------------------
-    // SHORT DESCRIPTION
-    // ------------------------------------
-
-    const description =
-        card.querySelector(".event-description");
-
-    if (event.description) {
-
-        description.textContent = event.description;
-        description.hidden = false;
-
-    } else {
-
-        description.hidden = true;
-
-    }
 
 
     // ------------------------------------
@@ -1566,9 +1505,12 @@ const moreInfoButton =
 
 if (moreInfoButton) {
 
-    if (event.status === "completed") {
+    // Remove More Info for completed and coming-soon events
+    if (
+        event.status === "completed" ||
+        event.status === "coming-soon"
+    ) {
 
-        // Remove More Info for completed events
         moreInfoButton.remove();
 
     } else {
@@ -1595,6 +1537,9 @@ if (moreInfoButton) {
 // REGISTRATION BUTTON / STATUS LABEL
 // ========================================
 
+const registrationStatus =
+    event.registration?.status || "closed";
+
 const registerButton =
     card.querySelector(".event-register");
 
@@ -1605,10 +1550,11 @@ if (registerButton) {
 
         const label = document.createElement("span");
 
-        label.classList.add("event-status-label");
-        label.textContent = "Event Completed";
+        label.classList.add("event-status-label", "completed");
+        label.textContent = "✓ Event Completed";
 
         registerButton.replaceWith(label);
+        card.appendChild(label);
 
     }
 
@@ -1626,10 +1572,11 @@ if (registerButton) {
 
         const label = document.createElement("span");
 
-        label.classList.add("event-status-label");
-        label.textContent = "Opening Soon";
+        label.classList.add("event-status-label", "coming-soon");
+        label.textContent = "Coming Soon!";
 
         registerButton.replaceWith(label);
+        card.appendChild(label);
 
     }
 
@@ -1638,10 +1585,11 @@ if (registerButton) {
 
         const label = document.createElement("span");
 
-        label.classList.add("event-status-label");
+        label.classList.add("event-status-label", "registration-closed");
         label.textContent = "Registration Closed";
 
         registerButton.replaceWith(label);
+        card.appendChild(label);
 
     }
 }
@@ -1656,61 +1604,61 @@ if (registerButton) {
 }
 
 
+
 // ========================================
-// UPDATE SHARED EVENT DETAILS
+// UPDATE EVENT DETAILS PANEL
 // ========================================
 
 function updateEventDetails(details, event) {
 
-    const parkLocation = getParkLocation(event);
-
+     // Save the selected event ID
     details.dataset.eventId = event.id;
 
+    // Event-specific heading
+    details.querySelector(".event-details-title").textContent =
+        `Event: ${event.name}`;
+
+
+    // Event description
+    const description =
+        details.querySelector(".event-detail-description");
+
+    description.textContent = event.description || "";
+    description.hidden = !event.description;
+
+
+    // Full event date
     details.querySelector(".event-detail-date").textContent =
-        event.date === "TBD"
-            ? "📅 Date to be announced"
-            : `📅 ${event.date}`;
-
-    details.querySelector(".event-detail-location").textContent =
-        `📍 ${parkLocation}`;
+        `📅 ${formatEventDate(event.date, true)}`;
 
 
+    // Event time
+    details.querySelector(".event-detail-time").textContent =
+        event.startTime
+            ? `🕒 ${event.startTime}${event.endTime ? ` – ${event.endTime}` : ""}`
+            : "🕒 Time to be announced";
+
+
+    // Event address
     const address =
         details.querySelector(".event-detail-address");
 
     address.textContent = event.address
-        ? `Address: ${event.address}`
-        : "";
+        ? `📍 Address: ${event.address}`
+        : "📍 Address to be announced";
 
-    address.hidden = !event.address;
+    address.hidden = false;
 
 
+    // Meeting point
     const meeting =
         details.querySelector(".event-detail-meeting");
 
     meeting.textContent = event.meetingPoint
-        ? `Meeting Point: ${event.meetingPoint}`
-        : "";
+        ? `🚩 Meeting Point: ${event.meetingPoint}`
+        : "🚩 Meeting point to be announced";
 
-    meeting.hidden = !event.meetingPoint;
-
-
-    const day =
-        details.querySelector(".event-detail-day");
-
-    day.textContent = event.day
-        ? `Day: ${event.day}`
-        : "";
-
-    day.hidden = !event.day;
-
-
-    const time =
-        details.querySelector(".event-detail-time");
-
-    time.textContent = event.startTime
-        ? `Time: ${event.startTime}${event.endTime ? ` – ${event.endTime}` : ""}`
-        : "Time to be announced";
+    meeting.hidden = false;
 
 }
 
@@ -1721,19 +1669,27 @@ function updateEventDetails(details, event) {
 
 function displayEvents(eventArray) {
 
-    // Sort events: upcoming first, completed last
-eventArray = [...eventArray].sort((a, b) => {
+    // Sort events chronologically:
+    // Upcoming/current events first, completed events last
+    eventArray = [...eventArray].sort((a, b) => {
 
-    if (a.status === "completed" && b.status !== "completed") {
-        return 1;
-    }
+        // Keep completed events at the bottom
+        if (a.status === "completed" && b.status !== "completed") {
+            return 1;
+        }
 
-    if (a.status !== "completed" && b.status === "completed") {
-        return -1;
-    }
+        if (a.status !== "completed" && b.status === "completed") {
+            return -1;
+        }
 
-    return 0;
-});
+        // Put events without confirmed dates last
+        const dateA = a.date === "TBD" ? "9999-12-31" : a.date;
+        const dateB = b.date === "TBD" ? "9999-12-31" : b.date;
+
+        return dateA.localeCompare(dateB);
+
+    });
+
 
     // Remove previously generated rows and placeholders
     eventListings
@@ -1759,7 +1715,6 @@ eventArray = [...eventArray].sort((a, b) => {
         return;
 
     }
-
 
     // ------------------------------------
     // CREATE ROWS OF TWO EVENT CARDS
@@ -1795,22 +1750,18 @@ eventArray = [...eventArray].sort((a, b) => {
             const result =
                 createEventCard(event, detailsPanelId);
 
-            // Keep the first available details panel
             if (!rowDetails && result.details) {
                 rowDetails = result.details;
             }
 
-            // Add the card to the row
             cardsContainer.appendChild(result.card);
 
         });
-
 
         // Add the shared details panel underneath the cards
         if (rowDetails) {
             row.appendChild(rowDetails);
         }
-
 
         // Add the completed row to the page
         eventListings.appendChild(row);
@@ -1819,27 +1770,12 @@ eventArray = [...eventArray].sort((a, b) => {
 
 }
 
-
 // ========================================
 // INITIAL EVENT DISPLAY
 // ========================================
 
-// Show upcoming events first and completed events last
-const sortedEvents = [...events].sort((a, b) => {
-
-    if (a.status === "completed" && b.status !== "completed") {
-        return 1;
-    }
-
-    if (a.status !== "completed" && b.status === "completed") {
-        return -1;
-    }
-
-    return 0;
-});
-
-displayEvents(sortedEvents);
-
+// Display all events (sorting happens inside displayEvents)
+displayEvents(events);
 
 
 // ========================================
@@ -1924,6 +1860,11 @@ eventListings.addEventListener("click", (e) => {
     });
 
 
+    // Remove highlight from all event cards
+    eventListings.querySelectorAll(".event-card").forEach(card => {
+        card.classList.remove("active");
+    });
+
     // If the selected event was already open, leave everything closed
     if (isAlreadyOpen) return;
 
@@ -1934,6 +1875,9 @@ eventListings.addEventListener("click", (e) => {
 
     // Open the selected event
     details.hidden = false;
+
+    // Highlight the selected card
+    button.closest(".event-card").classList.add("active");
 
     button.textContent = "Show Less ↑";
 

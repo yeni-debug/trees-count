@@ -914,7 +914,7 @@
                     class="volunteer-nav-tab"
                     data-panel="events-panel"
                     aria-selected="false">
-                    📅 Upcoming Events
+                    📅 Events
                 </button>
 
             </nav>
@@ -936,7 +936,7 @@
  <!-- REGISTRATION TYPE -->
     <fieldset class="registration-types">
 
-        <legend>Registration Type</legend>
+        <legend>Registration Form</legend>
 
         <p>How many people are you registering?</p>
 
@@ -1013,16 +1013,12 @@
    <legend>Individual Information Form</legend>
 
      <!-- TOP BACK BUTTON -->
-    <button
-        type="button"
-        class="registration-back">
+    <div class="back-navigation">
 
-        ← Back
-    </button>
-
-    <p class="back-description">
-        Return to registration type selection
-    </p>
+    <button type="button" class="registration-back">← Back</button>
+    <span class="back-description">(Return to registration type selection)</span>
+    
+    </div>
 
 <!-- EVENT SELECTION (SHARED) -->
 
@@ -1409,16 +1405,12 @@
 <legend>Small Group Registration</legend>
 
  <!-- TOP BACK BUTTON -->
-    <button
-        type="button"
-        class="registration-back">
+    <div class="back-navigation">
 
-        ← Back
-    </button>
-
-    <p class="back-description">
-        Return to registration type selection
-    </p>
+    <button type="button" class="registration-back">← Back</button>
+    <span class="back-description">(Return to registration type selection)</span>
+    
+    </div>
     
     
 <!-- EVENT SELECTION (SHARED) -->
@@ -1875,16 +1867,12 @@
         </p>
 
          <!-- TOP BACK BUTTON -->
-    <button
-        type="button"
-        class="registration-back">
+    <div class="back-navigation">
 
-        ← Back
-    </button>
-
-    <p class="back-description">
-        Return to registration type selection
-    </p>
+    <button type="button" class="registration-back">← Back</button>
+    <span class="back-description">(Return to registration type selection)</span>
+    
+    </div>
 
     <!-- 1. ORGANIZATION INFORMATION -->
 
@@ -2220,11 +2208,9 @@
             </label>
 
             <textarea id="large-additional-details"
-                name="additional_details"
-                rows="5"
-                placeholder="Please share any other information that may help us coordinate your event, 
-            such as accessibility needs, preferred activities, scheduling limitations, or special requests."></textarea>
-
+    name="additional_details"
+    rows="5"
+    placeholder="Please share any other information that may help us coordinate your event, such as accessibility needs, preferred activities, scheduling limitations, or special requests."></textarea>
         </div>
 
     </section>
@@ -2265,14 +2251,14 @@
 
                     <div class="events-content">
 
-                        <!-- EVENTS INTRODUCTION -->
+                       <!-- EVENTS INTRODUCTION -->
                         <div class="events-intro">
 
-                            <h3>What to Expect at a Trees Count! Event 🌳</h3>
+                            <h3>What to Expect</h3>
 
                             <p class="events-intro-description">
                                 Get ready to explore your local parks and help
-                                count NYC's trees!
+                                count NYC's trees! Here's what to expect at an event.
                             </p>
 
                             <!-- FOUR VOLUNTEER STEPS -->
@@ -2284,8 +2270,7 @@
                                         <h4>Get your materials</h4>
                                         <p>
                                             Receive a tote bag with everything you need
-                                            for the census. Returning volunteers may also
-                                            receive additional giveaways while supplies last.
+                                            for the census.
                                         </p>
                                     </div>
                                 </div>
@@ -2330,21 +2315,19 @@
                             <div class="events-reminder">
                                 <span aria-hidden="true">☀️</span>
                                 <p>
-                                    <strong>Don't forget!:</strong>
+                                    <strong>Don't forget!</strong>
                                     Bring water and wear closed-toe shoes.
                                 </p>
                             </div>
 
                         </div>
-
-
                         <!-- FIND AN EVENT -->
                         <section class="borough-section">
 
                             <div class="borough-heading">
                                 <h3>Find an Event</h3>
                                 <p>
-                                    Find a volunteer opportunity in your borough!
+                                    Browse volunteer opportunities by borough.
                                 </p>
                             </div>
 
@@ -2429,6 +2412,8 @@
                                         <!-- PARK IMAGE -->
                                         <div class="event-card-image">
                                             <img src="" alt="">
+                                            <!-- EVENT TAGS -->
+                                            <div class="event-tags"></div>
                                         </div>
 
                                         <!-- EVENT INFORMATION -->
@@ -2436,17 +2421,11 @@
 
                                             <div class="event-card-heading">
                                                 <h4 class="event-name"></h4>
-                                                <span class="event-status"></span>
                                             </div>
-
-                                            <!-- EVENT TAGS -->
-                                            <div class="event-tags"></div>
 
                                             <p class="event-date"></p>
                                             <p class="event-location"></p>
 
-                                            <!-- OPTIONAL SHORT DESCRIPTION -->
-                                            <p class="event-description" hidden></p>
 
                                             <!-- CARD ACTIONS -->
                                             <div class="event-card-actions">
@@ -2466,16 +2445,20 @@
                                             </div>
 
                                             <!-- EXPANDED EVENT DETAILS -->
+                                       
                                             <div class="event-details" hidden>
 
-                                                <h5>Event Details</h5>
+                                                <h5 class="event-details-title"></h5>
+
+                                                <p class="event-detail-description"></p>
 
                                                 <p class="event-detail-date"></p>
-                                                <p class="event-detail-location"></p>
-                                                <p class="event-detail-address"></p>
-                                                <p class="event-detail-meeting"></p>
-                                                <p class="event-detail-day"></p>
+
                                                 <p class="event-detail-time"></p>
+
+                                                <p class="event-detail-address"></p>
+
+                                                <p class="event-detail-meeting"></p>
 
                                             </div>
 

@@ -1500,83 +1500,107 @@ footer a:hover {
 
 }
 
-/* =========================================================
-   TREES COUNT! MODALS
-   Registration Modal + Upcoming Events Modal
-
-   Color palette:
-   Sage green: #DCE8D9
-   Cream:      #F9F6F0
-   Dark text:  #2B2F2A
-   Muted green:#59645D
-   Beige:      #D8D0BD
-   Pink:       #D94388
-   Blue:       #4386A8
-========================================================= */
 
 
 /* =========================================================
-   1. SHARED MODAL STYLES
+   TREES COUNT! COMBINED VOLUNTEER MODAL
 ========================================================= */
 
-/* Keep closed dialogs out of the normal page layout */
 dialog:not([open]) {
     display: none;
 }
 
-/* Layout when a dialog is opened */
-dialog[open] {
-    display: flex;
-}
+/* MAIN MODAL FRAME */
 
-
-.registration-modal,
-.events-modal {
+.volunteer-modal {
     box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
     width: min(1200px, calc(100% - 2rem));
+    height: min(760px, calc(100dvh - 2rem));
+    max-height: calc(100dvh - 2rem);
+
     margin: auto;
+    padding: 1.25rem;
 
     color: #2B2F2A;
-    background-color: #DCE8D9;
+    background-color: #A9DEDE;
 
-    border: 1px solid #D8D0BD;
-    border-radius: 18px;
+    border: 1.5px solid #2B2F2A;
+    border-radius: 4px;
 
-    overflow-y: auto;
+    overflow: hidden;
 }
 
-.registration-modal::backdrop,
-.events-modal::backdrop {
+.volunteer-modal::backdrop {
     background-color: rgba(0, 0, 0, 0.55);
 }
 
 
-/* Shared modal headings */
+/* =========================================================
+   OUTER FRAME
+========================================================= */
 
-.modal-header {
+.volunteer-frame {
     position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+}
+
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
+
+.volunteer-modal .modal-header {
+    position: relative;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    padding-top: 0.5rem;
-    margin-bottom: 1rem;
-}
+    flex-shrink: 0;
 
-.modal-header h2 {
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    padding: 0.5rem 3rem 1.2rem;
+    margin-bottom: 1rem;
 
     text-align: center;
+    border-bottom: 1px solid #2B2F2A;
+}
+
+.volunteer-modal .modal-header h2 {
+    width: 100%;
+    margin: 0;
+
     font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.volunteer-modal .modal-header p {
+    margin: 0.4rem 0 0;
+    color: #2B2F2A;
 }
 
 
-/* Shared close button appearance */
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
 
-.modal-close {
+.volunteer-modal .modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1588,10 +1612,10 @@ dialog[open] {
     color: #FFFFFF;
     background-color: #D94388;
 
-    border: 1px solid #2B2F2A;
+    border: 2px solid #2B2F2A;
     border-radius: 8px;
 
-    font-size: 23px;
+    font-size: 25px;
     font-weight: bold;
     line-height: 1;
 
@@ -1599,105 +1623,143 @@ dialog[open] {
     transition: background-color 0.2s ease;
 }
 
-.modal-close:hover {
+.volunteer-modal .modal-close:hover {
     color: #FFFFFF;
-    background-color: #E85A9B;
-}
-
-/* Prevent modal buttons from using the site's levitation effect */
-
-.registration-modal button:hover,
-.events-modal button:hover {
-    transform: none;
-    box-shadow: inherit;
-}
-
-.registration-modal .modal-close,
-.registration-modal .modal-close:hover,
-.registration-modal .modal-close:focus,
-.events-modal .modal-close,
-.events-modal .modal-close:hover,
-.events-modal .modal-close:focus {
-    transform: none !important;
-    translate: none !important;
-    animation: none !important;
-    box-shadow: none !important;
+    background-color: #C12D70;
 }
 
 
 /* =========================================================
-   2. REGISTRATION MODAL - OUTER FRAME
+   MAIN LAYOUT: SIDEBAR + CONTENT
 ========================================================= */
 
-.registration-modal {
+.volunteer-layout {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 1rem;
+
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+}
+
+
+/* =========================================================
+   LEFT SIDEBAR
+========================================================= */
+
+.volunteer-sidebar {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
 
-    height: min(760px, calc(100dvh - 2rem));
-    max-height: calc(100dvh - 2rem);
+    min-width: 0;
+    padding: 1rem 1rem 1rem 0;
 
-    padding: 5rem 1.5rem;
-
-    overflow-y: auto;
+    border-right: 1px solid #2B2F2A;
 }
 
-/* Wrapper around the close button and cream content */
-
-.registration-frame {
-    position: relative;
-
+.volunteer-nav-tab {
     display: flex;
-    flex: 1 0 auto;
-    justify-content: center;
+    align-items: center;
 
     width: 100%;
-    max-width: 1050px;
-    margin-inline: auto;
+    min-height: 52px;
+    padding: 0.85rem 1rem;
+
+    color: #2B2F2A;
+    background-color: transparent;
+
+    border: 1px solid #2B2F2A;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
 
-/* Pink close button in the green area */
-
-.registration-modal > .registration-frame .modal-close {
-    position: absolute;
-    top: -3.5rem;
-    right: 0;
-    z-index: 5;
+.volunteer-nav-tab:hover {
+    color: #2B2F2A;
+    background-color: #E6F4F3;
+    border-color: #2B2F2A;
 }
 
-/* Cream registration panel */
+.volunteer-nav-tab.active {
+    color: #2B2F2A;
+    background-color: #F9F6F0;
+    border: 1.5px solid #2B2F2A;
+}
 
-.registration-content {
+
+/* =========================================================
+   RIGHT CONTENT AREA
+========================================================= */
+
+.volunteer-main {
     box-sizing: border-box;
 
-    flex: 1 0 auto;
-    width: 100%;
     min-width: 0;
+    min-height: 0;
 
     padding: 1.5rem 2rem;
 
     background-color: #F9F6F0;
-    border-radius: 12px;
+    border: 1.5px solid #2B2F2A;
+    border-radius: 4px;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
 }
 
-/* Registration heading */
-
-.registration-modal .modal-header {
-    padding-top: 0.5rem;
-    margin-bottom: 1rem;
+.volunteer-panel {
+    width: 100%;
+    min-width: 0;
 }
 
-.registration-modal .modal-header h2 {
-    text-align: center;
+.volunteer-panel[hidden] {
+    display: none;
 }
 
-/* Introductory text */
+.volunteer-main .registration-content,
+.volunteer-main .events-content {
+    box-sizing: border-box;
 
-.modal-intro {
-    margin: 0.5rem 0 1.5rem;
+    width: 100%;
+    padding: 0;
 
-    color: #59645D;
-    text-align: center;
+    background: transparent;
+    border-radius: 0;
 }
+
+
+/* =========================================================
+   BUTTON HOVER OVERRIDES
+========================================================= */
+
+.volunteer-modal button:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.volunteer-modal button:focus-visible {
+    outline: 2px solid #4386A8;
+    outline-offset: 3px;
+}
+
 
 
 /* =========================================================
@@ -1766,6 +1828,9 @@ dialog[open] {
 /* =========================================================
    4. REGISTRATION MODAL - REGISTRATION TYPE OPTIONS
 ========================================================= */
+#registration-selection {
+    padding-top: 1.5rem;
+}
 
 .registration-types,
 .registration-fields {
@@ -1780,85 +1845,102 @@ dialog[open] {
     font-family: 'Poppins', sans-serif;
     font-size: 1.15rem;
     font-weight: 600;
+    margin-top: 2.5rem;
 }
 
 .registration-types > p,
 .form-note {
     margin: 0.4rem 0 1rem;
     color: #59645D;
+    margin-bottom: 1.5rem;
 }
 
 /* Three registration option cards */
 
 .registration-options {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
 }
 
 /* Individual option card */
 
 .registration-option {
     display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
+    align-items: center;
+    gap: 1rem;
 
-    padding: 1.2rem;
+    width: 100%;
+    min-height: 125px;
+    padding: 1rem 1.25rem;
 
     background-color: #FFFFFF;
     border: 1px solid #D8D0BD;
-    border-radius: 10px;
+    border-radius: 12px;
 
     cursor: pointer;
     transition: background-color 0.2s, border-color 0.2s;
 }
 
+
+/* Hover effect */
+
 .registration-option:hover {
-    background-color: #F3F0E8;
-    border-color: #59645D;
+    background-color: #EAF4F9;
+    border-color: #4386A8;
 }
+
+/* Selected option */
 
 .registration-option:has(input:checked) {
-    background-color: #EDF1E9;
-    border-color: #59645D;
+    background-color: #DCECF5;
+    border: 2px solid #4386A8;
 }
 
+/* Radio button */
+
 .registration-option input {
-    margin-top: 0.3rem;
-    accent-color: #59645D;
+    flex-shrink: 0;
+    margin: 0;
+    accent-color: #4386A8;
 }
 
 /* Text inside registration cards */
 
+/* Text and image layout inside registration cards */
+
+.option-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 145px;
+    grid-template-rows: auto auto auto;
+    align-items: center;
+    column-gap: 1.5rem;
+
+    flex: 1;
+    min-width: 0;
+}
+
+/* Text stays on the left */
+
 .option-content strong,
 .option-content small {
+    grid-column: 1;
     display: block;
 }
 
-.option-content small {
-    margin-top: 0.3rem;
-    color: #59645D;
-    line-height: 1.4;
-}
-
-.volunteer-count {
-    margin-top: 5px;
-    color: #59645D;
-    font-weight: 600;
-}
-
-/* Registration card images */
+/* Image occupies the right side */
 
 .option-image {
-    display: block;
-    width: 100%;
-    height: 120px;
-    margin-top: 14px;
+    grid-column: 2;
+    grid-row: 1 / 4;
+
+    width: 145px;
+    height: 95px;
+    margin: 0;
 
     object-fit: cover;
     border-radius: 8px;
 }
-
 
 /* =========================================================
    5. REGISTRATION MODAL - INFORMATION FORMS
@@ -1951,80 +2033,144 @@ dialog[open] {
     right: 0;
 }
 
-/* Introduction */
+/* =========================================================
+   EVENTS INTRODUCTION
+========================================================= */
 
 .events-intro {
-    max-width: 1000px;
-    margin: 1.5rem auto 2.5rem;
-
-    line-height: 1.7;
+    width: 100%;
+    margin: 1rem auto 1.5rem;
+    line-height: 1.6;
 }
 
 .events-intro h3 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 
-    text-align: center;
     font-family: 'Poppins', sans-serif;
+    text-align: left;
 }
 
-.events-intro p {
-    margin-bottom: 1rem;
+.events-intro-description {
+    margin-bottom: 1.25rem;
+    color: #59645D;
 }
 
+/* Four volunteer steps */
 
+.events-steps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+}
+
+.event-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+
+    padding: 1rem;
+
+    background-color: #FFFFFF;
+    border: 1px solid #D8D0BD;
+    border-radius: 10px;
+}
+
+.event-step-icon {
+    flex-shrink: 0;
+    font-size: 1.6rem;
+    line-height: 1.3;
+}
+
+.event-step-text h4 {
+    margin: 0 0 0.35rem;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+}
+
+.event-step-text p {
+    margin: 0;
+    color: #59645D;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+/* Volunteer reminder */
+
+.events-reminder {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+
+    background-color: #EAF4F9;
+    border-left: 3px solid #4386A8;
+    border-radius: 2px;
+}
+
+.events-reminder > span {
+    font-size: 1.3rem;
+}
+
+.events-reminder p {
+    margin: 0;
+    color: #356B88;
+    font-size: 0.9rem;
+}
 /* =========================================================
    7. UPCOMING EVENTS MODAL - BOROUGH SECTION
 ========================================================= */
 
 .borough-section {
-    padding-top: 2rem;
-    border-top: 1px solid #D8D0BD;
+    padding-top: 1.5rem;
+    border-top: 1px solid #59645D;
 }
 
 .borough-section > h3 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 
-    text-align: center;
+    text-align: left;
     font-family: 'Poppins', sans-serif;
 }
 
-
 /* Borough tabs */
-
 .borough-tabs {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 0.6rem;
 
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
 }
 
 .borough-tab {
     padding: 0.7rem 1.2rem;
 
-    color: #59645D;
+    color: #4386A8;
     background-color: #FFFFFF;
 
-    border: 1px solid #D8D0BD;
+    border: 1px solid #B8D4E2;
     border-radius: 8px;
 
     font: inherit;
     font-weight: 700;
 
     cursor: pointer;
-    transition: background-color 0.2s, border-color 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
 }
 
 .borough-tab:hover {
-    background-color: #F3F0E8;
-    border-color: #59645D;
+    color: #285B75;
+    background-color: #EAF4F9;
+    border-color: #4386A8;
 }
 
 .borough-tab.active {
-    color: #2B2F2A;
-    background-color: #EDF1E9;
-    border-color: #59645D;
+    color: #285B75;
+    background-color: #DCECF5;
+    border: 1px solid #4386A8;
 }
 
 
@@ -2961,6 +3107,23 @@ dialog[open] {
     border-radius: 4px;
 }
 
+.back-navigation {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.back-navigation .registration-back {
+    margin: 0;
+}
+
+.back-navigation .back-description {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #4386A8;
+}
+
 /* BACK BUTTON DESCRIPTION */
 
 .back-description {
@@ -3086,17 +3249,19 @@ dialog[open] {
 ======================================== */
 
 .event-tags {
+    position: absolute;
+    top: 12px;
+    left: 12px;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin: 10px 0;
+    gap: 0.4rem;
 }
 
 .event-tag {
     display: inline-flex;
     align-items: center;
     padding: 5px 11px;
-    border-radius: 20px;
+    border-radius: 10px;
     font-size: 0.78rem;
     font-weight: 700;
     line-height: 1.4;
@@ -3112,9 +3277,9 @@ dialog[open] {
 
 /* Special Event  */
 .event-tag-event {
-    background-color: #DCECF5;
-    color: #356B88;
-    border-color: #4386A8;
+    color: #80551B;
+    background-color: #F8E8C7;
+    border: 1px solid #E2BF78;
 }
 
 
@@ -3142,12 +3307,41 @@ dialog[open] {
     gap: 20px;
 }
 
-/* Expanded details underneath the entire row */
+/* ========================================
+   EXPANDED EVENT DETAILS
+======================================== */
+
 .event-row > .event-details {
     width: 100%;
     box-sizing: border-box;
-    margin: 0;
+    padding: 1.5rem;
+
+    background-color: #EAF4F9;
+    border: 1.5px solid #4386A8;
+    border-radius: 4px;
 }
+
+/* Keep hidden panels hidden */
+.event-details[hidden] {
+    display: none !important;
+}
+
+.event-details-title {
+    margin: 0 0 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+}
+
+.event-detail-description {
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+}
+
+.event-details p {
+    margin: 0.65rem 0;
+    line-height: 1.5;
+}
+
 
 /* Mobile: one event card per row */
 @media (max-width: 650px) {
@@ -3158,24 +3352,315 @@ dialog[open] {
 
 }
 
+.event-card-image {
+    position: relative;
+    width: 100%;
+}
+
 .event-card-image img {
     display: block;
     width: 100%;
     height: 200px;
     object-fit: cover;
-    display: block;
-    border-radius: 8px;
+    border-radius: 2px;
     margin-bottom: 10px;
 }
 
+
+/* ========================================
+   EVENT STATUS FOOTERS
+======================================== */
+
 .event-status-label {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.85rem 1rem;
+
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* Coming Soon */
+.event-status-label.coming-soon {
+    background-color: #E4F0E2;
+    color: #3F7546;
+    border: 1px solid #4F8B57;
+}
+
+/* Event Completed */
+.event-status-label.completed {
+    background-color: #E8EAE7;
+    color: #59645D;
+    border: none;
+}
+
+/* Registration Closed */
+.event-status-label.registration-closed {
+    background-color: #E8EAE7;
+    color: #59645D;
+    border: none;
+}
+
+.event-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+.event-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background-color: #FFFFFF;
+    border: 1px solid #59645D;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: background-color 0.2s ease,
+                border-color 0.2s ease;
+}
+
+/* Coming Soon events */
+.event-card.coming-soon-event {
+    border: none;
+}
+
+/* Completed events */
+.event-card.completed-event {
+    background-color: #F1F1EF;
+    border: none;
+}
+
+/* Highlight the card with expanded details */
+.event-card.active {
+    border: 2px solid #4386A8;
+}
+
+.event-card.active .event-card-content {
+    background-color: #EAF4F9;
+}
+
+.event-card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1.25rem;
+}
+
+.event-card-heading {
+    margin: 0 0 0.35rem;
+}
+
+.event-card-heading h4 {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.4;
+}
+
+.event-date {
+    margin: 0.35rem 0;
+}
+
+.event-location {
+    margin: 0.35rem 0;
+}
+
+/* Completed event cards */
+.event-card.completed-event {
+    background-color: #F1F1EF;
+    border-color: #D5D5D1;
+}
+
+.event-card.completed-event .event-card-content {
+    background-color: #F1F1EF;
+}
+
+.event-card.completed-event .event-card-image img {
+    filter: grayscale(45%);
+    opacity: 0.85;
+}
+
+/* EVENT CARD BUTTONS */
+.event-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+.event-card-actions button {
+    flex: 1;
+    padding: 10px 16px;
+    border: 1.5px solid transparent;
+    border-radius: 8px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease,
+                border-color 0.2s ease,
+                color 0.2s ease;
+}
+
+/* More Info */
+.event-more-info {
+    background-color: #59645D;
+    color: #FFFFFF;
+}
+
+.event-more-info:hover {
+    background-color: #4F8B57;
+    border-color: #4F8B57;
+}
+
+/* Selected event card */
+.event-card.active {
+    background-color: #EAF4F9;
+    border: 1.5px solid #4386A8;
+}
+
+.event-card.active .event-card-content {
+    background-color: #EAF4F9;
+}
+
+/* Register */
+.event-register {
+    background-color: #4386A8;
+    color: #FFFFFF;
+}
+
+.event-register:hover {
+    background-color: #D94388;
+    border-color: #D94388;
+}
+
+/* Keyboard accessibility */
+.event-card-actions button:focus-visible {
+    outline: 3px solid #ACDBF4;
+    outline-offset: 3px;
+}
+
+/* ========================================
+   REGISTRATION FORM CLEANUP
+======================================== */
+
+/* 1. CONSISTENT SPACING IN LARGE GROUP FORM */
+
+#large-group-fields .form-section {
+    margin-bottom: 1.5rem;
+}
+
+#large-group-fields .form-grid {
+    row-gap: 1.1rem;
+}
+
+#large-group-fields .form-field {
+    margin-bottom: 0.6rem;
+}
+
+#large-group-fields > .form-section .form-field + .form-field {
+    margin-top: 0.75rem;
+}
+
+/* Keep the preferred-date fields compact */
+#large-group-fields .preferred-dates {
+    margin-bottom: 1rem;
+}
+
+#large-group-fields .preferred-dates .form-grid {
+    row-gap: 0.9rem;
+}
+
+/* Slightly reduce the height of large-group inputs */
+#large-group-fields .form-field input:not([type="checkbox"]):not([type="radio"]),
+#large-group-fields .form-field select {
+    min-height: 42px;
+    padding: 0.6rem 0.85rem;
+}
+
+
+/* 2. ADDITIONAL DETAILS TEXTAREA */
+
+#large-group-fields textarea {
+    box-sizing: border-box;
+    width: 100%;
+    text-indent: 0;
+    padding: 0.85rem 1rem;
+    line-height: 1.5;
+}
+
+
+/* 3. GENERAL AVAILABILITY */
+
+#large-group-fields .availability-section {
+    background-color: #F9F6F0;
+    color: #2B2F2A;
+}
+
+#large-group-fields .availability-option {
+    background-color: transparent;
+}
+
+#large-group-fields .availability-option input:checked + .availability-check {
+    background-color: #4386A8;
+    border-color: #4386A8;
+}
+
+
+/* 4. AGREEMENTS: REMOVE THE ENCLOSING BOXES */
+
+.volunteer-modal .agreement-item {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    background: transparent;
+    padding: 0.7rem 0;
+}
+
+
+/* 5. LIGHT-BLUE INFORMATION NOTICES */
+
+.volunteer-modal .privacy-notice,
+.volunteer-modal .group-requirement-note {
+    color: #356B88;
+    background-color: #DCECF5;
+    border-left: 3px solid #4386A8;
+}
+
+
+/* 6. LINKS: BLUE BY DEFAULT, PINK ON HOVER */
+
+.volunteer-modal a,
+.volunteer-modal a:visited {
+    color: #4386A8;
+}
+
+.volunteer-modal a:hover,
+.volunteer-modal a:focus-visible {
+    color: #D94388;
+}
+
+
+/* 7. COMPACT TOP BACK BUTTONS */
+
+.registration-fields > .registration-back {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 10px 16px;
-    border-radius: 10px;
-    background-color: #DCE8D9;
-    color: #59645D;
-    font-size: 0.9rem;
-    font-weight: 600;
+    min-height: 0;
+    margin-top: 0;
+    margin-bottom: 0.35rem;
+    padding: 0.25rem 0;
+    font-size: 0.95rem;
+}
+
+/* Keep bottom Back buttons comfortable to click */
+.registration-form-actions .registration-back {
+    min-height: 0;
+    margin-top: 0;
+    padding: 0.5rem 0.75rem;
 }
