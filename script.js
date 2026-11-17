@@ -512,6 +512,15 @@ preferredDates.forEach((input) => {
 // REGISTRATION FORM VALIDATION
 // ========================================
 
+// Find the container used to highlight grouped questions and agreements
+function getValidationContainer(field) {
+
+    return field.closest(
+        '.validation-group, .agreement-item'
+    );
+
+}
+
 function getValidationMessage(field) {
     if (field.validity.valueMissing) {
         return "Please complete this required field.";

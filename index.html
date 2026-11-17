@@ -1007,846 +1007,582 @@
 <div id="registration-form-screen" hidden>
 
     
-<!-- INDIVIDUAL FORM -->
-<fieldset class="registration-fields" id="individual-fields" hidden disabled>
+ <!-- ========================================
+                 INDIVIDUAL REGISTRATION FORM
+            ========================================= -->
 
-   <legend>Individual Information Form</legend>
+            <fieldset class="registration-fields"
+                id="individual-fields" hidden disabled>
 
-     <!-- TOP BACK BUTTON -->
-    <div class="back-navigation">
+                <legend>Individual Information Form</legend>
 
-    <button type="button" class="registration-back">← Back</button>
-    <span class="back-description">(Return to registration type selection)</span>
-    
-    </div>
-
-<!-- EVENT SELECTION (SHARED) -->
-
-<div class="event-selection">
-
-    <label for="individual-event-select">Registering for</label>
-
-    <select id="individual-event-select" name="event" required>
-        <option value="" disabled selected>
-            Select an upcoming event
-        </option>
-        <!-- Upcoming events added here -->
-    </select>
-
-    <div class="event-browse">
-        <button type="button" class="events-browse-btn">
-            Browse Upcoming Events →
-        </button>
-    </div>
-
-</div>    
-
-    <!-- ========================================
-         1. PERSONAL INFORMATION
-    ========================================= -->
-
-    <section class="form-section">
-
-        <h3>Personal Information</h3>
-        <p>Please provide your contact information.</p>
-
-        <div class="form-grid">
-
-            <div class="form-field">
-                <label for="individual-first">First Name *</label>
-                <input id="individual-first" name="first_name"
-                    type="text" autocomplete="given-name" required>
-            </div>
-
-            <div class="form-field">
-                <label for="individual-last">Last Name *</label>
-                <input id="individual-last" name="last_name"
-                    type="text" autocomplete="family-name" required>
-            </div>
-
-            <div class="form-field">
-                <label for="individual-email">Email Address *</label>
-                <input id="individual-email" name="email"
-                    type="email" autocomplete="email" required>
-            </div>
-
-            <div class="form-field">
-                <label for="individual-confirm-email">
-                    Confirm Email Address *
-                </label>
-                <input id="individual-confirm-email" name="confirm_email"
-                    type="email" autocomplete="off" required>
-            </div>
-
-            <div class="form-field">
-                <label for="individual-phone">Phone Number *</label>
-                <input id="individual-phone" name="phone"
-                    type="tel" autocomplete="tel" required>
-            </div>
-
-            <div class="form-field">
-                <label for="individual-zip">Zip Code *</label>
-                <input id="individual-zip" name="zip_code"
-                    type="text" inputmode="numeric"
-                    autocomplete="postal-code"
-                    maxlength="5" pattern="[0-9]{5}" required>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ========================================
-         2. VOLUNTEER INFORMATION
-    ========================================= -->
-
-    <section class="form-section">
-
-        <h3>Volunteer Information</h3>
-        <p>Tell us a little about your volunteer experience.</p>
-
-        <div class="form-field">
-
-                        <label>Age Range *</label>
-
-                        <select name="age_range" data-volunteer-age required>
-
-                            <option value="">Select age range</option>
-                            <option value="under_18">Under 18</option>
-                            <option value="18-24">18–24</option>
-                            <option value="25-34">25–34</option>
-                            <option value="35-44">35–44</option>
-                            <option value="45-54">45–54</option>
-                            <option value="55-64">55–64</option>
-                            <option value="65_plus">65+</option>
-
-                        </select>
-
+                    <div class="adult-registration-notice">
+                        <p class="group-requirement-note eligibility-note">
+                            Individual registration is for adults age 18
+                            or older. Volunteers under 18 should be
+                            registered as part of a small group by a
+                            parent, guardian, or responsible adult, and
+                            should attend with an accompanying adult.
+                        </p>
                     </div>
 
-        <div class="form-field validation-group">
-
-            <label>
-                Is this your first time participating in a
-                Trees Count! event? *
-            </label>
-
-            <div class="radio-options">
-
-                <label class="radio-option">
-                    <input type="radio" name="first_trees_count"
-                        value="first_time" required>
-                    Yes, this is my first time!
-                </label>
-
-                <label class="radio-option">
-                    <input type="radio" name="first_trees_count"
-                        value="returning">
-                    No, I've participated before.
-                </label>
-
-            </div>
-
-        </div>
-
-
-        <!-- CONDITIONAL SUMMER ATTENDANCE QUESTION -->
-        <fieldset class="form-field conditional-question validation-group"
-            id="summer-attendance-question" hidden disabled>
-
-            <legend>
-                Have you previously attended a Trees Count! event
-                this summer? *
-            </legend>
-
-            <div class="radio-options">
-
-                <label class="radio-option">
-                    <input type="radio" name="summer_attendance"
-                        value="yes" required>
-                    Yes
-                </label>
-
-                <label class="radio-option">
-                    <input type="radio" name="summer_attendance"
-                        value="no" required>
-                    No
-                </label>
-
-            </div>
-
-        </fieldset>
-
-    </section>
-
-
-    <!-- ========================================
-         3. ADDITIONAL INFORMATION
-    ========================================= -->
-
-    <section class="form-section">
-
-        <h3>Additional Information</h3>
-        <p>Help us learn more about your visit.</p>
-
-        <div class="form-grid">
-
-            <div class="form-field">
-
-                <label for="individual-transportation">
-                    How will you be traveling to the event?
-                </label>
-
-                <select id="individual-transportation"
-                    name="transportation">
-                    <option value="">Select transportation</option>
-                    <option value="walking">Walking</option>
-                    <option value="public_transit">
-                        Public Transportation
-                    </option>
-                    <option value="personal_vehicle">
-                        Personal Vehicle
-                    </option>
-                    <option value="bicycle">Bicycle</option>
-                    <option value="other">Other</option>
-                </select>
-
-            </div>
-
-
-            <div class="form-field">
-
-                <label for="individual-referral">
-                    How did you hear about this event?
-                </label>
-
-                <select id="individual-referral" name="referral_source">
-                    <option value="">Select an option</option>
-                    <option value="nyc_parks_website">
-                        NYC Parks Website
-                    </option>
-                    <option value="social_media">Social Media</option>
-                    <option value="friends_family">
-                        Friends or Family
-                    </option>
-                    <option value="community_organization">
-                        Community Organization
-                    </option>
-                    <option value="newsletter">
-                        Newsletter
-                    </option>
-                    <option value="other">Other</option>
-                </select>
-
-            </div>
-
-        </div>
-
-
-        <div class="form-field">
-
-            <label>
-                Would you like to subscribe to the NYC Parks newsletter?
-            </label>
-
-            <div class="radio-options">
-
-                <label class="radio-option">
-                    <input type="radio" name="newsletter_subscription"
-                        value="yes">
-                    Yes
-                </label>
-
-                <label class="radio-option">
-                    <input type="radio" name="newsletter_subscription"
-                        value="no">
-                    No
-                </label>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ========================================
-         4. AGREEMENTS & ACKNOWLEDGMENTS
-    ========================================= -->
-
-    <section class="form-section agreement-section">
-
-        <h3>Agreements & Acknowledgments</h3>
-
-        <p>
-            Please review the following documents and acknowledgments
-            before submitting your registration.
-        </p>
-
-
-        <!-- RELEASE AND WAIVER -->
-
-        <div class="form-field">
-
-            <h4>Release and Waiver</h4>
-
-            <label class="agreement-checkbox agreement-item">
-
-                <input type="checkbox"
-                    id="individual-waiver"
-                    name="waiver_agreement"
-                    value="yes" required>
-
-                <span>
-                    I agree that I have read and understand the 
-                    <a href="./pdf/release-and-waiver.pdf"
-                        target="_blank" rel="noopener noreferrer">
-                        Release and Waiver Form (PDF)
-                    </a>
-                    . *
-                </span>
-
-            </label>
-
-        </div>
-
-
-        <!-- PHOTO RELEASE - OPTIONAL -->
-
-        <div class="form-field">
-
-            <h4>Photo Release (Optional)</h4>
-
-            <label class="agreement-checkbox">
-
-                <input type="checkbox"
-                    id="individual-photo-release"
-                    name="photo_release_consent"
-                    value="yes">
-
-                <span>
-                    I consent to the use of my name and likenesses
-                    by the City of New York and have read and
-                    understand the 
-                        <a href="./pdf/photo-release.pdf"
-                            target="_blank" rel="noopener noreferrer">
-                            Photo Release From (PDF)
-                        </a>
-                    .
-                </span>
-
-            </label>
-
-        </div>
-
-
-        <!-- INFORMATION CERTIFICATION -->
-
-        <div class="form-field">
-
-            <h4>Information Accuracy</h4>
-
-            <label class="agreement-checkbox agreement-item">
-
-                <input type="checkbox"
-                    id="individual-certification"
-                    name="information_certification"
-                    value="yes" required>
-
-                <span>
-                    I certify that all the information submitted
-                    is complete and accurate to the best of
-                    my knowledge. *
-                </span>
-
-            </label>
-
-        </div>
-
-        <p class="required-note">
-            * Required fields.
-        </p>
-
-    </section>
-
-
-    <!-- ========================================
-         5. SUBMIT REGISTRATION
-    ========================================= -->
-
-    <!-- BOTTOM FORM BUTTONS -->
-    <div class="registration-form-actions">
-
-        <button
-            type="button"
-            class="registration-back">
-
-            ← Back
-        </button>
-
-        <button type="submit" class="registration-submit">
-            Submit Registration
-        </button>
-
-    </div>
-
-</fieldset>
-
-
-
-<!-- ========================================
-     SMALL GROUP REGISTRATION FORM
-========================================= -->
-
-<fieldset class="registration-fields" id="small-group-fields"
-    hidden disabled>
-
-<legend>Small Group Registration</legend>
-
- <!-- TOP BACK BUTTON -->
-    <div class="back-navigation">
-
-    <button type="button" class="registration-back">← Back</button>
-    <span class="back-description">(Return to registration type selection)</span>
-    
-    </div>
-    
-    
-<!-- EVENT SELECTION (SHARED) -->
-
-<div class="event-selection">
-
-    <label for="small-group-event-select">Registering for</label>
-
-    <select id="small-group-event-select" name="event" required>
-        <option value="" disabled selected>
-            Select an upcoming event
-        </option>
-        <!-- Upcoming events added here -->
-    </select>
-
-    <div class="event-browse">
-        <button type="button" class="events-browse-btn">
-            Browse Upcoming Events →
-        </button>
-    </div>
-
-</div>
-
-
-
-    <!-- 1. GROUP INFORMATION -->
-
-    <section class="form-section">
-
-        <h3>Group Information</h3>
-        <p>Tell us about the group you're registering.</p>
-
-        <div class="form-field">
-
-            <label for="small-group-name">
-                Name of Group / Company / Organization 
-            </label>
-
-            <input id="small-group-name" name="group_name"
-                type="text" >
-
-        </div>
-
-    </section>
-
-
-    <!-- 2. PRIMARY CONTACT INFORMATION -->
-
-    <section class="form-section">
-
-        <h3>Primary Contact Information</h3>
-        <p>
-            Please provide the contact information for the person
-            coordinating your group's registration.
-        </p>
-
-        <div class="form-grid">
-
-            <div class="form-field">
-                <label for="small-contact-first">First Name *</label>
-                <input id="small-contact-first"
-                    name="contact_first_name"
-                    type="text" autocomplete="given-name" required>
-            </div>
-
-            <div class="form-field">
-                <label for="small-contact-last">Last Name *</label>
-                <input id="small-contact-last"
-                    name="contact_last_name"
-                    type="text" autocomplete="family-name" required>
-            </div>
-
-            <div class="form-field">
-                <label for="small-contact-email">Email Address *</label>
-                <input id="small-contact-email"
-                    name="contact_email"
-                    type="email" autocomplete="email" required>
-            </div>
-
-            <div class="form-field">
-                <label for="small-contact-phone">Phone Number *</label>
-                <input id="small-contact-phone"
-                    name="contact_phone"
-                    type="tel" autocomplete="tel" required>
-            </div>
-
-            <div class="form-field">
-                <label for="small-contact-zip">Zip Code *</label>
-                <input id="small-contact-zip"
-                    name="contact_zip"
-                    type="text" inputmode="numeric"
-                    autocomplete="postal-code"
-                    maxlength="5" pattern="[0-9]{5}" required>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- 3. VOLUNTEERS INFORMATION -->
-
-    <section class="form-section">
-
-        <h3>Volunteers Information</h3>
-
-        <p>
-            Please provide additional details for the other volunteers in the group.
-        </p>
-        <p class="group-requirement-note">
-            Primary Contact is automatically designated as Volunteer 1 for your group.
-        </p>
-
-        <!-- VOLUNTEER 1: PRIMARY CONTACT -->
-
-        <div class="volunteer-card">
-
-            <h4>Volunteer 1 <span>(Primary Contact)</span></h4>
-
-            <div class="form-grid">
-
-                <div class="form-field">
-
-                    <label for="small-volunteer-1-first">
-                        First Name
+                <!-- EVENT SELECTION -->
+                <div class="event-selection">
+
+                    <label for="individual-event-select">
+                        Registering for
                     </label>
 
-                    <input id="small-volunteer-1-first"
-                        name="volunteers[0][first_name]"
-                        type="text" readonly
-                        data-primary-contact-first>
-
-                </div>
-
-                <div class="form-field">
-
-                    <label for="small-volunteer-1-last">
-                        Last Name
-                    </label>
-
-                    <input id="small-volunteer-1-last"
-                        name="volunteers[0][last_name]"
-                        type="text" readonly
-                        data-primary-contact-last>
-
-                </div>
-
-                <div class="form-field">
-
-                    <label for="small-volunteer-1-age">
-                        Age Range *
-                    </label>
-
-                    <select id="small-volunteer-1-age"
-                        name="volunteers[0][age_range]" required>
-
-                        <option value="">Select age range</option>
-                        <option value="under_18">
-                            Under 18
+                    <select id="individual-event-select"
+                        name="event" required>
+                        <option value="" disabled selected>
+                            Select an upcoming event
                         </option>
-                        <option value="18-24">18–24</option>
-                        <option value="25-34">25–34</option>
-                        <option value="35-44">35–44</option>
-                        <option value="45-54">45–54</option>
-                        <option value="55-64">55–64</option>
-                        <option value="65_plus">65+</option>
-
+                        <!-- Upcoming events added here -->
                     </select>
 
+                    <div class="event-browse">
+                        <button type="button" class="events-browse-btn">
+                            Browse Upcoming Events →
+                        </button>
+                    </div>
                 </div>
 
-            </div>
+                <!-- 1. PERSONAL INFORMATION -->
+                <section class="form-section">
 
-        </div>
+                    <h3>Personal Information</h3>
+                    <p>Please provide your contact information.</p>
+
+                    <div class="form-grid">
+
+                        <div class="form-field">
+                            <label for="individual-first">First Name *</label>
+                            <input id="individual-first" name="first_name"
+                                type="text" autocomplete="given-name" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="individual-last">Last Name *</label>
+                            <input id="individual-last" name="last_name"
+                                type="text" autocomplete="family-name" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="individual-email">Email Address *</label>
+                            <input id="individual-email" name="email"
+                                type="email" autocomplete="email" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="individual-phone">Phone Number *</label>
+                            <input id="individual-phone" name="phone"
+                                type="tel" autocomplete="tel" required>
+                        </div>
+
+                    </div>
+                </section>
+
+               
+
+                <!-- 3. AGREEMENTS & ACKNOWLEDGMENTS -->
+                <section class="form-section agreement-section">
+
+                    <h3>Agreements &amp; Acknowledgments</h3>
+
+                    <p>
+                        Please review the following documents and
+                        acknowledgments before submitting your registration.
+                    </p>
+
+                    <!-- Age confirmation -->
+
+                    <div class="form-field validation-group">
+                        <label class="agreement-checkbox agreement-item"
+                            for="individual-adult-confirmation">
+
+                            <input type="checkbox"
+                                id="individual-adult-confirmation"
+                                name="adult_age_confirmation"
+                                value="yes" required>
+
+                            <span>
+                                I confirm that I am 18 years of age
+                                or older. *
+                            </span>
+                        </label>
+                    </div>
 
 
-        <!-- ADDITIONAL VOLUNTEERS WILL BE ADDED HERE -->
+                    <!-- RELEASE AND WAIVER -->
+                    <div class="form-field">
 
-        <div id="additional-volunteers"></div>
+                        <label class="agreement-checkbox agreement-item">
 
+                            <input type="checkbox"
+                                id="individual-waiver"
+                                name="waiver_agreement"
+                                value="yes" required>
 
-        <!-- VOLUNTEER TEMPLATE FOR JAVASCRIPT -->
+                            <span>
+                                I agree that I have read and understand the
+                                <a href="./pdf/release-and-waiver.pdf"
+                                    target="_blank" rel="noopener noreferrer">
+                                    Release and Waiver Form (PDF)
+                                </a>. *
+                            </span>
+                        </label>
+                    </div>
 
-        <template id="small-group-volunteer-template">
+                    <!-- OPTIONAL PHOTO RELEASE -->
+                    <div class="form-field">
 
-            <div class="volunteer-card additional-volunteer">
+                        <label class="agreement-checkbox">
 
-                <div class="volunteer-card-heading">
+                            <input type="checkbox"
+                                id="individual-photo-release"
+                                name="photo_release_consent"
+                                value="yes">
 
-                    <h4 class="volunteer-number">
-                        Additional Volunteer
-                    </h4>
+                            <span>
+                                I consent to the use of my name and likeness
+                                by the City of New York and have read and
+                                understand the
+                                <a href="./pdf/photo-release.pdf"
+                                    target="_blank" rel="noopener noreferrer">
+                                    Photo Release Form (PDF)
+                                </a>.
+                            </span>
+                        </label>
+                    </div>
 
-                    <button type="button"
-                        class="remove-volunteer-btn">
-                        Remove
+                    <!-- INFORMATION CERTIFICATION -->
+                    <div class="form-field">
+
+                        <label class="agreement-checkbox agreement-item">
+
+                            <input type="checkbox"
+                                id="individual-certification"
+                                name="information_certification"
+                                value="yes" required>
+
+                            <span>
+                                I certify that all the information submitted
+                                is complete and accurate to the best of
+                                my knowledge. *
+                            </span>
+                        </label>
+                    </div>
+
+                    <p class="required-note">
+                        * Required fields.
+                    </p>
+
+                </section>
+
+                <!-- BOTTOM FORM BUTTONS -->
+                <div class="registration-form-actions">
+
+                    <button type="button" class="registration-back">
+                        ← Back
+                    </button>
+
+                    <button type="submit" class="registration-submit">
+                        Submit Registration
                     </button>
 
                 </div>
 
-                <div class="form-grid">
+            </fieldset>
+
+            <!-- ========================================
+                 SMALL GROUP REGISTRATION FORM
+            ========================================= -->
+
+            <fieldset class="registration-fields"
+                id="small-group-fields" hidden disabled>
+
+                <legend>Small Group Registration</legend>
+
+                <!-- EVENT SELECTION -->
+                <div class="event-selection">
+
+                    <label for="small-group-event-select">
+                        Registering for
+                    </label>
+
+                    <select id="small-group-event-select"
+                        name="event" required>
+                        <option value="" disabled selected>
+                            Select an upcoming event
+                        </option>
+                        <!-- Upcoming events added here -->
+                    </select>
+
+                    <div class="event-browse">
+                        <button type="button" class="events-browse-btn">
+                            Browse Upcoming Events →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 1. GROUP INFORMATION -->
+                <section class="form-section">
+
+                    <h3>Group Information</h3>
+                    <p>Tell us about the group you're registering.</p>
 
                     <div class="form-field">
 
-                        <label>First Name *</label>
+                        <label for="small-group-name">
+                            Name of Group / Company / Organization
+                        </label>
 
-                        <input type="text"
-                            data-volunteer-first required>
+                        <input id="small-group-name"
+                            name="group_name" type="text">
+
+                    </div>
+                </section>
+
+                <!-- 2. PRIMARY CONTACT INFORMATION -->
+                <section class="form-section">
+
+                    <h3>Primary Contact Information</h3>
+
+                    <p>
+                        Please provide the contact information for the
+                        person coordinating your group's registration.
+                    </p>
+
+                    <div class="form-grid">
+
+                        <div class="form-field">
+                            <label for="small-contact-first">First Name *</label>
+                            <input id="small-contact-first"
+                                name="contact_first_name"
+                                type="text" autocomplete="given-name" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="small-contact-last">Last Name *</label>
+                            <input id="small-contact-last"
+                                name="contact_last_name"
+                                type="text" autocomplete="family-name" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="small-contact-email">Email Address *</label>
+                            <input id="small-contact-email"
+                                name="contact_email"
+                                type="email" autocomplete="email" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="small-contact-phone">Phone Number *</label>
+                            <input id="small-contact-phone"
+                                name="contact_phone"
+                                type="tel" autocomplete="tel" required>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- 3. VOLUNTEER INFORMATION -->
+                <section class="form-section">
+
+                    <h3>Volunteers Information</h3>
+
+                    <p>
+                        Please provide additional details for the other
+                        volunteers in the group.
+                    </p>
+
+                    <p class="group-requirement-note eligibility-note">
+                        Primary Contact is automatically designated as
+                        Volunteer 1 for your group.
+                    </p>
+
+                    <!-- VOLUNTEER 1: PRIMARY CONTACT -->
+                    <div class="volunteer-card">
+
+                        <h4>Volunteer 1 <span>(Primary Contact)</span></h4>
+
+                        <div class="form-grid">
+
+                            <div class="form-field">
+                                <label for="small-volunteer-1-first">
+                                    First Name
+                                </label>
+
+                                <input id="small-volunteer-1-first"
+                                    name="volunteers[0][first_name]"
+                                    type="text" readonly
+                                    data-primary-contact-first>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="small-volunteer-1-last">
+                                    Last Name
+                                </label>
+
+                                <input id="small-volunteer-1-last"
+                                    name="volunteers[0][last_name]"
+                                    type="text" readonly
+                                    data-primary-contact-last>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="small-volunteer-1-age">
+                                    Age Range *
+                                </label>
+
+                                <select id="small-volunteer-1-age"
+                                    name="volunteers[0][age_range]" required>
+
+                                    <option value="">Select age range</option>
+                                    <option value="under_18">Under 18</option>
+                                    <option value="18-24">18–24</option>
+                                    <option value="25-34">25–34</option>
+                                    <option value="35-44">35–44</option>
+                                    <option value="45-54">45–54</option>
+                                    <option value="55-64">55–64</option>
+                                    <option value="65_plus">65+</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ADDITIONAL VOLUNTEERS WILL BE ADDED HERE -->
+                    <div id="additional-volunteers"></div>
+
+                    <!-- VOLUNTEER TEMPLATE FOR JAVASCRIPT -->
+                    <template id="small-group-volunteer-template">
+
+                        <div class="volunteer-card additional-volunteer">
+
+                            <div class="volunteer-card-heading">
+
+                                <h4 class="volunteer-number">
+                                    Additional Volunteer
+                                </h4>
+
+                                <button type="button"
+                                    class="remove-volunteer-btn">
+                                    Remove
+                                </button>
+
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="form-field">
+                                    <label>First Name *</label>
+                                    <input type="text"
+                                        data-volunteer-first required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label>Last Name *</label>
+                                    <input type="text"
+                                        data-volunteer-last required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label>Age Range *</label>
+
+                                    <select data-volunteer-age required>
+                                        <option value="">Select age range</option>
+                                        <option value="under_18">Under 18</option>
+                                        <option value="18-24">18–24</option>
+                                        <option value="25-34">25–34</option>
+                                        <option value="35-44">35–44</option>
+                                        <option value="45-54">45–54</option>
+                                        <option value="55-64">55–64</option>
+                                        <option value="65_plus">65+</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </template>
+
+                    <!-- ADD VOLUNTEER BUTTON -->
+                    <div class="add-volunteer-wrapper">
+
+                        <button type="button" id="add-volunteer-btn"
+                            class="add-volunteer-btn">
+                            <span aria-hidden="true">+</span>
+                            Add Volunteer
+                        </button>
+
+                    </div>
+                </section>
+
+                <!-- 4. AGREEMENTS & ACKNOWLEDGMENTS -->
+                <section class="form-section agreement-section">
+
+                    <h3>Agreements &amp; Acknowledgments</h3>
+
+                    <p>
+                        Please review the following agreements before
+                        submitting your group's registration.
+                    </p>
+
+                    <!-- ADULT AGREEMENTS -->
+                    <div class="adult-agreement-items">
+
+                        <div class="agreement-checkbox agreement-item">
+
+                            <input type="checkbox"
+                                id="small-adult-waiver"
+                                name="adult_waiver_agreement" required>
+
+                            <label for="small-adult-waiver">
+                                I agree that I have read and understand the
+                                <a href="./pdf/release-and-waiver.pdf"
+                                    target="_blank" rel="noopener noreferrer">
+                                    Release and Waiver Form (PDF)
+                                </a>
+                                for all adult participants. *
+                            </label>
+                        </div>
+
+                        <div class="agreement-checkbox">
+
+                            <input type="checkbox"
+                                id="small-adult-photo"
+                                name="adult_photo_consent">
+
+                            <label for="small-adult-photo">
+                                I consent to the use of my name, our
+                                organization name, and all participating
+                                adults' names and likenesses by the City
+                                of New York, and have read and understand
+                                the
+                                <a href="./pdf/photo-release.pdf"
+                                    target="_blank" rel="noopener noreferrer">
+                                    Photo Release Form (PDF)
+                                </a>.
+                            </label>
+                        </div>
 
                     </div>
 
+                    <!-- MINOR PARTICIPANTS -->
+                    <div class="form-field minor-participant-question validation-group">
+
+                        <p class="group-requirement-note">
+                            If your group includes volunteers under 18,
+                            each minor should attend with a parent,
+                            guardian, or responsible adult.
+                        </p>
+
+                        <label>
+                            Will your group include children under 18? *
+                        </label>
+
+                        <div class="radio-options">
+
+                            <label class="radio-option">
+                                <input type="radio"
+                                    name="group_includes_minors"
+                                    value="yes" required>
+                                Yes
+                            </label>
+
+                            <label class="radio-option">
+                                <input type="radio"
+                                    name="group_includes_minors"
+                                    value="no" required>
+                                No
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <!-- ONLY SHOWN WHEN THE ANSWER IS YES -->
+                    <fieldset id="small-minor-agreements"
+                        class="conditional-question" hidden disabled>
+
+                        <legend>Minor Participants</legend>
+
+                        <div class="agreement-checkbox agreement-item">
+
+                            <input type="checkbox"
+                                id="small-minor-waiver"
+                                name="minor_waiver_agreement" required>
+
+                            <label for="small-minor-waiver">
+                                If I am bringing a child or children,
+                                I agree as a parent or guardian that
+                                I have read and understand the
+                                <a href="./pdf/minor-release-and-waiver.pdf"
+                                    target="_blank" rel="noopener noreferrer">
+                                    Release and Waiver Form for Minors (PDF)
+                                </a>. *
+                            </label>
+                        </div>
+
+                        <div class="agreement-checkbox">
+
+                            <input type="checkbox"
+                                id="small-minor-photo"
+                                name="minor_photo_consent">
+
+                            <label for="small-minor-photo">
+                                If I am bringing a child or children,
+                                I consent as a parent or guardian to
+                                the use of this child's name and likeness
+                                by the City of New York, and confirm
+                                that I have read and understand the
+                                <a href="./pdf/minor-photo-release.pdf"
+                                    target="_blank" rel="noopener noreferrer">
+                                    Photo Release Form for Minors (PDF)
+                                </a>.
+                            </label>
+                        </div>
+
+                    </fieldset>
+
+                    <!-- ACCURACY CERTIFICATION -->
                     <div class="form-field">
 
-                        <label>Last Name *</label>
+                        <div class="agreement-checkbox agreement-item">
 
-                        <input type="text"
-                            data-volunteer-last required>
+                            <input type="checkbox"
+                                id="small-information-accuracy"
+                                name="information_accuracy" required>
 
+                            <label for="small-information-accuracy">
+                                I certify that all the information submitted
+                                above or below is complete and accurate to
+                                the best of my knowledge. *
+                            </label>
+                        </div>
                     </div>
 
-                    <div class="form-field">
+                    <p class="required-note">
+                        * Required fields.
+                    </p>
 
-                        <label>Age Range *</label>
+                </section>
 
-                        <select data-volunteer-age required>
+                <!-- BOTTOM FORM BUTTONS -->
+                <div class="registration-form-actions">
 
-                            <option value="">Select age range</option>
-                            <option value="under_18">Under 18</option>
-                            <option value="18-24">18–24</option>
-                            <option value="25-34">25–34</option>
-                            <option value="35-44">35–44</option>
-                            <option value="45-54">45–54</option>
-                            <option value="55-64">55–64</option>
-                            <option value="65_plus">65+</option>
+                    <button type="button" class="registration-back">
+                        ← Back
+                    </button>
 
-                        </select>
-
-                    </div>
+                    <button type="submit" class="registration-submit">
+                        Submit Registration
+                    </button>
 
                 </div>
 
-            </div>
-
-        </template>
-
-
-        <!-- ADD VOLUNTEER BUTTON -->
-
-        <div class="add-volunteer-wrapper">
-
-            <button type="button" id="add-volunteer-btn"
-                class="add-volunteer-btn">
-
-                <span aria-hidden="true">+</span>
-                Add Volunteer
-
-            </button>
-
-        </div>
-
-    </section>
-
-    
-<!-- AGREEMENTS & ACKNOWLEDGMENTS -->
-<section class="form-section agreement-section">
-
-    <h3>Agreements &amp; Acknowledgments</h3>
-    <p>
-        Please review the following agreements before submitting
-        your group's registration.
-    </p>
-
-    <!-- Adult agreements -->
-    <div class="adult-agreement-items">
-        <h4>Adult Participants</h4>
-
-        <div class="agreement-checkbox agreement-item">
-            <input
-                type="checkbox"
-                id="small-adult-waiver"
-                name="adult_waiver_agreement"
-                required
-            >
-            <label for="small-adult-waiver">
-                I agree that I have read and understand the
-                    <a href="./pdf/release-and-waiver.pdf"
-                        target="_blank" rel="noopener noreferrer">
-                        Release and Waiver Form (PDF)
-                    </a> 
-                for all adult participants. *
-            </label>
-        </div>
-
-        <div class="agreement-checkbox">
-            <input
-                type="checkbox"
-                id="small-adult-photo"
-                name="adult_photo_consent"
-            >
-            <label for="small-adult-photo">
-                I consent to the use of my name, our organization
-                name, and all participating adults' names and
-                likenesses by the City of New York, and have read
-                and understand the 
-                        <a href="./pdf/photo-release.pdf"
-                            target="_blank" rel="noopener noreferrer">
-                            Photo Release From (PDF)
-                        </a> 
-                .
-            </label>
-        </div>
-    </div>
-
-    <!-- Minor participants -->
-    <div class="form-field minor-participant-question validation-group">
-        <label>
-            Will your group include children under 18? *
-        </label>
-
-        <div class="radio-options">
-            <label class="radio-option">
-                <input
-                    type="radio"
-                    name="group_includes_minors"
-                    value="yes"
-                    required
-                >
-                Yes
-            </label>
-
-            <label class="radio-option">
-                <input
-                    type="radio"
-                    name="group_includes_minors"
-                    value="no"
-                    required
-                >
-                No
-            </label>
-        </div>
-    </div>
-
-    <!-- Only shown when the answer is Yes -->
-    <fieldset
-        id="small-minor-agreements"
-        class="conditional-question"
-        hidden
-        disabled
-    >
-        <legend>Minor Participants</legend>
-
-        <div class="agreement-checkbox agreement-item">
-            <input
-                type="checkbox"
-                id="small-minor-waiver"
-                name="minor_waiver_agreement"
-                required
-            >
-            <label for="small-minor-waiver">
-                If I am bringing a child or children, I agree as
-                a parent or guardian that I have read and understand
-                the
-                    <a href="./pdf/minor-release-and-waiver.pdf"
-                        target="_blank" rel="noopener noreferrer">
-                        Release and Waiver Form for Minors (PDF)
-                    </a>
-                . *
-            </label>
-        </div>
-
-        <div class="agreement-checkbox">
-            <input
-                type="checkbox"
-                id="small-minor-photo"
-                name="minor_photo_consent"
-            >
-            <label for="small-minor-photo">
-                If I am bringing a child or children, I consent as
-                a parent or guardian to the use of this child's
-                name and likeness by the City of New York, and
-                confirm that I have read and understand the 
-
-                    <a href="./pdf/minor-photo-release.pdf"
-                            target="_blank" rel="noopener noreferrer">
-                            Photo Release From for Minors (PDF)
-                    </a>
-                .
-            </label>
-        </div>
-
-    </fieldset>
-
-    <!-- Accuracy certification -->
-    <div class="form-field">
-        <h4>Information Accuracy</h4>
-
-        <div class="agreement-checkbox agreement-item">
-            <input
-                type="checkbox"
-                id="small-information-accuracy"
-                name="information_accuracy"
-                required
-            >
-            <label for="small-information-accuracy">
-                I certify that all the information submitted above
-                or below is complete and accurate to the best of
-                my knowledge. *
-            </label>
-        </div>
-    </div>
-
-    <p class="required-note">
-        * Required fields.
-    </p>
-
-</section>
-
-
-
-   <!-- BOTTOM FORM BUTTONS -->
-    <div class="registration-form-actions">
-
-        <button
-            type="button"
-            class="registration-back">
-
-            ← Back
-        </button>
-
-        <button type="submit" class="registration-submit">
-            Submit Registration
-        </button>
-
-    </div>
-
-</fieldset>
+            </fieldset>
 
 
 
@@ -1874,15 +1610,15 @@
     
     </div>
 
-    <!-- 1. ORGANIZATION INFORMATION -->
+    <!-- ORGANIZATION INFORMATION -->
+<section class="form-section">
 
-    <section class="form-section">
+    <h3>Organization Information</h3>
+    <p>Tell us about your organization.</p>
 
-        <h3>Organization Information</h3>
-        <p>Tell us about your organization.</p>
+    <div class="form-grid">
 
         <div class="form-field">
-
             <label for="large-organization-name">
                 Organization / Company Name *
             </label>
@@ -1890,10 +1626,22 @@
             <input id="large-organization-name"
                 name="organization_name"
                 type="text" required>
-
         </div>
 
-    </section>
+        <div class="form-field">
+            <label for="large-volunteer-count">
+                Anticipated Number of Volunteers *
+            </label>
+
+            <input id="large-volunteer-count"
+                name="anticipated_volunteers"
+                type="number" min="25" step="1"
+                placeholder="Minimum of 25" required>
+        </div>
+
+    </div>
+
+</section>
 
 
     <!-- 2. PRIMARY CONTACT -->
@@ -1954,87 +1702,7 @@
     </section>
 
 
-    <!-- 3. OPTIONAL ORGANIZATION ADDRESS -->
-
-    <section class="form-section">
-
-        <h3>Organization Address <span>(Optional)</span></h3>
-
-        <p>
-            You may provide your organization's mailing
-            or business address.
-        </p>
-
-        <div class="form-grid">
-
-            <div class="form-field">
-
-                <label for="large-address">Street Address</label>
-
-                <input id="large-address"
-                    name="organization_address"
-                    type="text" autocomplete="street-address">
-
-            </div>
-
-            <div class="form-field">
-
-                <label for="large-city">City</label>
-
-                <input id="large-city"
-                    name="organization_city"
-                    type="text" autocomplete="address-level2">
-
-            </div>
-
-            <div class="form-field">
-
-                <label for="large-state">State</label>
-
-                <input id="large-state"
-                    name="organization_state"
-                    type="text" autocomplete="address-level1">
-
-            </div>
-
-            <div class="form-field">
-
-                <label for="large-zip">Zip Code</label>
-
-                <input id="large-zip"
-                    name="organization_zip"
-                    type="text" inputmode="numeric"
-                    autocomplete="postal-code"
-                    maxlength="5" pattern="[0-9]{5}">
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- 4. NUMBER OF VOLUNTEERS -->
-
-    <section class="form-section">
-
-        <h3>Number of Volunteers</h3>
-
-        <div class="form-field">
-
-            <label for="large-volunteer-count">
-                Anticipated Number of Volunteers *
-            </label>
-
-            <input id="large-volunteer-count"
-                name="anticipated_volunteers"
-                type="number" min="25" step="1"
-                placeholder="Minimum of 25" required>
-
-        </div>
-
-    </section>
-
+   
 
     <!-- 5. PREFERRED DATE, TIME & LOCATION -->
 
