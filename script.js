@@ -185,6 +185,8 @@ const registrationForms = {
     'large-group': document.getElementById('large-group-fields')
 };
 
+const registrationFormWrappers =
+    document.querySelectorAll('.registration-form-wrapper');
 
 // ========================================
 // BACK BUTTONS
@@ -222,12 +224,26 @@ registrationTypes.forEach((radio) => {
             form.disabled = true;
         });
 
+        // Hide all form wrappers and banners
+        registrationFormWrappers.forEach((wrapper) => {
+            wrapper.hidden = true;
+        });
+
         // Show and enable selected form
         const selectedForm = registrationForms[radio.value];
 
         if (selectedForm) {
             selectedForm.hidden = false;
             selectedForm.disabled = false;
+        }
+
+        // Show the matching banner wrapper
+        const selectedWrapper = document.querySelector(
+            `.registration-form-wrapper[data-form="${radio.value}"]`
+        );
+
+        if (selectedWrapper) {
+            selectedWrapper.hidden = false;
         }
 
         // Switch to registration form screen
@@ -274,37 +290,6 @@ individualEmail?.addEventListener('change', checkEmailMatch);
 confirmEmail?.addEventListener('change', checkEmailMatch);
 
 
-// SUMMER ATTENDANCE QUESTION
-
-const firstTreesCountRadios =
-    document.querySelectorAll('input[name="first_trees_count"]');
-
-const summerAttendanceQuestion =
-    document.getElementById('summer-attendance-question');
-
-firstTreesCountRadios.forEach((radio) => {
-
-    radio.addEventListener('change', () => {
-
-        const isReturningVolunteer =
-            radio.checked && radio.value === 'returning';
-
-        summerAttendanceQuestion.hidden = !isReturningVolunteer;
-        summerAttendanceQuestion.disabled = !isReturningVolunteer;
-
-        // Clear the previous answer when hidden
-        if (!isReturningVolunteer) {
-            summerAttendanceQuestion
-                .querySelectorAll('input[type="radio"]')
-                .forEach((input) => {
-                    input.checked = false;
-                });
-        }
-
-    });
-
-});
-
 // ========================================
 // SMALL GROUP: PRIMARY CONTACT
 // ========================================
@@ -322,14 +307,16 @@ const volunteerOneLast =
     document.querySelector('[data-primary-contact-last]');
 
 function updatePrimaryVolunteer() {
-
     volunteerOneFirst.value = smallContactFirst.value;
     volunteerOneLast.value = smallContactLast.value;
-
 }
 
+// Copy names when the contact information changes
 smallContactFirst.addEventListener('input', updatePrimaryVolunteer);
 smallContactLast.addEventListener('input', updatePrimaryVolunteer);
+
+// Populate Volunteer 1 when the form is initialized
+updatePrimaryVolunteer();
 
 // ========================================
 // SMALL GROUP: ADD / REMOVE VOLUNTEERS
@@ -414,47 +401,56 @@ additionalVolunteers.addEventListener('click', (event) => {
     const removeButton =
         event.target.closest('.remove-volunteer-btn');
 
-    if (!removeButton) {
-        return;
-    }
+    if (!removeButton) return;
 
     removeButton.closest('.additional-volunteer').remove();
 
     updateVolunteerNumbers();
+    updateMinorAgreements();
 
 });
 
 // ========================================
-// SMALL GROUP: MINOR AGREEMENTS
+// SMALL GROUP: AUTOMATIC MINOR AGREEMENTS
 // ========================================
 
-const groupIncludesMinors =
-    document.querySelectorAll('input[name="group_includes_minors"]');
+const smallGroupFields = document.getElementById("small-group-fields");
+const minorAgreements = document.getElementById("small-minor-agreements");
 
-const minorAgreements =
-    document.getElementById('small-minor-agreements');
+function updateMinorAgreements() {
+    const ageFields = smallGroupFields.querySelectorAll(
+        "[data-volunteer-age]"
+    );
 
-groupIncludesMinors.forEach((radio) => {
+    const hasMinor = Array.from(ageFields).some(
+        field => field.value === "under_18"
+    );
 
-    radio.addEventListener('change', () => {
+    // Show or hide the minor agreements
+    minorAgreements.hidden = !hasMinor;
+    minorAgreements.disabled = !hasMinor;
 
-        const includesMinors = radio.value === 'yes';
+    // Clear minor agreements when no minors remain
+    if (!hasMinor) {
+        minorAgreements.querySelectorAll(
+            'input[type="checkbox"]'
+        ).forEach(checkbox => {
+            checkbox.checked = false;
+            clearFieldError(checkbox);
+        });
+    }
+}
 
-        minorAgreements.hidden = !includesMinors;
-        minorAgreements.disabled = !includesMinors;
-
-        // Clear previous answers if the section is hidden
-        if (!includesMinors) {
-            minorAgreements
-                .querySelectorAll('input[type="checkbox"]')
-                .forEach((checkbox) => {
-                    checkbox.checked = false;
-                });
-        }
-
-    });
-
+// Listen for age changes, including dynamically added volunteers
+smallGroupFields.addEventListener("change", event => {
+    if (event.target.matches("[data-volunteer-age]")) {
+        updateMinorAgreements();
+    }
 });
+
+// Set the correct initial state
+updateMinorAgreements();
+
 
 // ========================================
 // LARGE GROUP: PREFERRED DATES
@@ -463,7 +459,6 @@ groupIncludesMinors.forEach((radio) => {
 const preferredDates = [
     document.getElementById('large-date-1'),
     document.getElementById('large-date-2'),
-    document.getElementById('large-date-3')
 ];
 
 // Set today's date as the minimum
@@ -626,15 +621,33 @@ function clearFieldError(field) {
 // Validate an individual field
 function validateField(field) {
 
-    if (field.disabled) return true;
+    if (field.matches(':disabled')) return true;
+
+    let isValid = true;
 
     if (!field.checkValidity()) {
         showFieldError(field);
-        return false;
+        isValid = false;
+    } else {
+        clearFieldError(field);
     }
 
-    clearFieldError(field);
-    return true;
+    // Update the required-fields note
+    const form = field.closest('.registration-form');
+    const requiredNote = form?.querySelector('.required-note');
+
+    if (requiredNote) {
+        const hasErrors = form.querySelector(
+            '.is-invalid'
+        );
+
+        requiredNote.classList.toggle(
+            'has-errors',
+            !!hasErrors
+        );
+    }
+
+    return isValid;
 }
 
 
@@ -708,6 +721,160 @@ volunteerModal.addEventListener('change', (event) => {
 
 });
 
+
+// ========================================
+// REGISTRATION FORM SUBMISSION
+// ========================================
+
+const registrationStatus =
+    document.getElementById('registration-status');
+
+const registrationLoading =
+    document.getElementById('registration-loading');
+
+const registrationSuccess =
+    document.getElementById('registration-success');
+
+const modalHeader =
+    volunteerModal.querySelector('.modal-header');
+
+const volunteerLayout =
+    volunteerModal.querySelector('.volunteer-layout');
+
+const modalCloseButton =
+    volunteerModal.querySelector('.modal-close');
+
+const loadingProgressBar =
+    volunteerModal.querySelector('.loading-progress-bar');
+
+const registrationSubmitForms =
+    document.querySelectorAll('.registration-form');
+
+let registrationTimer;
+
+
+// Handle submission for all three registration forms
+registrationSubmitForms.forEach((form) => {
+
+    form.addEventListener('submit', (event) => {
+
+        // Stop the browser from reloading the page
+        event.preventDefault();
+
+        // Run any custom validation checks first
+        checkEmailMatch();
+        checkPreferredDates();
+
+        // Collect the fields that actually need validation
+        const fields = Array.from(
+            form.querySelectorAll('input, select, textarea')
+        ).filter((field) => {
+            return !field.matches(':disabled');
+        });
+
+        // Validate every active field
+        let isValid = true;
+        let firstInvalidField = null;
+
+        fields.forEach((field) => {
+
+            if (!validateField(field)) {
+                isValid = false;
+
+                if (!firstInvalidField) {
+                    firstInvalidField = field;
+                }
+            }
+
+        });
+
+        // Highlight the required-fields note when errors exist
+        const requiredNote = form.querySelector('.required-note');
+
+        if (requiredNote) {
+            requiredNote.classList.toggle('has-errors', !isValid);
+        }
+
+        // Stop if something needs correcting
+        if (!isValid) {
+            firstInvalidField?.focus();
+            return;
+        }
+
+        // Show the submission screen
+        showRegistrationLoading();
+
+    });
+
+});
+
+
+// ========================================
+// SHOW LOADING ANIMATION
+// ========================================
+
+function showRegistrationLoading() {
+
+    // Hide the regular modal content
+    modalHeader.hidden = true;
+    volunteerLayout.hidden = true;
+    modalCloseButton.hidden = true;
+
+    // Show the submission screen
+    registrationStatus.hidden = false;
+    registrationLoading.hidden = false;
+    registrationSuccess.hidden = true;
+
+    // Reset progress bar
+    loadingProgressBar.style.width = '0%';
+
+    // Allow the browser to display the initial state
+    requestAnimationFrame(() => {
+        loadingProgressBar.style.width = '100%';
+    });
+
+    // Simulate a short registration process
+    registrationTimer = setTimeout(() => {
+
+        registrationLoading.hidden = true;
+        registrationSuccess.hidden = false;
+
+    }, 4000);
+
+}
+
+
+// ========================================
+// CLOSE AFTER SUCCESSFUL REGISTRATION
+// ========================================
+
+registrationSuccess.addEventListener('click', () => {
+    volunteerModal.close();
+});
+
+
+// ========================================
+// RESET SUBMISSION SCREEN WHEN MODAL CLOSES
+// ========================================
+
+volunteerModal.addEventListener('close', () => {
+
+    clearTimeout(registrationTimer);
+
+    // Restore the regular modal content
+    modalHeader.hidden = false;
+    volunteerLayout.hidden = false;
+    modalCloseButton.hidden = false;
+
+    // Hide the submission screen
+    registrationStatus.hidden = true;
+    registrationLoading.hidden = true;
+    registrationSuccess.hidden = true;
+
+    // Reset the progress bar
+    loadingProgressBar.style.width = '0%';
+
+});
 
 
 // ========================================
@@ -1892,4 +2059,72 @@ eventListings.addEventListener("click", (e) => {
 
     button.setAttribute("aria-expanded", "true");
 
+});
+
+// ========================================
+// TREES COUNT LOGO - LEAF POP
+// ========================================
+
+const logo = document.querySelector('.logo');
+const leafLayer = document.querySelector('.header-leaf-layer');
+
+function createLeafBurst(event) {
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
+
+    const layerRect = leafLayer.getBoundingClientRect();
+
+    // Get the exact click position within the header
+    const centerX = event.clientX - layerRect.left;
+    const centerY = event.clientY - layerRect.top;
+
+    const leafCount = Math.floor(Math.random() * 2) + 2;
+
+    for (let i = 0; i < leafCount; i++) {
+
+        const leaf = document.createElement('img');
+
+        leaf.src = './img/icons/fluent-emoji-flat--leaf-fluttering-in-wind.svg';
+        leaf.alt = '';
+        leaf.className = 'logo-leaf';
+
+        const startRotation = Math.random() * 360 - 180;
+        const endRotation = startRotation + (Math.random() * 160 - 80);
+
+        const x = Math.random() * 110 - 55;
+        const y = Math.random() * -75 - 15;
+
+        leaf.style.left = `${centerX}px`;
+        leaf.style.top = `${centerY}px`;
+
+        leaf.style.setProperty('--start-rotation', `${startRotation}deg`);
+        leaf.style.setProperty('--end-rotation', `${endRotation}deg`);
+        leaf.style.setProperty('--leaf-x', `${x}px`);
+        leaf.style.setProperty('--leaf-y', `${y}px`);
+
+        leaf.style.animationDelay = `${Math.random() * 0.12}s`;
+
+        leafLayer.appendChild(leaf);
+
+        leaf.addEventListener('animationend', () => {
+            leaf.remove();
+        }, { once: true });
+    }
+}
+
+logo.addEventListener('click', createLeafBurst);
+
+logo.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+
+        createLeafBurst({
+            clientX: logo.getBoundingClientRect().left +
+                     logo.getBoundingClientRect().width / 2,
+            clientY: logo.getBoundingClientRect().top +
+                     logo.getBoundingClientRect().height / 2
+        });
+    }
 });

@@ -1858,13 +1858,16 @@ dialog:not([open]) {
     color: #D74488;
 }
 
+.event-selection .event-browse {
+    margin-top: 0;
+}
 
 /* -----------------------------------------
    REGISTRATION TYPE SELECTION
 ----------------------------------------- */
 
 #registration-selection {
-    padding-top: 1.5rem;
+    padding-top: 1rem;
 }
 
 .registration-types,
@@ -1877,11 +1880,12 @@ dialog:not([open]) {
 
 .registration-types legend,
 .registration-fields legend {
-    margin-top: 2.5rem;
-
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
     font-family: 'Poppins', sans-serif;
-    font-size: 1.15rem;
+    font-size: 22px;
     font-weight: 600;
+    line-height: 1.6;
 }
 
 .registration-types > p,
@@ -1969,6 +1973,12 @@ dialog:not([open]) {
     grid-column: 1;
 }
 
+.volunteer-count {
+    margin-top: 0.2rem;
+    color: #356B88;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
 
 /* Card image */
 
@@ -2020,6 +2030,29 @@ dialog:not([open]) {
     border-top: none;
 }
 
+.registration-form-header {
+    width: 100%;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.registration-form-banner {
+    display: block;
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.registration-form-wrapper[hidden] {
+    display: none;
+}
+
+.registration-form-header {
+    margin: 0 0 1.5rem;
+}
+
 .registration-fields .form-section h3 {
     margin: 0 0 0.4rem;
     color: #59645D;
@@ -2032,6 +2065,21 @@ dialog:not([open]) {
     margin: 0 0 1.2rem;
     color: #777D75;
     line-height: 1.5;
+}
+
+/* ========================================
+   REGISTRATION FORM LINKS
+======================================== */
+
+.registration-fields a {
+    color: #4386A8;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.registration-fields a:hover {
+    color: #D94388;
 }
 
 /* -----------------------------------------
@@ -2275,6 +2323,14 @@ dialog:not([open]) {
     cursor: pointer;
 }
 
+/* Keep agreement labels in a horizontal flex layout */
+.registration-fields .form-field > label.agreement-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    margin-bottom: 0;
+}
+
 /* -----------------------------------------
    INFORMATION & REQUIREMENT NOTICES
 ----------------------------------------- */
@@ -2283,7 +2339,7 @@ dialog:not([open]) {
 .volunteer-modal .group-requirement-note {
     padding: 0.75rem 0.9rem;
 
-    color: #356B88;
+    color: #285B75;
     background-color: #DCECF5;
     border-left: 3px solid #4386A8;
     border-radius: 4px;
@@ -2302,6 +2358,9 @@ dialog:not([open]) {
     margin-top: 1.2rem;
     color: #777D75;
     font-size: 0.85rem;
+}
+.volunteer-modal .registration-fields .group-requirement-note {
+    color: #285B75;
 }
 
 /* -----------------------------------------
@@ -2338,6 +2397,12 @@ dialog:not([open]) {
 
 .volunteer-card-heading h4 {
     margin-bottom: 0;
+}
+
+#small-volunteer-1-first:read-only,
+#small-volunteer-1-last:read-only {
+    cursor: default;
+    background-color: #F0EEE8;
 }
 
 /* Remove volunteer button */
@@ -2396,6 +2461,32 @@ dialog:not([open]) {
     background-color: #4386A8;
 }
 
+/* ========================================
+   SMALL GROUP: VOLUNTEER 1 AUTO-FILLED NAMES
+======================================== */
+
+#small-volunteer-1-first,
+#small-volunteer-1-last {
+    background-color: #F9F6F0;
+    border: 1px solid #D8D0BD;
+    color: #59645D;
+    cursor: default;
+    box-shadow: none;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    caret-color: transparent;
+}
+
+#small-volunteer-1-first:focus,
+#small-volunteer-1-last:focus,
+#small-volunteer-1-first:focus-visible,
+#small-volunteer-1-last:focus-visible {
+    outline: none !important;
+    border: 1px solid #D8D0BD !important;
+    box-shadow: none !important;
+}
+
 /* -----------------------------------------
    LARGE ORGANIZATION FORM
 ----------------------------------------- */
@@ -2404,16 +2495,12 @@ dialog:not([open]) {
     margin-bottom: 1rem;
 }
 
-#large-group-fields .form-section {
-    margin-bottom: 1.5rem;
+#large-group-fields > .group-requirement-note {
+    margin-bottom: 2rem;
 }
 
 #large-group-fields .form-grid {
     row-gap: 1.1rem;
-}
-
-#large-group-fields .form-field {
-    margin-bottom: 0.6rem;
 }
 
 
@@ -2443,15 +2530,16 @@ dialog:not([open]) {
     margin: 20px 0 30px;
     padding: 20px;
 
-    color: #2B2F2A;
+    color: #59645D;
     background-color: #F9F6F0;
-    border: 1px solid #2B2F2A;
-    border-radius: 12px;
+    border: 1px solid #59645D;
+    border-radius: 8px;
+    margin-bottom: 2.9rem;
 }
 
 .availability-section legend {
     padding: 0 8px;
-    color: #2B2F2A;
+    color: #59645D;
     font-size: 1.1rem;
     font-weight: 700;
 }
@@ -2459,7 +2547,7 @@ dialog:not([open]) {
 .availability-description {
     margin: 0 0 18px;
     color: #59645D;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
 }
 
 .availability-grid {
@@ -2473,19 +2561,20 @@ dialog:not([open]) {
 .availability-heading {
     padding: 10px 4px;
     color: #59645D;
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: 700;
 }
 
 .availability-day {
     padding: 16px 8px;
-    color: #2B2F2A;
+    color: #59645D;
     border-top: 1px solid #D8D0BD;
     font-weight: 600;
     text-align: left;
 }
 
 .availability-option {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2500,8 +2589,13 @@ dialog:not([open]) {
 
 .availability-option input {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     width: 1px;
     height: 1px;
+    margin: 0;
     opacity: 0;
 }
 
@@ -2638,6 +2732,10 @@ dialog:not([open]) {
     border-top: 1px solid #D8D0BD;
 }
 
+/* Spacing above the required fields note */
+.registration-fields .agreement-section > .required-note {
+    margin-top: 1.5rem;
+}
 
 /* -----------------------------------------
    VALIDATION FEEDBACK
@@ -2692,7 +2790,7 @@ dialog:not([open]) {
     outline: 1.5px solid #D94388;
     outline-offset: 1px;
     background-color: #FFF8FA;
-    border-radius: 8px;
+    border-radius: 2px;
 }
 
 /* Smooth feedback transitions */
@@ -2700,6 +2798,24 @@ dialog:not([open]) {
 .volunteer-modal .registration-fields .agreement-item {
     transition: background-color 0.2s ease, outline-color 0.2s ease;
 }
+
+.volunteer-modal .registration-fields .required-note.has-errors {
+    color: #D94388 !important;
+    font-weight: 700;
+}
+
+/* Event dropdown validation message */
+.volunteer-modal .registration-fields .event-selection .validation-message {
+    position: static;
+    display: block;
+    margin-top: 0.2rem;
+    color: #B83B70;
+    font-size: 0.82rem;
+    line-height: 1.2;
+}
+
+
+
 
 /* -----------------------------------------
    KEYBOARD ACCESSIBILITY
@@ -2753,8 +2869,6 @@ dialog:not([open]) {
     min-height: 46px;
     box-sizing: border-box;
 }
-
-
 
 /* =========================================================
    6. UPCOMING EVENTS MODAL - OUTER PANEL
@@ -2863,7 +2977,7 @@ dialog:not([open]) {
     margin-top: 1rem;
     padding: 0.8rem 1rem;
 
-    background-color: #EAF4F9;
+    background-color: #DCECF5;
     border-left: 3px solid #4386A8;
     border-radius: 2px;
 }
@@ -2874,7 +2988,7 @@ dialog:not([open]) {
 
 .events-reminder p {
     margin: 0;
-    color: #356B88;
+    color: #285B75;
     font-size: 0.9rem;
 }
 /* =========================================================
@@ -3364,3 +3478,229 @@ dialog:not([open]) {
 }
 
 
+
+
+/* ========================================
+   REGISTRATION SUBMISSION SCREEN
+======================================== */
+
+/* Hide inactive submission screens */
+.registration-status[hidden],
+.registration-loading[hidden],
+.registration-success[hidden] {
+    display: none !important;
+}
+
+/* Full-modal overlay for BOTH loading and success */
+.registration-status {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2rem;
+    background: #DCE8D9;
+    border-radius: 12px;
+    color: #2B2F2A;
+    text-align: center;
+}
+
+/* LOADING SCREEN */
+
+.registration-loading {
+    width: min(100%, 420px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.registration-loading h2 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.loading-dots {
+    display: inline-block;
+    overflow: hidden;
+    width: 1.2em;
+    vertical-align: bottom;
+    animation: loading-dots 1.2s steps(4, end) infinite;
+}
+
+@keyframes loading-dots {
+    from { width: 0; }
+    to { width: 1.2em; }
+}
+
+.dancing-tree {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    animation: tree-dance 1.1s ease-in-out infinite;
+}
+
+@keyframes tree-dance {
+    0%, 100% { transform: rotate(0deg) translateY(0); }
+    25% { transform: rotate(-9deg) translateY(-5px); }
+    50% { transform: rotate(0deg) translateY(0); }
+    75% { transform: rotate(9deg) translateY(-5px); }
+}
+
+.loading-progress {
+    width: 85%;
+    height: 9px;
+    overflow: hidden;
+    background: #F9F6F0;
+    border-radius: 20px;
+}
+
+.loading-progress-bar {
+    width: 0;
+    height: 100%;
+    background: #4F8B57;
+    border-radius: inherit;
+    transition: width 4s ease;
+}
+
+/* SUCCESS SCREEN */
+
+.registration-success {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    border: 0;
+    background: transparent;
+    color: #2B2F2A;
+    font: inherit;
+    text-align: center;
+    cursor: pointer;
+}
+
+.success-checkmark {
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #4F8B57;
+    color: white;
+    font-size: 2rem;
+}
+
+.registration-success h2,
+.registration-success p {
+    margin: 0;
+}
+
+.registration-success h2 {
+    font-size: 1.8rem;
+}
+
+.success-message {
+    font-weight: 700;
+}
+
+.success-submessage,
+.success-close-hint {
+    color: #59645D;
+}
+
+.privacy-note {
+    max-width: 400px;
+    padding: 0.75rem 1rem;
+    background: #F9F6F0;
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+.success-close-hint {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+}
+
+/* REDUCED MOTION ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    .dancing-tree,
+    .loading-dots {
+        animation: none;
+    }
+
+    .loading-progress-bar {
+        transition: none;
+    }
+}
+
+/* ========================================
+   LOGO LEAF POP ANIMATION
+======================================== */
+
+.site-header {
+    position: relative;
+}
+
+.header-leaf-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.logo {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Individual sprout leaves */
+.logo-leaf {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+    pointer-events: none;
+
+    animation: leaf-pop 1.1s ease-out forwards;
+}
+
+@keyframes leaf-pop {
+    0% {
+        opacity: 0;
+        transform:
+            translate(0, 0)
+            rotate(var(--start-rotation))
+            scale(0.4);
+    }
+
+    20% {
+        opacity: 1;
+        transform:
+            translate(0, -8px)
+            rotate(var(--start-rotation))
+            scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(var(--leaf-x), var(--leaf-y))
+            rotate(var(--end-rotation))
+            scale(0.65);
+    }
+}

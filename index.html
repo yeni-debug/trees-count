@@ -20,11 +20,22 @@
         - Main header section of the webpage
         - Contains the title, subtitle, image, and key buttons for the webpage
         -->
-        <header> 
-            <div id="home" class="logo">
-                <img src="./img/logos/TreesCount-2025-Logo.png" alt="" class="header-icon">
+        <header class="site-header">
+
+            <div id="home" class="logo"
+                role="button"
+                tabindex="0"
+                aria-label="Shake the tree">
+
+                <img src="./img/logos/TreesCount-2025-Logo.png"
+                    alt="Trees Count!"
+                    class="header-icon">
+
             </div>
-        </header> 
+
+            <div class="header-leaf-layer" aria-hidden="true"></div>
+
+        </header>
 
         <!-- NAVBAR
         Purpose:
@@ -936,7 +947,7 @@
  <!-- REGISTRATION TYPE -->
     <fieldset class="registration-types">
 
-        <legend>Registration Form</legend>
+        <legend>Registration</legend>
 
         <p>How many people are you registering?</p>
 
@@ -1007,14 +1018,34 @@
 <div id="registration-form-screen" hidden>
 
     
- <!-- ========================================
+        <!-- ========================================
                  INDIVIDUAL REGISTRATION FORM
             ========================================= -->
+
+<!-- INDIVIDUAL FORM -->
+
+<div class="registration-form-wrapper" data-form="individual" hidden> 
+
+<!-- REGISTRATION FORM BANNER -->
+<div class="registration-form-header">
+    <img
+        src="./img/logos/banner-trees-count-2025.png"
+        alt="Trees Count!"
+        class="registration-form-banner">
+</div>
+
+    <form class="registration-form"
+        data-registration-form="individual"
+        novalidate>
+
+   
 
             <fieldset class="registration-fields"
                 id="individual-fields" hidden disabled>
 
-                <legend>Individual Information Form</legend>
+                <legend>Individual Form</legend>
+
+
 
                     <div class="adult-registration-notice">
                         <p class="group-requirement-note eligibility-note">
@@ -1051,7 +1082,7 @@
                 <!-- 1. PERSONAL INFORMATION -->
                 <section class="form-section">
 
-                    <h3>Personal Information</h3>
+                    <h3>Contact Information</h3>
                     <p>Please provide your contact information.</p>
 
                     <div class="form-grid">
@@ -1097,7 +1128,7 @@
 
                     <!-- Age confirmation -->
 
-                    <div class="form-field validation-group">
+                    <div class=" validation-group">
                         <label class="agreement-checkbox agreement-item"
                             for="individual-adult-confirmation">
 
@@ -1115,7 +1146,6 @@
 
 
                     <!-- RELEASE AND WAIVER -->
-                    <div class="form-field">
 
                         <label class="agreement-checkbox agreement-item">
 
@@ -1132,10 +1162,9 @@
                                 </a>. *
                             </span>
                         </label>
-                    </div>
+
 
                     <!-- OPTIONAL PHOTO RELEASE -->
-                    <div class="form-field">
 
                         <label class="agreement-checkbox">
 
@@ -1154,10 +1183,10 @@
                                 </a>.
                             </span>
                         </label>
-                    </div>
+
 
                     <!-- INFORMATION CERTIFICATION -->
-                    <div class="form-field">
+
 
                         <label class="agreement-checkbox agreement-item">
 
@@ -1172,7 +1201,7 @@
                                 my knowledge. *
                             </span>
                         </label>
-                    </div>
+   
 
                     <p class="required-note">
                         * Required fields.
@@ -1194,15 +1223,35 @@
                 </div>
 
             </fieldset>
+            </form>
+            </div>
 
             <!-- ========================================
                  SMALL GROUP REGISTRATION FORM
             ========================================= -->
 
+            <div class="registration-form-wrapper" data-form="small-group" hidden>
+
+<!-- REGISTRATION FORM BANNER -->
+<div class="registration-form-header">
+    <img
+        src="./img/logos/banner-trees-count-2025.png"
+        alt="Trees Count!"
+        class="registration-form-banner">
+</div>
+
+    <form class="registration-form"
+        data-registration-form="small-group"
+        novalidate>
+        
+    
+
             <fieldset class="registration-fields"
                 id="small-group-fields" hidden disabled>
 
-                <legend>Small Group Registration</legend>
+                <legend>Small Group Form</legend>
+
+
 
                 <!-- EVENT SELECTION -->
                 <div class="event-selection">
@@ -1214,7 +1263,7 @@
                     <select id="small-group-event-select"
                         name="event" required>
                         <option value="" disabled selected>
-                            Select an upcoming event
+                            Select an upcoming event 
                         </option>
                         <!-- Upcoming events added here -->
                     </select>
@@ -1297,6 +1346,12 @@
                         volunteers in the group.
                     </p>
 
+                        <p class="group-requirement-note">
+                            If your group includes volunteers under 18,
+                            each minor should attend with a parent,
+                            guardian, or responsible adult.
+                        </p>
+
                     <p class="group-requirement-note eligibility-note">
                         Primary Contact is automatically designated as
                         Volunteer 1 for your group.
@@ -1317,7 +1372,7 @@
                                 <input id="small-volunteer-1-first"
                                     name="volunteers[0][first_name]"
                                     type="text" readonly
-                                    data-primary-contact-first>
+                                    data-primary-contact-first tabindex="-1">
                             </div>
 
                             <div class="form-field">
@@ -1328,7 +1383,7 @@
                                 <input id="small-volunteer-1-last"
                                     name="volunteers[0][last_name]"
                                     type="text" readonly
-                                    data-primary-contact-last>
+                                    data-primary-contact-last tabindex="-1">
                             </div>
 
                             <div class="form-field">
@@ -1337,10 +1392,12 @@
                                 </label>
 
                                 <select id="small-volunteer-1-age"
-                                    name="volunteers[0][age_range]" required>
+                                    name="volunteers[0][age_range]"
+                                    data-volunteer-age
+                                    required>
 
                                     <option value="">Select age range</option>
-                                    <option value="under_18">Under 18</option>
+
                                     <option value="18-24">18–24</option>
                                     <option value="25-34">25–34</option>
                                     <option value="35-44">35–44</option>
@@ -1470,39 +1527,8 @@
 
                     </div>
 
-                    <!-- MINOR PARTICIPANTS -->
-                    <div class="form-field minor-participant-question validation-group">
 
-                        <p class="group-requirement-note">
-                            If your group includes volunteers under 18,
-                            each minor should attend with a parent,
-                            guardian, or responsible adult.
-                        </p>
-
-                        <label>
-                            Will your group include children under 18? *
-                        </label>
-
-                        <div class="radio-options">
-
-                            <label class="radio-option">
-                                <input type="radio"
-                                    name="group_includes_minors"
-                                    value="yes" required>
-                                Yes
-                            </label>
-
-                            <label class="radio-option">
-                                <input type="radio"
-                                    name="group_includes_minors"
-                                    value="no" required>
-                                No
-                            </label>
-
-                        </div>
-                    </div>
-
-                    <!-- ONLY SHOWN WHEN THE ANSWER IS YES -->
+                    <!-- AUTOMATIC MINOR AGREEMENTS -->
                     <fieldset id="small-minor-agreements"
                         class="conditional-question" hidden disabled>
 
@@ -1547,7 +1573,6 @@
                     </fieldset>
 
                     <!-- ACCURACY CERTIFICATION -->
-                    <div class="form-field">
 
                         <div class="agreement-checkbox agreement-item">
 
@@ -1561,7 +1586,7 @@
                                 the best of my knowledge. *
                             </label>
                         </div>
-                    </div>
+
 
                     <p class="required-note">
                         * Required fields.
@@ -1583,327 +1608,324 @@
                 </div>
 
             </fieldset>
-
+            </form>
+            </div>
 
 
 <!-- ========================================
      LARGE ORGANIZATION / CORPORATE GROUP FORM
 ========================================= -->
 
-<fieldset class="registration-fields" id="large-group-fields"
-    hidden disabled>
+<div class="registration-form-wrapper" data-form="large-group" hidden>
 
-    <legend>Organization / Corporate Group Registration</legend>
+            <!-- REGISTRATION FORM BANNER -->
+            <div class="registration-form-header">
+                <img
+                    src="./img/logos/banner-trees-count-2025.png"
+                    alt="Trees Count!"
+                    class="registration-form-banner">
+            </div>
+
+    <form class="registration-form"
+        data-registration-form="large-group"
+        novalidate>
         
-    <p class="group-requirement-note">
-            To qualify as an organization or corporate group,
-            you must guarantee at least 25 anticipated volunteers.
-            If you have fewer than 25 anticipated volunteers,
-            please sign up as a Small Group.
-        </p>
-
-         <!-- TOP BACK BUTTON -->
-    <div class="back-navigation">
-
-    <button type="button" class="registration-back">← Back</button>
-    <span class="back-description">(Return to registration type selection)</span>
     
-    </div>
+            <fieldset class="registration-fields" id="large-group-fields"
+                hidden disabled>
 
-    <!-- ORGANIZATION INFORMATION -->
-<section class="form-section">
+                <legend>Organization / Corporate Group Form</legend>
+                
+                <p class="group-requirement-note">
+                        To qualify as an organization or corporate group,
+                        you must guarantee at least 25 anticipated volunteers.
+                        If you have fewer than 25 anticipated volunteers,
+                        please sign up as a Small Group.
+                    </p>
 
-    <h3>Organization Information</h3>
-    <p>Tell us about your organization.</p>
+                <!-- ORGANIZATION INFORMATION -->
+            <section class="form-section">
 
-    <div class="form-grid">
+                <h3>Organization Information</h3>
+                <p>Tell us about your organization.</p>
 
-        <div class="form-field">
-            <label for="large-organization-name">
-                Organization / Company Name *
-            </label>
+                <div class="form-grid">
 
-            <input id="large-organization-name"
-                name="organization_name"
-                type="text" required>
-        </div>
+                    <div class="form-field">
+                        <label for="large-organization-name">
+                            Organization / Company Name *
+                        </label>
 
-        <div class="form-field">
-            <label for="large-volunteer-count">
-                Anticipated Number of Volunteers *
-            </label>
+                        <input id="large-organization-name"
+                            name="organization_name"
+                            type="text" required>
+                    </div>
 
-            <input id="large-volunteer-count"
-                name="anticipated_volunteers"
-                type="number" min="25" step="1"
-                placeholder="Minimum of 25" required>
-        </div>
+                    <div class="form-field">
+                        <label for="large-volunteer-count">
+                            Anticipated Number of Volunteers *
+                        </label>
 
-    </div>
-
-</section>
-
-
-    <!-- 2. PRIMARY CONTACT -->
-
-    <section class="form-section">
-
-        <h3>Primary Contact Information</h3>
-
-        <p>
-            Please provide the information for the person
-            coordinating your organization's volunteer event.
-        </p>
-
-        <div class="form-grid">
-
-            <div class="form-field">
-
-                <label for="large-contact-first">First Name *</label>
-
-                <input id="large-contact-first"
-                    name="contact_first_name"
-                    type="text" autocomplete="given-name" required>
-
-            </div>
-
-            <div class="form-field">
-
-                <label for="large-contact-last">Last Name *</label>
-
-                <input id="large-contact-last"
-                    name="contact_last_name"
-                    type="text" autocomplete="family-name" required>
-
-            </div>
-
-            <div class="form-field">
-
-                <label for="large-contact-email">Email Address *</label>
-
-                <input id="large-contact-email"
-                    name="contact_email"
-                    type="email" autocomplete="email" required>
-
-            </div>
-
-            <div class="form-field">
-
-                <label for="large-contact-phone">Phone Number *</label>
-
-                <input id="large-contact-phone"
-                    name="contact_phone"
-                    type="tel" autocomplete="tel" required>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-   
-
-    <!-- 5. PREFERRED DATE, TIME & LOCATION -->
-
-    <section class="form-section">
-
-        <h3>Event Preferences & Scheduling</h3>
-
-        <p>
-            Please share your preferred dates, times, and location below. 
-            NYC Parks staff will review your request and follow up with available opportunities.
-        </p>
-
-
-        <!-- PREFERRED DATES -->
-
-        <div class="form-field preferred-dates">
-
-            <label>Preferred Dates *</label>
-
-            <div class="form-grid">
-
-                <div class="form-field">
-
-                    <label for="large-date-1">Preferred Date 1 *</label>
-
-                    <input id="large-date-1"
-                        name="preferred_date_1"
-                        type="date" required>
+                        <input id="large-volunteer-count"
+                            name="anticipated_volunteers"
+                            type="number" min="25" step="1"
+                            placeholder="Minimum of 25" required>
+                    </div>
 
                 </div>
 
-                <div class="form-field">
+            </section>
 
-                    <label for="large-date-2">Preferred Date 2</label>
 
-                    <input id="large-date-2"
-                        name="preferred_date_2"
-                        type="date">
+                <!-- 2. PRIMARY CONTACT -->
+
+                <section class="form-section">
+
+                    <h3>Primary Contact Information</h3>
+
+                    <p>
+                        Please provide the information for the person
+                        coordinating your organization's volunteer event.
+                    </p>
+
+                    <div class="form-grid">
+
+                        <div class="form-field">
+
+                            <label for="large-contact-first">First Name *</label>
+
+                            <input id="large-contact-first"
+                                name="contact_first_name"
+                                type="text" autocomplete="given-name" required>
+
+                        </div>
+
+                        <div class="form-field">
+
+                            <label for="large-contact-last">Last Name *</label>
+
+                            <input id="large-contact-last"
+                                name="contact_last_name"
+                                type="text" autocomplete="family-name" required>
+
+                        </div>
+
+                        <div class="form-field">
+
+                            <label for="large-contact-email">Email Address *</label>
+
+                            <input id="large-contact-email"
+                                name="contact_email"
+                                type="email" autocomplete="email" required>
+
+                        </div>
+
+                        <div class="form-field">
+
+                            <label for="large-contact-phone">Phone Number *</label>
+
+                            <input id="large-contact-phone"
+                                name="contact_phone"
+                                type="tel" autocomplete="tel" required>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- 5. PREFERRED DATE, TIME & LOCATION -->
+
+                <section class="form-section">
+
+                    <h3>Event Preferences</h3>
+
+                    <p>
+                        Please share your preferred dates, times, and location below. 
+                        NYC Parks staff will review your request and follow up with available opportunities.
+                    </p>
+
+
+                    <!-- PREFERRED DATES -->
+
+                    <div class="form-field preferred-dates">
+
+                        <div class="form-grid">
+
+                            <div class="form-field">
+
+                                <label for="large-date-1">Preferred Date 1 *</label>
+
+                                <input id="large-date-1"
+                                    name="preferred_date_1"
+                                    type="date" required>
+
+                            </div>
+
+                            <div class="form-field">
+
+                                <label for="large-date-2">Preferred Date 2</label>
+
+                                <input id="large-date-2"
+                                    name="preferred_date_2"
+                                    type="date">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- GENERAL AVAILABILITY -->
+            <fieldset class="availability-section">
+
+                <legend>General Availability</legend>
+
+                <p class="availability-description">
+                    When is your organization generally available to volunteer?
+                    Select all that apply.
+                </p>
+
+                <div class="availability-grid">
+
+                    <!-- Column headings -->
+                    <div class="availability-heading"></div>
+                    <div class="availability-heading">Morning</div>
+                    <div class="availability-heading">Afternoon</div>
+                    <div class="availability-heading">Evening</div>
+
+                    <!-- Weekdays -->
+                    <div class="availability-day">Weekdays</div>
+
+                    <label class="availability-option">
+                        <input type="checkbox" name="availability[]" value="Weekdays - Morning">
+                        <span class="availability-check"></span>
+                    </label>
+
+                    <label class="availability-option">
+                        <input type="checkbox" name="availability[]" value="Weekdays - Afternoon">
+                        <span class="availability-check"></span>
+                    </label>
+
+                    <label class="availability-option">
+                        <input type="checkbox" name="availability[]" value="Weekdays - Evening">
+                        <span class="availability-check"></span>
+                    </label>
+
+                    <!-- Weekends -->
+                    <div class="availability-day">Weekends</div>
+
+                    <label class="availability-option">
+                        <input type="checkbox" name="availability[]" value="Weekends - Morning">
+                        <span class="availability-check"></span>
+                    </label>
+
+                    <label class="availability-option">
+                        <input type="checkbox" name="availability[]" value="Weekends - Afternoon">
+                        <span class="availability-check"></span>
+                    </label>
+
+                    <label class="availability-option">
+                        <input type="checkbox" name="availability[]" value="Weekends - Evening">
+                        <span class="availability-check"></span>
+                    </label>
 
                 </div>
 
-                <div class="form-field">
+            </fieldset>
 
-                    <label for="large-date-3">Preferred Date 3</label>
+                    <!-- PREFERRED BOROUGH -->
 
-                    <input id="large-date-3"
-                        name="preferred_date_3"
-                        type="date">
+                    <div class="form-field">
+
+                        <label for="large-preferred-borough">
+                            Preferred Borough *
+                        </label>
+
+                        <select id="large-preferred-borough"
+                            name="preferred_borough" required>
+
+                            <option value="">Select a borough</option>
+                            <option value="Bronx">Bronx</option>
+                            <option value="Brooklyn">Brooklyn</option>
+                            <option value="Manhattan">Manhattan</option>
+                            <option value="Queens">Queens</option>
+                            <option value="Staten Island">Staten Island</option>
+                            <option value="any">No preference / Any borough</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- PREFERRED LOCATION -->
+
+                    <div class="form-field">
+
+                        <label for="large-preferred-location">
+                            Do you have a preferred location?
+                        </label>
+
+                        <input id="large-preferred-location"
+                            name="preferred_location"
+                            type="text"
+                            placeholder="Enter a preferred park, neighborhood, or specific location (if known).">
+
+                    </div>
+
+                </section>
+
+
+                <!-- 6. ADDITIONAL DETAILS -->
+
+                <section class="form-section">
+
+                    <h3>Additional Details</h3>
+
+                    <p>
+                        Is there anything else our staff should know
+                        about your organization's event request?
+                    </p>
+
+                    <div class="form-field">
+
+                        <label for="large-additional-details">
+                            Additional Details of Your Request
+                        </label>
+
+                        <textarea id="large-additional-details"
+                name="additional_details"
+                rows="5"
+                placeholder="Please share any other information that may help us coordinate your event, such as accessibility needs, preferred activities, scheduling limitations, or special requests."></textarea>
+                    </div>
+
+                </section>
+
+                <p class="required-note">
+                    * Required fields.
+                </p>
+
+            <!-- BOTTOM FORM BUTTONS -->
+                <div class="registration-form-actions">
+
+                    <button
+                        type="button"
+                        class="registration-back">
+
+                        ← Back
+                    </button>
+
+                    <button type="submit" class="registration-submit">
+                        Submit Request
+                    </button>
 
                 </div>
 
+            </fieldset>
+            </form>
             </div>
 
-        </div>
-
-        <!-- GENERAL AVAILABILITY -->
-<fieldset class="availability-section">
-
-    <legend>General Availability</legend>
-
-    <p class="availability-description">
-        When is your organization generally available to volunteer?
-        Select all that apply.
-    </p>
-
-    <div class="availability-grid">
-
-        <!-- Column headings -->
-        <div class="availability-heading"></div>
-        <div class="availability-heading">Morning</div>
-        <div class="availability-heading">Afternoon</div>
-        <div class="availability-heading">Evening</div>
-
-        <!-- Weekdays -->
-        <div class="availability-day">Weekdays</div>
-
-        <label class="availability-option">
-            <input type="checkbox" name="availability[]" value="Weekdays - Morning">
-            <span class="availability-check"></span>
-        </label>
-
-        <label class="availability-option">
-            <input type="checkbox" name="availability[]" value="Weekdays - Afternoon">
-            <span class="availability-check"></span>
-        </label>
-
-        <label class="availability-option">
-            <input type="checkbox" name="availability[]" value="Weekdays - Evening">
-            <span class="availability-check"></span>
-        </label>
-
-        <!-- Weekends -->
-        <div class="availability-day">Weekends</div>
-
-        <label class="availability-option">
-            <input type="checkbox" name="availability[]" value="Weekends - Morning">
-            <span class="availability-check"></span>
-        </label>
-
-        <label class="availability-option">
-            <input type="checkbox" name="availability[]" value="Weekends - Afternoon">
-            <span class="availability-check"></span>
-        </label>
-
-        <label class="availability-option">
-            <input type="checkbox" name="availability[]" value="Weekends - Evening">
-            <span class="availability-check"></span>
-        </label>
-
     </div>
-
-</fieldset>
-
-        <!-- PREFERRED BOROUGH -->
-
-        <div class="form-field">
-
-            <label for="large-preferred-borough">
-                Preferred Borough *
-            </label>
-
-            <select id="large-preferred-borough"
-                name="preferred_borough" required>
-
-                <option value="">Select a borough</option>
-                <option value="Bronx">Bronx</option>
-                <option value="Brooklyn">Brooklyn</option>
-                <option value="Manhattan">Manhattan</option>
-                <option value="Queens">Queens</option>
-                <option value="Staten Island">Staten Island</option>
-                <option value="any">Any Borough</option>
-
-            </select>
-
-        </div>
-
-
-        <!-- PREFERRED LOCATION -->
-
-        <div class="form-field">
-
-            <label for="large-preferred-location">
-                Do you have a preferred location?
-            </label>
-
-            <input id="large-preferred-location"
-                name="preferred_location"
-                type="text"
-                placeholder="Enter a preferred park, neighborhood, or specific location (if known).">
-
-        </div>
-
-    </section>
-
-
-    <!-- 6. ADDITIONAL DETAILS -->
-
-    <section class="form-section">
-
-        <h3>Additional Details</h3>
-
-        <p>
-            Is there anything else our staff should know
-            about your organization's event request?
-        </p>
-
-        <div class="form-field">
-
-            <label for="large-additional-details">
-                Additional Details of Your Request
-            </label>
-
-            <textarea id="large-additional-details"
-    name="additional_details"
-    rows="5"
-    placeholder="Please share any other information that may help us coordinate your event, such as accessibility needs, preferred activities, scheduling limitations, or special requests."></textarea>
-        </div>
-
-    </section>
-
-
-   <!-- BOTTOM FORM BUTTONS -->
-    <div class="registration-form-actions">
-
-        <button
-            type="button"
-            class="registration-back">
-
-            ← Back
-        </button>
-
-        <button type="submit" class="registration-submit">
-            Submit Request
-        </button>
-
-    </div>
-
-</fieldset>
-
-</div>
-
 
 </div>
 
@@ -2147,6 +2169,66 @@
             </div>
 
         </div>
+
+    <!-- REGISTRATION SUBMISSION SCREEN -->
+    <section id="registration-status" class="registration-status" hidden>
+
+        <!-- LOADING ANIMATION -->
+        <div id="registration-loading"
+            class="registration-loading"
+            role="status"
+            aria-live="polite"
+            hidden>
+
+            <h2>
+                Every Tree Counts<span class="loading-dots">...</span>
+            </h2>
+
+            <img
+                src="./img/icons/tree.png"
+                alt=""
+                class="dancing-tree">
+
+            <div class="loading-progress">
+                <div class="loading-progress-bar"></div>
+            </div>
+
+            <p>Preparing your registration...</p>
+
+        </div>
+
+        <!-- SUCCESS CONFIRMATION -->
+        <button
+            type="button"
+            id="registration-success"
+            class="registration-success"
+            hidden>
+
+            <span class="success-checkmark" aria-hidden="true">✓</span>
+
+            <h2>You're all set!</h2>
+
+            <p class="success-message">
+                Thank you for registering!
+            </p>
+
+            <p class="success-submessage">
+                Your interest in caring for NYC's trees makes a difference. 🌳
+            </p>
+
+            <p class="privacy-note">
+                Prototype demonstration — no personal information
+                has been sent or saved.
+            </p>
+
+            <span class="success-close-hint">
+                Click anywhere in this window to return to the website
+            </span>
+
+        </button>
+
+    </section>
+
 
     </div>
 
