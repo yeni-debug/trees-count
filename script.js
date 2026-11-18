@@ -340,12 +340,21 @@ function updateVolunteerNumbers() {
     const volunteerCards =
         additionalVolunteers.querySelectorAll('.additional-volunteer');
 
+    // Volunteer 2 is required and cannot be removed
+    volunteerCards.forEach((card, index) => {
+        const removeButton = card.querySelector('.remove-volunteer-btn');
+
+        if (removeButton) {
+            removeButton.hidden = index === 0;
+        }
+    });    
+
     volunteerCards.forEach((card, index) => {
 
         const volunteerNumber = index + 2;
 
         card.querySelector('.volunteer-number').textContent =
-            `Volunteer ${volunteerNumber}`;
+            `Volunteer ${volunteerNumber} `;
 
         const firstName = card.querySelector('[data-volunteer-first]');
         const lastName = card.querySelector('[data-volunteer-last]');
@@ -394,7 +403,23 @@ addVolunteerBtn.addEventListener('click', () => {
 
 });
 
+// Automatically create Volunteer 2
+function initializeSmallGroupVolunteers() {
 
+    if (!additionalVolunteers || !volunteerTemplate) return;
+
+    // Don't create duplicates if the form is initialized again
+    if (additionalVolunteers.querySelector('.additional-volunteer')) return;
+
+    const volunteerTwo =
+        volunteerTemplate.content.cloneNode(true);
+
+    additionalVolunteers.appendChild(volunteerTwo);
+
+    updateVolunteerNumbers();
+}
+
+initializeSmallGroupVolunteers();
 // Remove a volunteer
 additionalVolunteers.addEventListener('click', (event) => {
 
@@ -403,7 +428,15 @@ additionalVolunteers.addEventListener('click', (event) => {
 
     if (!removeButton) return;
 
-    removeButton.closest('.additional-volunteer').remove();
+    const volunteerCard =
+        removeButton.closest('.additional-volunteer');
+
+    // Never allow Volunteer 2 to be removed
+    if (volunteerCard === additionalVolunteers.firstElementChild) {
+        return;
+    }
+
+    volunteerCard.remove();
 
     updateVolunteerNumbers();
     updateMinorAgreements();
@@ -502,6 +535,45 @@ preferredDates.forEach((input) => {
     input.addEventListener('change', checkPreferredDates);
 });
 
+// ========================================
+// PHONE NUMBER FORMATTING
+// ========================================
+
+const phoneFields = document.querySelectorAll(
+    '.registration-form input[type="tel"]'
+);
+
+phoneFields.forEach((phone) => {
+
+    phone.addEventListener('input', () => {
+
+        // Keep only numeric digits
+        let digits = phone.value.replace(/\D/g, '');
+
+        // Allow a leading US country code (+1)
+        if (digits.length === 11 && digits.startsWith('1')) {
+            digits = digits.slice(1);
+        }
+
+        // Limit to 10 digits
+        digits = digits.slice(0, 10);
+
+        // Format as the user types
+        let formatted = '';
+
+        if (digits.length > 6) {
+            formatted = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+        } else if (digits.length > 3) {
+            formatted = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+        } else if (digits.length > 0) {
+            formatted = `(${digits}`;
+        }
+
+        phone.value = formatted;
+
+    });
+
+});
 
 // ========================================
 // REGISTRATION FORM VALIDATION
@@ -539,6 +611,10 @@ function getValidationMessage(field) {
 
     if (field.validity.badInput) {
         return "Please enter a valid value.";
+    }
+
+    if (field.validity.patternMismatch && field.type === "tel") {
+    return "Please enter a valid 10-digit phone number.";
     }
 
     return "Please check this field.";
@@ -802,18 +878,90 @@ registrationSubmitForms.forEach((form) => {
         }
 
         // Show the submission screen
-        showRegistrationLoading();
+        showRegistrationLoading(form);;
 
     });
 
 });
 
+// ========================================
+// PERSONALIZED SUCCESS MESSAGE
+// ========================================
+
+function updateSuccessMessage(form) {
+
+    const formType = form.dataset.registrationForm;
+
+    const successMessage =
+        document.getElementById('success-message');
+
+    const successSubmessage =
+        document.getElementById('success-submessage');
+
+    let firstName = '';
+    let eventName = '';
+
+    // INDIVIDUAL REGISTRATION
+    if (formType === 'individual') {
+
+        firstName =
+            form.querySelector('#individual-first').value.trim();
+
+        eventName =
+            form.querySelector('#individual-event-select').selectedOptions[0].textContent.trim();
+
+        successMessage.textContent =
+            `Thank you, ${firstName}, for registering!`;
+
+        successSubmessage.innerHTML =
+        `You're registered for ${eventName}.<br>
+        Your interest in caring for NYC's trees makes a difference. 🌳`;
+
+    }
+
+    // SMALL GROUP REGISTRATION
+    else if (formType === 'small-group') {
+
+        firstName =
+            form.querySelector('#small-contact-first').value.trim();
+
+        eventName =
+            form.querySelector('#small-group-event-select').selectedOptions[0].textContent.trim();
+
+        successMessage.textContent =
+            `Thank you, ${firstName}, for registering!`;
+
+        successSubmessage.innerHTML =
+        `Your group is registered for ${eventName}.<br>
+        Your interest in caring for NYC's trees makes a difference. 🌳`;
+
+    }
+
+    // LARGE ORGANIZATION REQUEST
+    else if (formType === 'large-group') {
+
+        firstName =
+            form.querySelector('#large-contact-first').value.trim();
+
+        const organization =
+            form.querySelector('#large-organization-name').value.trim();
+
+        successMessage.textContent =
+            `Thank you, ${firstName}!`;
+
+        successSubmessage.innerHTML =
+        `Your volunteer request for ${organization} is submitted.<br>
+        Your interest in caring for NYC's trees makes a difference. 🌳`;
+    
+    }
+
+}
 
 // ========================================
 // SHOW LOADING ANIMATION
 // ========================================
 
-function showRegistrationLoading() {
+function showRegistrationLoading(form) {
 
     // Hide the regular modal content
     modalHeader.hidden = true;
@@ -836,10 +984,13 @@ function showRegistrationLoading() {
     // Simulate a short registration process
     registrationTimer = setTimeout(() => {
 
-        registrationLoading.hidden = true;
-        registrationSuccess.hidden = false;
+    // Personalize the confirmation using the submitted form
+    updateSuccessMessage(form);
 
-    }, 4000);
+    registrationLoading.hidden = true;
+    registrationSuccess.hidden = false;
+
+}, 4000);
 
 }
 
@@ -1614,13 +1765,13 @@ function createEventCard(event, detailsPanelId) {
     // EVENT TAGS
     // ------------------------------------
 
-    const tagsContainer =
-        card.querySelector(".event-tags");
+    const tagsContainer = card.querySelector(".event-tags");
 
     if (tagsContainer) {
+        // Clear tags left over from a previously displayed event
+        tagsContainer.innerHTML = "";
 
         event.tags?.forEach(tag => {
-
             const tagElement = document.createElement("span");
 
             tagElement.classList.add(
@@ -1631,11 +1782,23 @@ function createEventCard(event, detailsPanelId) {
             tagElement.textContent = tag.label;
 
             tagsContainer.appendChild(tagElement);
-
         });
-
     }
 
+    
+// ------------------------------------
+// SPECIAL EVENT STAR
+// ------------------------------------
+
+const specialStar = card.querySelector(".event-special-star");
+
+if (specialStar) {
+    const hasSpecialTag = event.tags?.some(tag =>
+        tag.type === "event" || tag.type === "guest"
+    ) ?? false;
+
+    specialStar.hidden = !hasSpecialTag;
+}
 
     // ------------------------------------
     // EVENT DATE
@@ -1790,10 +1953,32 @@ function updateEventDetails(details, event) {
      // Save the selected event ID
     details.dataset.eventId = event.id;
 
+    // UPDATE EVENT TAGS
+    const tagsContainer = details.querySelector(".event-tags");
+
+    if (tagsContainer) {
+        tagsContainer.replaceChildren();
+
+        event.tags?.forEach(tag => {
+            const tagElement = document.createElement("span");
+
+            tagElement.classList.add(
+                "event-tag",
+                `event-tag-${tag.type}`
+            );
+
+            tagElement.textContent = tag.label;
+
+            tagsContainer.appendChild(tagElement);
+        });
+
+        // Hide the container if there are no tags
+        tagsContainer.hidden = !event.tags?.length;
+    }
+
     // Event-specific heading
     details.querySelector(".event-details-title").textContent =
         `Event: ${event.name}`;
-
 
     // Event description
     const description =
@@ -2060,6 +2245,62 @@ eventListings.addEventListener("click", (e) => {
     button.setAttribute("aria-expanded", "true");
 
 });
+
+
+// ========================================
+// EVENTS: SCROLL DOWN BUTTON
+// ========================================
+
+const eventsPanel = document.getElementById('events-panel');
+
+const eventsScrollCue =
+    document.querySelector('.events-scroll-cue');
+
+const boroughSection =
+    document.querySelector('.borough-section');
+
+// Hide the arrow
+function hideEventsScrollCue() {
+    eventsScrollCue.classList.add('is-hidden');
+}
+
+// Click arrow to jump to Find an Event
+eventsScrollCue.addEventListener('click', () => {
+
+    hideEventsScrollCue();
+
+    boroughSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+
+});
+
+// Show or hide arrow depending on scroll position
+document.addEventListener('scroll', (event) => {
+
+    if (eventsPanel.hidden) return;
+
+    const scrollTarget = event.target;
+
+    // Only respond to scrolling within the events modal
+    if (
+        eventsPanel.contains(scrollTarget) ||
+        scrollTarget.contains?.(eventsPanel)
+    ) {
+
+        const scrollPosition = scrollTarget.scrollTop || 0;
+
+        if (scrollPosition > 20) {
+            eventsScrollCue.classList.add('is-hidden');
+        } else {
+            eventsScrollCue.classList.remove('is-hidden');
+        }
+    }
+
+}, true);
+
+
 
 // ========================================
 // TREES COUNT LOGO - LEAF POP

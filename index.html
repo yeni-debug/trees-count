@@ -1102,13 +1102,20 @@
                         <div class="form-field">
                             <label for="individual-email">Email Address *</label>
                             <input id="individual-email" name="email"
-                                type="email" autocomplete="email" required>
+                                type="email" autocomplete="email" placeholder="you@email.com" required>
                         </div>
 
                         <div class="form-field">
                             <label for="individual-phone">Phone Number *</label>
                             <input id="individual-phone" name="phone"
-                                type="tel" autocomplete="tel" required>
+                                type="tel"
+                                autocomplete="tel"
+                                inputmode="numeric"
+                                maxlength="14"
+                                pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
+                                placeholder="(718) 555-1234"
+                                title="Enter a 10-digit US phone number."
+                                required>
                         </div>
 
                     </div>
@@ -1323,14 +1330,21 @@
                             <label for="small-contact-email">Email Address *</label>
                             <input id="small-contact-email"
                                 name="contact_email"
-                                type="email" autocomplete="email" required>
+                                type="email" autocomplete="email" placeholder="you@email.com" required>
                         </div>
 
                         <div class="form-field">
                             <label for="small-contact-phone">Phone Number *</label>
                             <input id="small-contact-phone"
                                 name="contact_phone"
-                                type="tel" autocomplete="tel" required>
+                                type="tel"
+                                autocomplete="tel"
+                                inputmode="numeric"
+                                maxlength="14"
+                                pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
+                                placeholder="(718) 555-1234"
+                                title="Enter a 10-digit US phone number."
+                                required>
                         </div>
 
                     </div>
@@ -1716,7 +1730,7 @@
 
                             <input id="large-contact-email"
                                 name="contact_email"
-                                type="email" autocomplete="email" required>
+                                type="email" autocomplete="email" placeholder="you@email.com" required>
 
                         </div>
 
@@ -1726,7 +1740,14 @@
 
                             <input id="large-contact-phone"
                                 name="contact_phone"
-                                type="tel" autocomplete="tel" required>
+                                type="tel"
+                                autocomplete="tel"
+                                inputmode="numeric"
+                                maxlength="14"
+                                pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
+                                placeholder="(718) 555-1234"
+                                title="Enter a 10-digit US phone number."
+                                required>
 
                         </div>
 
@@ -2101,9 +2122,12 @@
 
                                         <!-- PARK IMAGE -->
                                         <div class="event-card-image">
+
                                             <img src="" alt="">
-                                            <!-- EVENT TAGS -->
-                                            <div class="event-tags"></div>
+
+                                            <div class="event-special-star" 
+                                            aria-hidden="true" hidden>★</div>
+
                                         </div>
 
                                         <!-- EVENT INFORMATION -->
@@ -2138,6 +2162,9 @@
                                        
                                             <div class="event-details" hidden>
 
+                                                <!-- EVENT TAGS -->
+                                                <div class="event-tags"></div>
+
                                                 <h5 class="event-details-title"></h5>
 
                                                 <p class="event-detail-description"></p>
@@ -2156,17 +2183,25 @@
 
                                     </article>
 
-                                </template>
+                            </template>
 
                             </div>
 
                         </section>
 
+                        <!-- SCROLL TO EVENTS BUTTON -->
+                        <button
+                            type="button"
+                            class="events-scroll-cue"
+                            aria-label="Scroll down to find an event">
+                            <span aria-hidden="true">↓</span>
+                        </button>
+
                     </div>
 
-                </section>
+                    </section>
 
-            </div>
+        </div>
 
         </div>
 
@@ -2180,20 +2215,23 @@
             aria-live="polite"
             hidden>
 
-            <h2>
-                Every Tree Counts<span class="loading-dots">...</span>
-            </h2>
-
             <img
                 src="./img/icons/tree.png"
                 alt=""
                 class="dancing-tree">
 
+            <h2>
+                Every Tree Counts
+                <span class="loading-dots">...</span>
+            </h2>
+
             <div class="loading-progress">
                 <div class="loading-progress-bar"></div>
             </div>
 
-            <p>Preparing your registration...</p>
+            <p>Preparing your registration...
+                
+            </p>
 
         </div>
 
@@ -2208,17 +2246,12 @@
 
             <h2>You're all set!</h2>
 
-            <p class="success-message">
+            <p class="success-message" id="success-message">
                 Thank you for registering!
             </p>
 
-            <p class="success-submessage">
+            <p class="success-submessage" id="success-submessage">
                 Your interest in caring for NYC's trees makes a difference. 🌳
-            </p>
-
-            <p class="privacy-note">
-                Prototype demonstration — no personal information
-                has been sent or saved.
             </p>
 
             <span class="success-close-hint">
