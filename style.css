@@ -1550,7 +1550,7 @@ dialog:not([open]) {
     background-color: #A9DEDE;
 
     border: 1.5px solid #2B2F2A;
-    border-radius: 4px;
+    border-radius: 12px;
 
     overflow: hidden;
 }
